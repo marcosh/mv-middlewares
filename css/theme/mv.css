@@ -255,3 +255,33 @@ body {
 .reveal .progress {
     height: 7px;
 }
+
+/*********************************************
+ * MY STILES
+ *********************************************/
+
+.title h1, .title h2 {
+    color: #f5f5f5;
+}
+
+/*********************************************
+ * FOOTER
+ *********************************************/
+
+.reveal footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.reveal footer img {
+    float: right;
+    height: 80px;
+    width: 80px;
+}
+
+.reveal footer div {
+    font-size: 50%;
+    line-height: 80px;
+    margin-left: 20px;
+}
