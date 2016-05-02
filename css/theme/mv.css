@@ -13,7 +13,7 @@ body {
 .reveal {
   font-family: 'IstokWeb', Helvetica, sans-serif;
   font-size: 48px;
-  font-weight: normal;
+  font-weight: bold;
   color: #3F3F3F; }
 
 ::selection {
@@ -132,6 +132,9 @@ body {
 
 .reveal pre code {
   padding: 2%;
+  background-color: rgba(248, 248, 248, 0.8); }
+
+.reveal pre code.big {
   font-size: 150%; }
 
 .reveal table {
@@ -262,6 +265,14 @@ body {
 
 .title h1, .title h2 {
     color: #f5f5f5;
+}
+
+div.credits {
+    font-size: 60%;
+}
+
+div.credits p {
+    margin: 0;
 }
 
 /*********************************************

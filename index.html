@@ -6,7 +6,7 @@
 
         <title>THE MAGICAL MIDDLEWARE TOUR</title>
 
-        <meta name="description" content="A tour in the realm of middlewares and PSR-7">
+        <meta name="description" content="A tour in the realm of middleware and PSR-7">
         <meta name="author" content="Marco Perone">
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -74,60 +74,259 @@
                     <h1>Microframeworks</h1>
                 </section>
 
-                <section>
+                <section data-background="img/abstract.jpg">
                     <h1>Need for a good HTTP abstraction</h1>
+
+                    <aside class="notes">
+                        <p>Php does not have builtin support for HTTP messages</p>
+                        <p>Client: streams, curl, http extension (packages abstracting over them)</p>
+                        <p>Server: SAPI, designed to mirror CGI -> mutable, non easy to test</p>
+                    </aside>
                 </section>
 
-                <section>
+                <section data-background="img/fig.jpg">
                     <h1>PSR-7</h1>
+
+                    <aside class="notes">
+                        <p>Set of common interfaces for HTTP messages</p>
+                        <p>Proposal aimed at interoperability between PHP packages</p>
+                    </aside>
+                </section>
+
+                <section data-background="img/trail.jpg">
+                    <h1>PSR-7 GOALS</h1>
+
+                    <p class="fragment">Provide the interfaces to describe HTTP messages</p>
+                    <p class="fragment">Focus on proctical applications and usability</p>
+                    <p class="fragment">Model all elements of the HTTP message</p>
+                    <p class="fragment">Do no impose arbitrary limits on HTTP messages</p>
+                    <p class="fragment">Provide useful abstractions both for server-side applications and HTTP clients</p>
+                </section>
+
+                <section data-background="img/danger.jpg">
+                    <h1>PSR-7 NON-GOALS</h1>
+
+                    <p class="fragment">Do not expect everybody to change their interfaces</p>
+                    <p class="fragment">Strictly meant for interoperability</p>
+                    <p class="fragment">Do not impose implementation details</p>
+                </section>
+
+                <section data-background="img/components.jpg">
+                </section>
+
+                <section data-background="img/stamp.jpg">
+                    <h1>PSR-7 DESIGN</h1>
+
+                    <p class="fragment">Value objects</p>
+                    <p class="fragment">ServerRequestInterface</p>
+
+                    <aside class="notes">
+                        <p>VO: messages are values where the identity is the aggregate of all parts of the message</p>
+                        <p>Ensures the integrity of the message state</p>
+                        <p>SRI:</p>
+                        <ul>
+                            <li>acess server parameters</li>
+                            <li>access query string arguments</li>
+                            <li>access parsed body</li>
+                            <li>access uploaded files</li>
+                            <li>access cookie values</li>
+                            <li>access attributes derived from the request</li>
+                        </ul>
+                        </ul>
+                    </aside>
                 </section>
 
                 <section>
-                    <h1>The pattern corner</h1>
-                    <h2>Pipes and filters</h2>
+                    <h1>Pipes and filters</h1>
+                </section>
+
+                <section data-background="img/decorated-guitar.jpg">
+                    <h1>Decorator</h1>
+                    <p class="fragment">Attach additional responsabilities dinamically</p>
+                    <p class="fragment">Conform to the interface of the decorated object</p>
+                    <p class="fragment">Recursive nesting</p>
+                    <p class="fragment">Responsabilities added and removed at runtime</p>
+
+                    <aside class="notes">
+                        <p>Alternative to subclassing for extending functionality</p>
+                        <p>Its presence is transparent to the client</p>
+                        <p>Unlimited number of added responsabilities</p>
+                    </aside>
+                </section>
+
+                <section data-background="img/onion1.jpg">
+                    <h1>Middleware</h1>
+
+                    <pre><code class="hljs big" data-trim contenteditable>
+function (Request): Response
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Callable that receives a Request and return a Response</p>
+                        <p>Infinitely nestable components the decorate a Request/Response handling</p>
+                        <p>Look closely: we depende on the response class</p>
+                    </aside>
+                </section>
+
+                <section data-background="img/onion2.jpg">
+                    <h1>Middleware</h1>
+
+                    <pre><code class="hljs big" data-trim contenteditable>
+function (Request, Response): Response
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Do not depend on the Response implementation</p>
+                        <p>A middleware needs to know what comes next</p>
+                    </aside>
+                </section>
+
+                <section data-background="img/onion3.jpg">
+                    <h1>Middleware</h1>
+
+                    <pre><code class="hljs big" data-trim contenteditable>
+function (
+
+    Request $request,
+
+    Response $response,
+
+    callable $next
+
+): Response
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>All the dependencies are very explicit</p>
+                        <p>Every middleware is independent from the others</p>
+                        <p>They could be easily chained</p>
+                    </aside>
                 </section>
 
                 <section>
-                    <h1>The pattern corner 2, the vengeance</h1>
-                    <h2>Decorator</h2>
+                    <h1>Middleware in other languages</h1>
+                </section>
+
+                <!--section>
+                    <pre><code class="hljs" data-trim contenteditable>
+class Middleware
+{
+    function __invoke($request, $response, $next)
+    {
+        return $next($request, $response);
+    }
+}
+                    </code></pre>
+                </section-->
+
+                <section data-background="img/onion4.jpg">
+                    <pre><code class="hljs" data-trim contenteditable>
+class Middleware
+{
+    function __invoke($request, $response, $next)
+    {
+        if (!$this->preconditionsExist()) {
+            throw new RuntimeException();
+        }
+
+        $request = $this->doSomethingOnRequest();
+
+        $response = $next($request, $response);
+
+        return $this->doSomethingOnResponse($response);
+    }
+}
+                    </code></pre>
+                </section>
+
+                <section data-background="img/lock.jpg">
+                    <pre><code class="hljs" data-trim contenteditable>
+class BasicAuthentication
+{
+    function __invoke($request, $response, $next)
+    {
+        $authorization = $request->getHeaderLine('Authorization');
+
+        if ($this->checkUserPassword($authorization)) {
+            $request = self::setAttribute(
+                $request,
+                'USERNAME',
+                $authorization['username']
+            );
+
+            return $next($request, $response);
+        }
+
+        return $response->withStatus(401);
+    }
+}
+                    </code></pre>
+                </section>
+
+                <section data-background="img/log.jpg">
+                    <pre><code class="hljs" data-trim contenteditable>
+class AccessLog
+{
+    function __invoke($request, $response, $next)
+    {
+        if (!self::hasAttribute($request, 'CLIENT_IPS')) {
+            throw new RuntimeException();
+        }
+
+        $response = $next($request, $response);
+
+        $message = self::format($request, $response);
+
+        $this->logger->log($message);
+
+        return $response;
+    }
+}
+                    </code></pre>
                 </section>
 
                 <section>
-                    <h1>Middlewares</h1>
+                    <h1>Working example in Slim</h1>
                 </section>
 
                 <section>
-                    <h1>Middlewares in other languages</h1>
+                    <h1>Working example in Radar</h1>
                 </section>
 
                 <section>
-                    <h1>Types of middlewares</h1>
+                    <h1>Working example in Expressive</h1>
                 </section>
 
                 <section>
-                    <h1>Examples of middlewares</h1>
+                    <h1>Working example in Expressive/ReactPhp</h1>
                 </section>
 
                 <section>
-                    <h1>Middlewares in a microframework</h1>
-                    <h2>Expressive</h2>
+                    <h1>Roundup</h1>
                 </section>
 
                 <section>
-                    <h1>How Expressive works</h1>
+                    <h1>Credits</h1>
+
+                    <div class="credits">
+                        <p>FIG picture by <a href="https://twitter.com/ninjagrlstuff">ninjagrl</a></p>
+                        <p>Kungsleden by <a href="https://commons.wikimedia.org/wiki/File%3AKungsleden_trail.JPG">Shyguy24x7</a></p>
+                        <p>Danger zone by <a href="https://www.flickr.com/photos/cvander/2604370414">cvander</a></p>
+                        <p>PSR-7 diagram by <a href="https://twitter.com/ninjagrlstuff">ninjagrl</a></p>
+                        <p>Abstract painting by <a href="https://commons.wikimedia.org/wiki/File%3AUntitled_(Abstraction_No._3).jpg">Earle M. Pilgrim</a></p>
+                        <p>Stamp by <a href="https://commons.wikimedia.org/w/index.php?curid=32926338">Peter Max</a></p>
+                        <p>Decorated guitar by <a href="https://pixabay.com/en/acoustic-guitar-hippie-guitar-487035/">Stuart Hampton</a></p>
+                        <p>Onion by <a href="https://commons.wikimedia.org/w/index.php?curid=19181714">Colin</a></p>
+                        <p>Onion by <a href="https://www.flickr.com/photos/darwinbell/303892944">darwinbell</a></p>
+                        <p>Onion by <a href="https://pixabay.com/en/onion-red-onion-fruit-vegetable-899095">costanzimarco</a></p>
+                        <p>Onion by <a href="https://pixabay.com/en/onion-flower-seed-farming-crop-284512/">sarangib</a></p>
+                        <p>Locked door by <a href="https://www.pexels.com/photo/door-green-closed-lock-4291/">LEEROY.ca</a></p>
+                        <p>Log by <a href="https://en.wikipedia.org/wiki/Logging#/media/File:Logging_in_Finnish_Lapland.jpg">Greenpeace Finland</a></p>
+                        <p>Hearts by <a href="http://www.publicdomainpictures.net/view-image.php?image=19237">Petr Kratochvil</a></p>
+                    </div>
                 </section>
 
-                <section>
-                    <h1>The power of reuse</h1>
-                    <h2>Let's move everything to slim</h2>
-                </section>
-
-                <section>
-                    <h1>Reuse is too powerful, I can't resist</h1>
-                    <h2>It works also in Relay!</h2>
-                </section>
-
-                <section>
+                <section data-background="img/hearts.jpg">
                     <h1>All you need is middleware</h1>
                 </section>
             </div>
