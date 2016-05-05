@@ -98,46 +98,96 @@
                 </section>
 
                 <section data-background="img/trail.jpg">
-                    <h1>PSR-7 GOALS</h1>
+                    <section>
+                        <h1>PSR-7 GOALS</h1>
+                    </section>
 
-                    <p class="fragment">Provide the interfaces to describe HTTP messages</p>
-                    <p class="fragment">Focus on proctical applications and usability</p>
-                    <p class="fragment">Model all elements of the HTTP message</p>
-                    <p class="fragment">Do no impose arbitrary limits on HTTP messages</p>
-                    <p class="fragment">Provide useful abstractions both for server-side applications and HTTP clients</p>
+                    <section>
+                        <h2>Interfaces</h2>
+
+                        <aside class="notes">
+                            <p>Provide the interfaces to describe HTTP messages</p>
+                            <p>Model all elements of the HTTP message and URI specifications</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Practical applications and usability</h2>
+                    </section>
+
+                    <section>
+                        <h2>No limits</h2>
+
+                        <aside class="notes">
+                            <p>Do no impose arbitrary limits on HTTP messages</p>
+                            <p>Example with content length</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Server and client</h2>
+
+                        <aside class="notes">
+                            <p>Provide useful abstractions both for server-side applications and HTTP clients</p>
+                        </aside>
+                    </section>
                 </section>
 
                 <section data-background="img/danger.jpg">
-                    <h1>PSR-7 NON-GOALS</h1>
+                    <section>
+                        <h1>PSR-7 NON-GOALS</h1>
+                    </section>
 
-                    <p class="fragment">Do not expect everybody to change their interfaces</p>
-                    <p class="fragment">Strictly meant for interoperability</p>
-                    <p class="fragment">Do not impose implementation details</p>
+                    <section>
+                        <h2>Conformation</h2>
+
+                        <aside class="notes">
+                            <p>Do not expect everybody to change their interfaces</p>
+                            <p>Strictly meant for interoperability</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Impose details</h2>
+
+                        <aside class="notes">
+                            <p>Do not impose implementation details</p>
+                        </aside>
+                    </section>
                 </section>
 
                 <section data-background="img/components.jpg">
                 </section>
 
                 <section data-background="img/aeonium.jpg">
-                    <h1>PSR-7 DESIGN</h1>
+                    <section>
+                        <h1>PSR-7 DESIGN</h1>
+                    </section>
 
-                    <p class="fragment">Value objects</p>
-                    <p class="fragment">ServerRequestInterface</p>
+                    <section>
+                        <h2>Value objects</h2>
 
-                    <aside class="notes">
-                        <p>VO: messages are values where the identity is the aggregate of all parts of the message</p>
-                        <p>Ensures the integrity of the message state</p>
-                        <p>SRI:</p>
-                        <ul>
-                            <li>acess server parameters</li>
-                            <li>access query string arguments</li>
-                            <li>access parsed body</li>
-                            <li>access uploaded files</li>
-                            <li>access cookie values</li>
-                            <li>access attributes derived from the request</li>
-                        </ul>
-                        </ul>
-                    </aside>
+                        <aside class="notes">
+                            <p>Messages are values where the identity is the aggregate of all parts of the message</p>
+                            <p>Ensures the integrity of the message state</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Server Request Interface</h2>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>access server parameters</li>
+                                <li>access query string arguments</li>
+                                <li>access parsed body</li>
+                                <li>access uploaded files</li>
+                                <li>access cookie values</li>
+                                <li>access attributes derived from the request</li>
+                            </ul>
+                            </ul>
+                        </aside>
+                    </section>
                 </section>
 
                 <section>
@@ -146,14 +196,14 @@
 
                 <section data-background="img/nest.jpg">
                     <h1>Decorator</h1>
-                    <p class="fragment">Attach additional responsabilities dinamically</p>
-                    <p class="fragment">Conform to the interface of the decorated object</p>
-                    <p class="fragment">Recursive nesting</p>
-                    <p class="fragment">Responsabilities added and removed at runtime</p>
+                    <p class="fragment">Attach responsabilities dinamically</p>
 
                     <aside class="notes">
                         <p>Alternative to subclassing for extending functionality</p>
+                        <p>Conform to the interface of the decorated object</p>
                         <p>Its presence is transparent to the client</p>
+                        <p>Recursive nesting</p>
+                        <p>Responsabilities added and removed at runtime</p>
                         <p>Unlimited number of added responsabilities</p>
                     </aside>
                 </section>
@@ -167,7 +217,7 @@ function (Request): Response
 
                     <aside class="notes">
                         <p>Callable that receives a Request and return a Response</p>
-                        <p>Infinitely nestable components the decorate a Request/Response handling</p>
+                        <p>Infinitely nestable components that decorate a Request/Response handling</p>
                         <p>Look closely: we depende on the response class</p>
                     </aside>
                 </section>
@@ -309,6 +359,18 @@ class AccessLog
                     <h1>Roundup</h1>
                 </section>
 
+                <section data-background="img/cat-love.jpg">
+                    <h1>All you need is middleware</h1>
+                </section>
+
+                <section>
+                    <h1>Speakers love feedback</h1>
+
+                    <p>Leave feedback at <a href="https://joind.in/talk/1ccba">https://joind.in/talk/1ccba</a></p>
+                    <p>Marco <a href="https://twitter.com/marcoshuttle">@marcoshuttle</a> <a href="mailto:m.perone@mvlabs.it">m.perone@mvlabs.it</a></p>
+                    <p>Steve <a href="https://twitter.com/maraspin">@maraspin</a> <a href="mailto:s.maraspin@mvassociati.it">s.maraspin@mvassociati.it</a></p>
+                </section>
+
                 <section>
                     <h1>Credits</h1>
 
@@ -328,10 +390,6 @@ class AccessLog
                         <p>Log by <a href="https://en.wikipedia.org/wiki/Logging#/media/File:Logging_in_Finnish_Lapland.jpg">Greenpeace Finland</a></p>
                         <p>Cat by <a href="http://speachlessgiuly.deviantart.com/art/All-you-need-is-love-185131918">SpechlessGiuly</a></p>
                     </div>
-                </section>
-
-                <section data-background="img/cat-love.jpg">
-                    <h1>All you need is middleware</h1>
                 </section>
             </div>
 
