@@ -216,12 +216,17 @@
 
                 <section>
                     <h1>Pipes and filters</h1>
+
+                    <aside class="notes">
+                        <p>What can we do now with PSR-7? How do we construct decoupled components based on them?</p>
+                    </aside>
                 </section>
 
                 <section data-background="img/margherita.jpg">
                     <h1>Decorator</h1>
 
                     <aside class="notes">
+                        <p>Pipes and filters is linear, we would like to compose things in a more general way</p>
                         <p>Alternative to subclassing for extending functionality</p>
                     </aside>
                 </section>
@@ -396,6 +401,10 @@ class Middleware
     }
 }
                     </code></pre>
+
+                    <aside class="notes">
+                        <p>Every middleware can decide if passing the control to the next middleware or return directly a response</p>
+                    </aside>
                 </section>
 
                 <section data-background="img/lock.jpg">
@@ -466,6 +475,11 @@ $app->add(new ClientIp());
 
 $app->add(new BasicAuthentication($users));
                     </code></pre>
+
+                    <aside class="notes">
+                        <p>Microframework based on PSR-7</p>
+                        <p>The last middleware added is the first to be executed</p>
+                    </aside>
                 </section>
 
                 <section>
@@ -474,6 +488,18 @@ $app->add(new BasicAuthentication($users));
 
                 <section data-background="img/seal.jpg">
                     <h1>Expressive</h1>
+
+                    <aside class="notes">
+                        <p>Microframework based on PSR-7 middlewares</p>
+                        <p>Provides:
+                            <ul>
+                                <li>abstracted routing</li>
+                                <li>encourages dependency injection</li>
+                                <li>templating</li>
+                                <li>mechanisms for error handling</li>
+                            </ul>
+                        </p>
+                    </aside>
                 </section>
 
                 <section data-background="img/expressive-dog.jpg">
