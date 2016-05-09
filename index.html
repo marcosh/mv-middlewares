@@ -173,13 +173,13 @@
                     </aside>
                 </section>
 
-                <section data-background="img/eternity-range.jpg">
-                    <h1>Value objects</h1>
+                <section data-background="img/diamond.jpg">
+                    <h1>A Value objects is forever</h1>
 
                     <aside class="notes">
                         <p>Objects whose identity is the aggregate of all the attributes of the object</p>
-                        <p>Every time we alter a message we do not mutate it, but we actually create a new one</p>
-                        <p>Ensures the integrity of the message state</p>
+                        <p>Every time we alter a value object we do not mutate it, but we actually create a new one</p>
+                        <p>Ensures the integrity of the state of the application</p>
                     </aside>
                 </section>
 
@@ -220,6 +220,10 @@
 
                 <section data-background="img/margherita.jpg">
                     <h1>Decorator</h1>
+
+                    <aside class="notes">
+                        <p>Alternative to subclassing for extending functionality</p>
+                    </aside>
                 </section>
 
                 <section data-background="img/cheese-vegetables.jpg">
@@ -244,6 +248,11 @@ class VegetablesDecoration implements Pizza
 
 }
                     </code></pre>
+
+                    <aside class="notes">
+                        <p>Conform to the interface of the decorated object</p>
+                        <p>Its presence is transparent to the client</p>
+                    </aside>
                 </section>
 
                 <section data-background="img/pizza.jpg">
@@ -260,20 +269,17 @@ $myFavouritePizza =
 
     );
                     </code></pre>
+
+                    <aside class="notes">
+                        <p>Recursive nesting</p>
+                        <p>Responsabilities added and removed at runtime</p>
+                        <p>Unlimited number of added responsabilities</p>
+                    </aside>
                 </section>
 
                 <!--section data-background="img/nest.jpg">
                     <h1>Decorator</h1>
                     <p class="fragment">Attach responsabilities dinamically</p>
-
-                    <aside class="notes">
-                        <p>Alternative to subclassing for extending functionality</p>
-                        <p>Conform to the interface of the decorated object</p>
-                        <p>Its presence is transparent to the client</p>
-                        <p>Recursive nesting</p>
-                        <p>Responsabilities added and removed at runtime</p>
-                        <p>Unlimited number of added responsabilities</p>
-                    </aside>
                 </section-->
 
                 <section data-background="img/onion1.jpg">
@@ -293,7 +299,6 @@ function (Request): Response
 
                     <aside class="notes">
                         <p>Infinitely nestable components that decorate a Request/Response handling</p>
-                        <p>Look closely: we depende on the response class</p>
                     </aside>
                 </section>
 
@@ -313,6 +318,11 @@ function (Request $request): Response
 
 }
                     </code></pre>
+
+                    <aside class="notes">
+                        <p>Look closely: we depend on the response class</p>
+                        <p>Used by Ruby's Rack, Lumen
+                    </aside>
                 </section>
 
                 <section data-background="img/onion2.jpg">
@@ -323,6 +333,7 @@ function (Request, Response): Response
                     </code></pre>
 
                     <aside class="notes">
+                        <p>Used By Python's WSGI, StackPHP
                         <p>Do not depend on the Response implementation</p>
                         <p>A middleware needs to know what comes next</p>
                     </aside>
@@ -344,15 +355,16 @@ function (
                     </code></pre>
 
                     <aside class="notes">
+                        <p>Used and popularized by node's Connect and ExpressJs</p>
                         <p>All the dependencies are very explicit</p>
                         <p>Every middleware is independent from the others</p>
                         <p>They could be easily chained</p>
                     </aside>
                 </section>
 
-                <section>
+                <!--section>
                     <h1>Middleware in other languages</h1>
-                </section>
+                </section-->
 
                 <!--section>
                     <pre><code class="hljs" data-trim contenteditable>
@@ -408,6 +420,10 @@ class BasicAuthentication
     }
 }
                     </code></pre>
+
+                    <aside class="notes">
+                        <p>Unauthorized response with 401 status and WWW-Authenticate header</p>
+                    </aside>
                 </section>
 
                 <section data-background="img/log.jpg">
@@ -478,7 +494,7 @@ return [
             'priority' => 2000
         ],
         'access-log' => [
-            'middleware' => $accessLog,
+            'middleware' => new AccessLog($logger, $formatter),
             'priority' => 1000
         ]
     ]
@@ -534,8 +550,9 @@ return [
                             <p>Kungsleden by <a href="https://commons.wikimedia.org/wiki/File%3AKungsleden_trail.JPG">Shyguy24x7</a></p>
                             <p>Danger zone by <a href="https://www.flickr.com/photos/cvander/2604370414">cvander</a></p>
                             <p>PSR-7 diagram by <a href="https://twitter.com/ninjagrlstuff">ninjagrl</a></p>
-                            <p>Eternity range by <a href="https://commons.wikimedia.org/w/index.php?curid=16328241">euphro</a></p>
-                            <p>Aeonium by <a href="https://commons.wikimedia.org/wiki/File%3AAeonium_tabuliforme.jpg">Max Ronnersjö</a></p>
+                            <p>Diamond by <a href="https://pixabay.com/en/diamond-shiny-baby-wealth-wealthy-807979/">EWAR</a></p>
+                            <!--p>Eternity range by <a href="https://commons.wikimedia.org/w/index.php?curid=16328241">euphro</a></p-->
+                            <!--p>Aeonium by <a href="https://commons.wikimedia.org/wiki/File%3AAeonium_tabuliforme.jpg">Max Ronnersjö</a></p-->
                             <!--p>Nest by <a href="https://commons.wikimedia.org/wiki/File%3AAmerican_Robin_Nest_with_Eggs.jpg">Laslovarga</a></p-->
                             <!--p>Decorated ice-cream by <a href="https://commons.wikimedia.org/wiki/File%3AGelato_Cup_Ice-cream_Cake_Cow.jpg">Sky22688</a></p-->
                             <p>Pizza by <a href="https://commons.wikimedia.org/w/index.php?curid=372337">ElfQrin</a></p>
