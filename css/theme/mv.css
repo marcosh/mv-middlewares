@@ -372,7 +372,9 @@ div.space60 {
  * PROGRESS BAR
  *********************************************/
 .reveal .progress {
-  background: #d3fc92; }
+  background: #d3fc92; 
+  height: 14px;
+}
 
 .reveal .progress span {
   background: #438901;
@@ -428,14 +430,46 @@ div.credits p {
     bottom: -24px;
 }
 
+.reveal footer .details {
+  position: fixed;
+  left: 0;
+  bottom:20px;
+  font-weight: 500;
+  font-size: .4em;  
+  z-index: 3;
+  color: #929292;  
+  line-height: 1em; 
+}
+
 .reveal footer img {
     float: right;
     height: 80px;
     width: 80px;
 }
 
+.reveal footer .details img {
+  position: fixed;
+  right: 15px;
+  bottom: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+.reveal footer .details sup {
+  font-size: .7em;
+}
+
 .reveal footer div {
     font-size: 50%;
     line-height: 80px;
     margin-left: 20px;
+}
+
+@media(max-width: 600px){
+  .reveal footer .details {
+    font-size: 2.5vw; 
+  } 
+  .reveal footer img {
+    display: none;  
+  }
 }
