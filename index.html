@@ -106,6 +106,40 @@
                     <h1>Microframeworks</h1>
                 </section>
 
+                 <section>
+                    <h1>One issue to solve...</h1>
+                </section>
+
+
+                <section>
+                    <h1>HTTP</h1>
+                </section>
+
+                <section>
+                    <h1>PHP History: CGI</h1>
+                </section>
+
+               <section class="simple">
+                    <h1>Controller Incompatibility</h1>
+                   <pre><code class="hljs" data-trim contenteditable>
+                            // src/middleware.php
+                            $app->add(new AccessLog($logger, $formatter));
+                            $app->add(new Geolocate());
+                            $app->add(new ClientIp());
+                            $app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                    <pre><code class="hljs" data-trim contenteditable>
+                            // src/middleware.php
+                            $app->add(new AccessLog($logger, $formatter));
+                            $app->add(new Geolocate());
+                            $app->add(new ClientIp());
+                            $app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                </section>
+
+
                 <section data-background="img/abstract.jpg">
                     <div class="space10">
                     <h2 class="black right">Need for</h2>
@@ -129,7 +163,7 @@
                 </section>
 
                 <section data-background="img/trail.jpg">
-                    <section>
+                    <section class="centered">
                         <h1>PSR-7 GOALS</h1>
                     </section>
 
@@ -244,8 +278,9 @@
                     </section>
                 </section-->
 
-                <section>
+                <section class="simple">
                     <h1>Pipes and filters</h1>
+                    <img src="img/pipes_and_filters.png">
                 </section>
 
                 <section data-background="img/margherita.jpg">
@@ -312,6 +347,11 @@ $myFavouritePizza =
                     <p class="fragment">Attach responsabilities dinamically</p>
                 </section-->
 
+
+                 <section>
+                    <h1>Middleware</h1>
+                </section>
+
                 <section data-background="img/onion1.jpg">
                     <h1>Middleware</h1>
 
@@ -324,12 +364,21 @@ function (Request): Response
                     </aside>
                 </section>
 
+
                 <section data-background="img/onion-middleware.png">
                     <h2 style="position: relative; top: -20px;">Request&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response</h2>
 
                     <aside class="notes">
                         <p>Infinitely nestable components that decorate a Request/Response handling</p>
                     </aside>
+                </section>
+
+                 <section>
+                    <h1>Airport Metaphor</h1>
+                </section>
+
+                 <section>
+                    <h1>Ruby Rack</h1>
                 </section>
 
                 <section data-background="img/cutting-onion.jpg">
@@ -355,6 +404,12 @@ function (Request $request): Response
                     </aside>
                 </section>
 
+
+                 <section>
+                    <h1>Python</h1>
+                </section>
+
+
                 <section data-background="img/onion2.jpg">
                     <h1>Middleware</h1>
 
@@ -368,6 +423,12 @@ function (Request, Response): Response
                         <p>A middleware needs to know what comes next</p>
                     </aside>
                 </section>
+
+
+                 <section>
+                    <h1>Node</h1>
+                </section>
+
 
                 <section data-background="img/onion3.jpg">
                     <h1>Middleware</h1>
@@ -390,6 +451,17 @@ function (
                         <p>Every middleware is independent from the others</p>
                         <p>They could be easily chained</p>
                     </aside>
+                </section>
+
+
+
+                 <section>
+                    <h1>NEXT Benefits</h1>
+                </section>
+
+
+                 <section>
+                    <h1>PHP</h1>
                 </section>
 
                 <!--section>
@@ -554,6 +626,10 @@ return [
                     </code></pre>
                 </section>
 
+                 <section>
+                    <h1>Resources</h1>
+                </section>
+
                 <section>
                     <h1>Roundup</h1>
                 </section>
@@ -627,6 +703,7 @@ return [
                 progress: true,
                 history: true,
                 center: false,
+                slideNumber: false,
 
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
 
