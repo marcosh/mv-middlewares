@@ -41,36 +41,64 @@
 
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
+
                 <section class="title" data-background="#7ab317">
                     <h1>Beyond PSR-7</h1>
                     <h2>The magical middleware tour</h2>
                 </section>
 
-                <section>
+
+                <section data-background="img/steve.jpg">
+                    <div class="space45"></div>
                     <h1>Steve</h1>
                 </section>
+
 
                 <section data-background="img/marco.jpg">
                     <h1>Marco</h1>
                 </section>
 
                 <section>
-                    <h1>In the beginning</h1>
-                    <p>No frameworks</p>
-                    <p>Everybody on its own</p>
+                    <div class="space25">
+                        <h1>Everybody on its own</h1>
+                    </div>
                 </section>
+
+
+                 <section class="simple">
+                    <h1>Include Hell</h1>
+                   <pre><code class="hljs" data-trim contenteditable>
+                            // src/middleware.php
+                            $app->add(new AccessLog($logger, $formatter));
+                            $app->add(new Geolocate());
+                            $app->add(new ClientIp());
+                            $app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                    <pre><code class="hljs" data-trim contenteditable>
+                            // src/middleware.php
+                            $app->add(new AccessLog($logger, $formatter));
+                            $app->add(new Geolocate());
+                            $app->add(new ClientIp());
+                            $app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                </section>
+
 
                 <section>
                     <h1>Then came the frameworks</h1>
                     <p>Everyone had its way to do things</p>
                 </section>
 
+
                 <section>
                     <h1>The sixth day came Composer</h1>
                     <h2>We all see how good it is</h2>
                 </section>
 
-                <section>
+
+                <section class="transparent">
                     <h1>Component-driven approach</h1>
                 </section>
 
@@ -79,7 +107,9 @@
                 </section>
 
                 <section data-background="img/abstract.jpg">
-                    <h1>Need for a good HTTP abstraction</h1>
+                    <div class="space10">
+                    <h2 class="black right">Need for</h2>
+                    <h2 class="right">a good HTTP abstraction</h2>
 
                     <aside class="notes">
                         <p>Php does not have builtin support for HTTP messages</p>
@@ -573,15 +603,16 @@ return [
                             <p>Expressive dog by <a href="http://bambuart.deviantart.com/art/expressive-167156067">BambuArt</a></p>
                             <p>Expressive cat by <a href="https://www.flickr.com/photos/eks/33267012">Eduardo Simioni</a></p>
                             <p>Cat by <a href="http://speachlessgiuly.deviantart.com/art/All-you-need-is-love-185131918">SpechlessGiuly</a></p>
-                        </section>
                     </div>
-                </section>
-            </div>
+                </div>
 
-            <footer>
+            </section>
+
+   <footer>
                 <div><a href="https://twitter.com/maraspin">@maraspin</a> & <a href="https://twitter.com/marcoshuttle">@marcoshuttle</a>
-                <img src="img/logo.png">
+                <img src="img/logo.png" height="25">
             </footer>
+
         </div>
 
         <script src="lib/js/head.min.js"></script>
@@ -595,7 +626,7 @@ return [
                 controls: false,
                 progress: true,
                 history: true,
-                center: true,
+                center: false,
 
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
 
