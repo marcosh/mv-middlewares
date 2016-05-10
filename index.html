@@ -41,33 +41,156 @@
 
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
+
                 <section class="title" data-background="#7ab317">
                     <h1>Beyond PSR-7</h1>
                     <h2>The magical middleware tour</h2>
                 </section>
 
-                <section>
-                    <h1>Steve</h1>
-                </section>
 
                 <section data-background="img/marco.jpg">
                     <h1>Marco</h1>
                 </section>
 
-                <section>
-                    <h1>In the beginning</h1>
-                    <p>No frameworks</p>
-                    <p>Everybody on its own</p>
+                <section data-background="img/marco.jpg">
+                    <h1>Explorer</h1>
                 </section>
+
+                <section data-background="img/universe.jpg">
+                    <h1>Functional Programming Freak</h1>
+                </section>
+
+                <section data-background="img/choco.jpg">
+                    <h1>Chocolate Lover</h1>
+                </section>
+
+
+                <section data-background="img/steve.jpg">
+                    <div class="space45"></div>
+                    <h1>Steve</h1>
+                </section>
+
+                <section data-background="img/travel.jpg">
+                    <h1>Enjoys Travelling</h1>
+                </section>
+
+                <section data-background="img/marco.jpg">
+                    <h1>Interested in UX and Architecture</h1>
+                </section>
+
+                <section data-background="img/marco.jpg">
+                    <h1>Loves Hawaiian Shirts</h1>
+                </section>
+
+                <section class="simple">
+                    <h2>Software Engineers</h2>
+                    <img src="img/mvlabs-whitebackground.jpg">
+                </section>
+
+                 <section data-background="img/hippy.jpg">
+                    <h1>Let's start of our Journey...</h1>
+                </section>
+
+                <section>
+                    <div class="space25">
+                        <h1>Everybody on its own</h1>
+                    </div>
+                </section>
+
+
+                 <section class="simple">
+                    <h1>DRY Violation</h1>
+                   <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                    <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                </section>
+
+
+                <section>
+                        <h1>Libraries</h1>
+                </section>
+
+
+                 <section class="simple">
+                    <h1>Include Hell</h1>
+                   <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                    <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                </section>
+
+
 
                 <section>
                     <h1>Then came the frameworks</h1>
                     <p>Everyone had its way to do things</p>
                 </section>
 
+
                 <section>
-                    <h1>The sixth day came Composer</h1>
-                    <h2>We all see how good it is</h2>
+                    <h1>IoC First Wave</h1>
+                </section>
+
+
+                <section class="simple">
+                    <h1>Same thing, different way...</h1>
+                   <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                    <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                </section>
+
+                <section data-background="img/beatles.jpg">
+                    <h1>With a little help of...</h1>
+                </section>
+
+                <section class>
+                    <h1>Composer</h1>
+
+                    <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
                 </section>
 
                 <section>
@@ -75,11 +198,51 @@
                 </section>
 
                 <section>
+                    <h1>IoC New Wave</h1>
+                </section>
+
+                <section>
                     <h1>Microframeworks</h1>
                 </section>
 
+                 <section>
+                    <h1>One issue to solve...</h1>
+                </section>
+
+
+                <section>
+                    <h1>HTTP</h1>
+                </section>
+
+                <section>
+                    <h1>PHP History: CGI</h1>
+                </section>
+
+               <section class="simple">
+                    <h1>Controller Incompatibility</h1>
+                   <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                    <pre><code class="hljs" data-trim contenteditable>
+// src/middleware.php
+$app->add(new AccessLog($logger, $formatter));
+$app->add(new Geolocate());
+$app->add(new ClientIp());
+$app->add(new BasicAuthentication($users));
+                    </code></pre>
+
+                </section>
+
+
                 <section data-background="img/abstract.jpg">
-                    <h1>Need for a good HTTP abstraction</h1>
+                    <div class="space10">
+                    <h2 class="black right">Need for</h2>
+                    <h2 class="right">a good HTTP abstraction</h2>
 
                     <aside class="notes">
                         <p>Php does not have builtin support for HTTP messages</p>
@@ -99,7 +262,7 @@
                 </section>
 
                 <section data-background="img/trail.jpg">
-                    <section>
+                    <section class="centered">
                         <h1>PSR-7 GOALS</h1>
                     </section>
 
@@ -214,8 +377,10 @@
                     </section>
                 </section-->
 
-                <section>
+                <section class="simple">
                     <h1>Pipes and filters</h1>
+
+                    <img src="img/pipes_and_filters.png">
 
                     <aside class="notes">
                         <p>What can we do now with PSR-7? How do we construct decoupled components based on them?</p>
@@ -287,6 +452,11 @@ $myFavouritePizza =
                     <p class="fragment">Attach responsabilities dinamically</p>
                 </section-->
 
+
+                 <section>
+                    <h1>Middleware</h1>
+                </section>
+
                 <section data-background="img/onion1.jpg">
                     <h1>Middleware</h1>
 
@@ -299,12 +469,21 @@ function (Request): Response
                     </aside>
                 </section>
 
+
                 <section data-background="img/onion-middleware.png">
                     <h2 style="position: relative; top: -20px;">Request&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response</h2>
 
                     <aside class="notes">
                         <p>Infinitely nestable components that decorate a Request/Response handling</p>
                     </aside>
+                </section>
+
+                 <section>
+                    <h1>Airport Metaphor</h1>
+                </section>
+
+                 <section>
+                    <h1>Ruby Rack</h1>
                 </section>
 
                 <section data-background="img/cutting-onion.jpg">
@@ -330,6 +509,12 @@ function (Request $request): Response
                     </aside>
                 </section>
 
+
+                 <section>
+                    <h1>Python</h1>
+                </section>
+
+
                 <section data-background="img/onion2.jpg">
                     <h1>Middleware</h1>
 
@@ -343,6 +528,12 @@ function (Request, Response): Response
                         <p>A middleware needs to know what comes next</p>
                     </aside>
                 </section>
+
+
+                 <section>
+                    <h1>Node</h1>
+                </section>
+
 
                 <section data-background="img/onion3.jpg">
                     <h1>Middleware</h1>
@@ -365,6 +556,17 @@ function (
                         <p>Every middleware is independent from the others</p>
                         <p>They could be easily chained</p>
                     </aside>
+                </section>
+
+
+
+                 <section>
+                    <h1>NEXT Benefits</h1>
+                </section>
+
+
+                 <section>
+                    <h1>PHP</h1>
                 </section>
 
                 <!--section>
@@ -555,22 +757,35 @@ return [
                 </section>
 
                 <section data-background="img/cat-love.jpg">
-                    <h1>All you need is middleware</h1>
+                    <h1>Thank you very much</h1>
+                </section>
+
+                 <section>
+                    <h1>Resources</h1>
                 </section>
 
                 <section>
+                    <h1>QR Code</h1>
                     <h1>Speakers love feedback</h1>
-
                     <p>Leave feedback at <a href="https://joind.in/talk/1ccba">https://joind.in/talk/1ccba</a></p>
                     <p>Marco <a href="https://twitter.com/marcoshuttle">@marcoshuttle</a> <a href="mailto:m.perone@mvlabs.it">m.perone@mvlabs.it</a></p>
                     <p>Steve <a href="https://twitter.com/maraspin">@maraspin</a> <a href="mailto:s.maraspin@mvassociati.it">s.maraspin@mvassociati.it</a></p>
                 </section>
+
+                <section data-background="img/cat-love.jpg">
+                    <h1>Uscita....</h1>
+                    <h1>All you need is middleware</h1>
+                </section>
+
 
                 <section>
                     <h1>Credits</h1>
 
                     <div class="credits">
                         <div style="float: left; width: 50%">
+                        https://www.youtube.com/watch?v=0sazEDzCHAw -> plane view
+                        https://en.wikipedia.org/wiki/Organic_chocolate -> choco
+                        https://www.youtube.com/watch?v=O0LHUpTMiIw -> universe
                             <p>Abstract painting by <a href="https://commons.wikimedia.org/wiki/File%3AUntitled_(Abstraction_No._3).jpg">Earle M. Pilgrim</a></p>
                             <p>Figs by <a href="https://commons.wikimedia.org/wiki/File%3A%D9%82%D8%B7%D9%8A%D9%86.JPG">Mburnat</a></p>
                             <p>Kungsleden by <a href="https://commons.wikimedia.org/wiki/File%3AKungsleden_trail.JPG">Shyguy24x7</a></p>
@@ -601,14 +816,18 @@ return [
                             <p>Cat by <a href="http://speachlessgiuly.deviantart.com/art/All-you-need-is-love-185131918">SpechlessGiuly</a></p>
                         </div>
                     </div>
+
                 </section>
+
             </div>
 
             <footer>
-                <div><a href="https://twitter.com/maraspin">@maraspin</a> & <a href="https://twitter.com/marcoshuttle">@marcoshuttle</a>
-                <img src="img/logo.png">
+                <div class="details">
+                PHPDay 2016 - Verona, Italy, May 13<sup>th</sup> 2016 -
+                <a href="https://twitter.com/marcoshuttle">@marcoshuttle</a>,
+                <a href="https://twitter.com/maraspin">@maraspin</a>
+                 <img src="img/logo.png" height="25">
             </footer>
-        </div>
 
         <script src="lib/js/head.min.js"></script>
         <script src="js/reveal.js"></script>
@@ -621,7 +840,8 @@ return [
                 controls: false,
                 progress: true,
                 history: true,
-                center: true,
+                center: false,
+                slideNumber: false,
 
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
 
