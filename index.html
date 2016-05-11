@@ -185,25 +185,19 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
 
                 <section class="simple">
                     <h1>Microframeworks</h1>
+                      <p>Logo Images</p>
+                </section>
+
+
+
+                <section class="simple">
+                    <h1>StackPHP</h1>
                       <pre><code class="hljs" data-trim contenteditable>
-// web/index.php
-require_once __DIR__.'/../vendor/autoload.php';
-
-$app = new Silex\Application();
-
-$app->register(new Silex\Provider\MonologServiceProvider(), array(
-    'monolog.logfile' => __DIR__.'/development.log',
-));
-
-$app->get('/hello/{name}', function ($name) use ($app) {
-    $app['monolog']->addInfo(sprintf("User '%s' registered.", $username));
-    return 'Hello '.$app->escape($name);
-});
-
-$app->run();
+// Stack PHP Code
                     </code></pre>
 
                 </section>
+
 
                  <section data-background="img/peace.jpg">
                     <div class="space40">
@@ -289,9 +283,9 @@ $app->run();
                             <p>Provide useful abstractions both for server-side applications and HTTP clients</p>
                         </aside>
                     </section>
-                </section>
-
-                <section data-background="img/danger.jpg">
+                </section>       
+ 
+      <section data-background="img/danger.jpg">
                     <section>
                         <h1>PSR-7 NON-GOALS</h1>
                     </section>
@@ -315,6 +309,7 @@ $app->run();
                     </section>
                 </section>
 
+
                 <section data-background="img/components.jpg">
                     <aside class="notes">
                         <p>Server Request Interface</p>
@@ -330,7 +325,8 @@ $app->run();
                     </aside>
                 </section>
 
-                <section data-background="img/diamond.jpg">
+
+               <section data-background="img/diamond.jpg">
                     <h1>A Value object is forever</h1>
 
                     <aside class="notes">
@@ -340,9 +336,6 @@ $app->run();
                     </aside>
                 </section>
 
-                  <section>
-                    <h1>Lucy in the Sky...</h1>
-                </section>
 
                 <!--section data-background="img/aeonium.jpg">
                     <section>
@@ -556,24 +549,9 @@ function (
                 </section>
 
 
-
-                 <section>
-                    <h1>NEXT Benefits</h1>
-                </section>
-
-
                  <section>
                     <h1>PHP</h1>
-                </section>
-
-               <section>
-                    <h1>Relay</h1>
-                     <pre><code class="hljs" data-trim contenteditable>
-/* Code */                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Some info on Relay...</p>
-                    </aside>
+                    <p>Link/screenshot FIG discussion</p>
                 </section>
 
          <section>
@@ -714,13 +692,10 @@ $adr->middle($accessLog);
 </code></pre>
 
  <aside class="notes">
-                        <p>Microframework based on PSR-7 middlewares</p>
+                        <p>Saper dire qualcosa...</p>
                         <p>Provides:
                             <ul>
-                                <li>abstracted routing</li>
-                                <li>encourages dependency injection</li>
-                                <li>templating</li>
-                                <li>mechanisms for error handling</li>
+                                <li>ADR</li>
                             </ul>
                         </p>
                     </aside>
@@ -791,8 +766,23 @@ return [
                     </code></pre>
                 </section>
 
+                   <section>
+                    <h1>what's the point</h1>
+                    <p>Different frameworks, middleware easily used everywhere</p>
+                </section>
+
+                <section>
+                    <h1>Platforms</h1>
+                    <p>categorizzazione</p>
+                </section>
+
+
                 <section>
                     <h1>Roundup</h1>
+                    <p>A good HTTP abstraction</p>
+                    <p>Abstractions VS Implementations</p>
+                    <p>Re-Inventing the Wheel is over</p>
+                    <p>Runtime Dangers</p>
                 </section>
 
                 <section data-background="img/newwave.jpg">
