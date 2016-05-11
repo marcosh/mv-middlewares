@@ -445,10 +445,10 @@ div.credits p {
   left: 0;
   bottom:20px;
   font-weight: 500;
-  font-size: .4em;  
+  font-size: .6em;
   z-index: 3;
-  color: #929292;  
-  line-height: 1em; 
+  color: #929292;
+  line-height: 1em;
 }
 
 .reveal footer img {
