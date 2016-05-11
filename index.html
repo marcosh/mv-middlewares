@@ -57,7 +57,7 @@
                 </section>
 
                 <section data-background="img/universe.jpg">
-                    <h1>Functional Programming Freak</h1>
+                    <h2>Functional Programming</h2>
                 </section>
 
                 <section data-background="img/choco.jpg">
@@ -74,52 +74,49 @@
                     <h1>Enjoys Travelling</h1>
                 </section>
 
-                <section data-background="img/marco.jpg">
-                    <h1>Interested in UX and Architecture</h1>
+                <section data-background="img/mosque.jpg">
+                    <h2>Software Architectures</h2>
                 </section>
 
-                <section data-background="img/marco.jpg">
-                    <h1>Loves Hawaiian Shirts</h1>
+                <section data-background="img/hawaii_orioles.jpg">
+                    <h1>In a few years...</h1>
                 </section>
 
                 <section class="simple">
-                    <h2>Software Engineers</h2>
+                    <div class="space10">
+                    <h4 class="gray">Software Engineers</h4>
                     <img src="img/mvlabs-whitebackground.jpg">
                 </section>
 
-                 <section data-background="img/hippy.jpg">
-                    <h1>Let's start of our Journey...</h1>
+                 <section data-background="img/van2.jpg">
+                    <h1>Start of the Journey...</h1>
                 </section>
 
-                <section>
-                    <div class="space25">
-                        <h1>Everybody on its own</h1>
-                    </div>
+                <section data-background="img/hippies.jpg">
+                        <h2>Everybody on its own</h2>
                 </section>
 
 
                  <section class="simple">
                     <h1>DRY Violation</h1>
                    <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
-                    </code></pre>
+$filename = 'log.txt';
+$handle = fopen($filename, 'a'));
+fwrite($handle, $errorMessage);
+fclose($handle);
+</code></pre>
 
                     <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
-                    </code></pre>
+$filename = 'log.txt';
+$handle = fopen($filename, 'a'));
+fwrite($handle, $errorMessage);
+fclose($handle);
+</code></pre>
 
                 </section>
 
 
-                <section>
+                <section data-background="img/students.jpg">
                         <h1>Libraries</h1>
                 </section>
 
@@ -127,113 +124,100 @@ $app->add(new BasicAuthentication($users));
                  <section class="simple">
                     <h1>Include Hell</h1>
                    <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
-                    </code></pre>
-
-                    <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
+include 'config.php';
+include_once 'dbcon.php';
+include_once 'logger.php';
+include 'utils.php';
+include 'forms.php';
+include 'calculations.php';
+include 'graphs.php';
+include 'auth.php';
                     </code></pre>
 
                 </section>
 
 
-
-                <section>
-                    <h1>Then came the frameworks</h1>
-                    <p>Everyone had its way to do things</p>
-                </section>
-
-
-                <section>
+                <section data-background="img/newwave.jpg">
                     <h1>IoC First Wave</h1>
                 </section>
 
+                <section>
+                    <h1>MVC Frameworks</h1>
+                </section>
 
                 <section class="simple">
                     <h1>Same thing, different way...</h1>
+                    <h3>Zend Framework</h3>
                    <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
+$logger = new Zend_Log();
+$writer = new Zend_Log_Writer_Stream('php://output');
+$logger->addWriter($writer);
+$logger->log('Informational message', Zend_Log::INFO);
                     </code></pre>
 
+                    <h3>Symfony</h3>
                     <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
+// YAML Configuration
+// [...]
+sfContext::getInstance()->getLogger()->info('qmchenry was here');
                     </code></pre>
 
                 </section>
 
-                <section data-background="img/beatles.jpg">
+                <section data-background="img/reinventing-wheel.jpg">
+                    <h1>Reinventing the Wheel</h1>
+                </section>
+
+                <section data-background="img/beatles-police.jpg">
                     <h1>With a little help of...</h1>
                 </section>
 
-                <section class>
-                    <h1>Composer</h1>
+                <section class="simple">
+                    <img src="img/composer-logo.png">
+                </section>
 
-                    <pre><code class="hljs" data-trim contenteditable>
+                <section data-background="img/rave.jpg">
+                    <h1>IoC New Wave</h1>
+                       <aside class="notes">
+                        <p>Component-driven approach</p>
+                    </aside>
+                </section>
+
+                <section class="simple">
+                    <h1>Microframeworks</h1>
+                      <pre><code class="hljs" data-trim contenteditable>
 // src/middleware.php
 $app->add(new AccessLog($logger, $formatter));
 $app->add(new Geolocate());
 $app->add(new ClientIp());
 $app->add(new BasicAuthentication($users));
                     </code></pre>
+
                 </section>
 
-                <section>
-                    <h1>Component-driven approach</h1>
-                </section>
-
-                <section>
-                    <h1>IoC New Wave</h1>
-                </section>
-
-                <section>
-                    <h1>Microframeworks</h1>
-                </section>
-
-                 <section>
+                 <section data-background="img/peace.jpg">
+                    <div class="space40">
                     <h1>One issue to solve...</h1>
-                </section>
-
-
-                <section>
-                    <h1>HTTP</h1>
-                </section>
-
-                <section>
-                    <h1>PHP History: CGI</h1>
                 </section>
 
                <section class="simple">
                     <h1>Controller Incompatibility</h1>
                    <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
+[...]
+// Add Code
+[...]
                     </code></pre>
 
-                    <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
+  <pre><code class="hljs" data-trim contenteditable>
+[...]
+// Add Code
+[...]
+                    </code></pre>
+
+  <pre><code class="hljs" data-trim contenteditable>
+[...]
+// Add Code
+[...]
                     </code></pre>
 
                 </section>
@@ -346,6 +330,10 @@ $app->add(new BasicAuthentication($users));
                     </aside>
                 </section>
 
+                  <section>
+                    <h1>Lucy in the Sky...</h1>
+                </section>
+
                 <!--section data-background="img/aeonium.jpg">
                     <section>
                         <h1>PSR-7 DESIGN</h1>
@@ -396,7 +384,7 @@ $app->add(new BasicAuthentication($users));
                     </aside>
                 </section>
 
-                <section data-background="img/cheese-vegetables.jpg">
+                <section data-background="img/cheese-vegetables.jpg" class="simple">
                     <pre><code class="hljs big" data-trim contenteditable>
 interface Pizza
 
@@ -425,7 +413,7 @@ class VegetablesDecoration implements Pizza
                     </aside>
                 </section>
 
-                <section data-background="img/pizza.jpg">
+                <section data-background="img/pizza.jpg" class="simple">
                     <pre><code class="hljs big" data-trim contenteditable>
 $myFavouritePizza =
 
@@ -453,13 +441,12 @@ $myFavouritePizza =
                 </section-->
 
 
-                 <section>
+                 <section data-background="img/onion1.jpg">
                     <h1>Middleware</h1>
                 </section>
 
-                <section data-background="img/onion1.jpg">
+                <section class="simple">
                     <h1>Middleware</h1>
-
                     <pre><code class="hljs big" data-trim contenteditable>
 function (Request): Response
                     </code></pre>
@@ -471,6 +458,7 @@ function (Request): Response
 
 
                 <section data-background="img/onion-middleware.png">
+                    
                     <h2 style="position: relative; top: -20px;">Request&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response</h2>
 
                     <aside class="notes">
@@ -482,23 +470,23 @@ function (Request): Response
                     <h1>Airport Metaphor</h1>
                 </section>
 
-                 <section>
+                 <section data-background="img/cutting-onion.jpg">
                     <h1>Ruby Rack</h1>
                 </section>
 
-                <section data-background="img/cutting-onion.jpg">
+                <section>
                     <pre><code class="hljs big" data-trim contenteditable>
-function (Request $request): Response
+function (Request request): Response
 
 {
 
     ...
 
-    $response = $next($request);
+    response = next(request);
 
     ...
 
-    return $response;
+    return response;
 
 }
                     </code></pre>
@@ -515,7 +503,7 @@ function (Request $request): Response
                 </section>
 
 
-                <section data-background="img/onion2.jpg">
+                <section>
                     <h1>Middleware</h1>
 
                     <pre><code class="hljs big" data-trim contenteditable>
@@ -530,22 +518,21 @@ function (Request, Response): Response
                 </section>
 
 
-                 <section>
+                 <section data-background="img/onion3.jpg">
                     <h1>Node</h1>
                 </section>
 
 
-                <section data-background="img/onion3.jpg">
+                <section>
                     <h1>Middleware</h1>
-
                     <pre><code class="hljs big" data-trim contenteditable>
 function (
 
-    Request $request,
+    Request request,
 
-    Response $response,
+    Response response,
 
-    callable $next
+    callable next
 
 ): Response
                     </code></pre>
@@ -569,6 +556,23 @@ function (
                     <h1>PHP</h1>
                 </section>
 
+               <section>
+                    <h1>Relay</h1>
+                     <pre><code class="hljs" data-trim contenteditable>
+/* Code */                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Some info on Relay...</p>
+                    </aside>
+                </section>
+
+         <section>
+                    <h1>Middleware</h1><br />
+                    <h2>in Action</h2>
+                </section>
+
+
+
                 <!--section>
                     <h1>Middleware in other languages</h1>
                 </section-->
@@ -585,7 +589,7 @@ class Middleware
                     </code></pre>
                 </section-->
 
-                <section data-background="img/onion4.jpg">
+                <section>
                     <pre><code class="hljs" data-trim contenteditable>
 class Middleware
 {
@@ -663,8 +667,8 @@ class AccessLog
                     </aside>
                 </section>
 
-                <section data-background="img/narcissus.jpg">
-                    <h1>Slim</h1>
+                <section class="simple">
+                    <h3>Slim</h3>
 
                     <pre><code class="hljs" data-trim contenteditable>
 // src/middleware.php
@@ -684,14 +688,22 @@ $app->add(new BasicAuthentication($users));
                     </aside>
                 </section>
 
-                <section>
-                    <h1>Radar</h1>
-                </section>
+                <section class="simple">
+                    <h3>Radar</h3>
 
-                <section data-background="img/seal.jpg">
-                    <h1>Expressive</h1>
+<pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
+// web/index.php
 
-                    <aside class="notes">
+$adr->middle($basicAuthentication);
+
+$adr->middle(new ClientIp());
+
+$adr->middle(new Geolocate());
+
+$adr->middle($accessLog);
+</code></pre>
+
+ <aside class="notes">
                         <p>Microframework based on PSR-7 middlewares</p>
                         <p>Provides:
                             <ul>
@@ -702,9 +714,13 @@ $app->add(new BasicAuthentication($users));
                             </ul>
                         </p>
                     </aside>
+
+
                 </section>
 
-                <section data-background="img/expressive-dog.jpg">
+        
+                <section class="simple">
+                    <h4>Expressive</h4>
                     <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
 // config/autoload/middleware-pipeline.global.php
 return [
@@ -728,10 +744,23 @@ return [
     ]
 ];
                     </code></pre>
+
+ <aside class="notes">
+                        <p>Microframework based on PSR-7 middlewares</p>
+                        <p>Provides:
+                            <ul>
+                                <li>abstracted routing</li>
+                                <li>encourages dependency injection</li>
+                                <li>templating</li>
+                                <li>mechanisms for error handling</li>
+                            </ul>
+                        </p>
+                    </aside>
+
                 </section>
 
-                <section data-background="img/expressive-cat.jpg">
-                    <h1>Expressive/React</h1>
+                <section class="simple">
+                    <h3>Expressive/React</h3>
 
                     <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
 // config/autoload/middleware-pipeline.global.php
@@ -786,7 +815,17 @@ return [
                         https://www.youtube.com/watch?v=0sazEDzCHAw -> plane view
                         https://en.wikipedia.org/wiki/Organic_chocolate -> choco
                         https://www.youtube.com/watch?v=O0LHUpTMiIw -> universe
-                            <p>Abstract painting by <a href="https://commons.wikimedia.org/wiki/File%3AUntitled_(Abstraction_No._3).jpg">Earle M. Pilgrim</a></p>
+                        hawaiian -> https://www.flickr.com/photos/keithallison/19019662724    
+hippie van -> https://de.wikipedia.org/wiki/VW_T1
+mosque -> https://commons.wikimedia.org/wiki/File:Beautiful_Architecture_of_Faisal_Mosque.jpg
+mess -> https://www.flickr.com/photos/orinrobertjohn/530322514
+
+hippies -> https://en.wikipedia.org/wiki/Isle_of_Wight_Festival_1970
+van2 -> https://en.wikipedia.org/wiki/Merry_Pranksters
+students -> https://en.wikipedia.org/wiki/Student-centred_learning
+rave -> https://www.youtube.com/watch?v=3aDthA9uGOY
+reinventing wheel -> https://www.flickr.com/photos/thomasguest/5491482766
+                                                <p>Abstract painting by <a href="https://commons.wikimedia.org/wiki/File%3AUntitled_(Abstraction_No._3).jpg">Earle M. Pilgrim</a></p>
                             <p>Figs by <a href="https://commons.wikimedia.org/wiki/File%3A%D9%82%D8%B7%D9%8A%D9%86.JPG">Mburnat</a></p>
                             <p>Kungsleden by <a href="https://commons.wikimedia.org/wiki/File%3AKungsleden_trail.JPG">Shyguy24x7</a></p>
                             <p>Danger zone by <a href="https://www.flickr.com/photos/cvander/2604370414">cvander</a></p>

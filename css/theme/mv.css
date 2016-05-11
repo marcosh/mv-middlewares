@@ -101,7 +101,8 @@ section > h1, section > h2 {
 .reveal .simple h1, .reveal .simple h2, 
 .reveal .simple h3, .reveal .simple h4, 
 .reveal .simple h5, .reveal .simple h6 {
-  color: #7ab317;
+  /* color: #7ab317; */
+  color: #999;
   background-color: transparent;
   font-weight: 600;
   line-height: 1;
@@ -115,7 +116,7 @@ section > h1, section > h2 {
 }
 
 .reveal .simple img {
-  margin-top: 5%;  
+  margin-top: 2%;  
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -267,10 +268,13 @@ div.space60 {
 
 .reveal pre code {
   padding: 2%;
-  background-color: rgba(248, 248, 248, 0.8); }
+  font-size: 0.7em; 
+  background-color: rgba(248, 248, 248, 0.8); 
+}
 
 .reveal pre code.big {
-  font-size: 150%; }
+  font-size: 120%; 
+}
 
 .reveal table {
   margin: auto;
