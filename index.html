@@ -56,8 +56,8 @@
                     <h1>Explorer</h1>
                 </section>
 
-                <section data-background="img/universe.jpg">
-                    <h2>Functional Programming</h2>
+                <section data-background="img/board.jpg">
+                    <h1 class="low-right">Avid learner</h1>
                 </section>
 
                 <section data-background="img/choco.jpg">
@@ -204,25 +204,50 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
                     <h1>One issue to solve...</h1>
                 </section>
 
-               <section class="simple">
-                    <h1>Controller Incompatibility</h1>
-                   <pre><code class="hljs" data-trim contenteditable>
-[...]
-// Add Code
-[...]
+                <section class="simple">
+                    <pre><code class="hljs" data-trim contenteditable>
+namespace Symfony\Component\HttpFoundation;
+
+class Request {
+    public static function createFromGlobals(): Request {
+        return self::createRequestFromFactory($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
+    }
+}
                     </code></pre>
 
-  <pre><code class="hljs" data-trim contenteditable>
-[...]
-// Add Code
-[...]
+                    <pre><code class="hljs" data-trim contenteditable>
+namespace Zend\Http\PhpEnvironment;
+
+class Request extends \Zend\Http\Request {
+    public function __construct() {
+        $this->setEnv(new Parameters($_ENV));
+        $this->setQuery(new Parameters($_GET));
+        $this->setPost(new Parameters($_POST));
+        $this->setCookies(new Parameters($_COOKIE));
+        $this->setFiles(new Parameters($this->mapPhpFiles()));
+        $this->setServer(new Parameters($_SERVER));
+    }
+}
                     </code></pre>
 
-  <pre><code class="hljs" data-trim contenteditable>
-[...]
-// Add Code
-[...]
-                    </code></pre>
+                    <!--pre><code class="hljs" data-trim contenteditable>
+namespace Aura\Web;
+
+    class WebFactory
+    {
+        public function newRequestGlobals()
+        {
+            return new Request\Globals(
+                new Request\Values($this->get('_COOKIE'));,
+                new Request\Values($this->get('_ENV')),
+                new Request\Files($this->get('_FILES')),
+                new Request\Values($this->get('_POST')),
+                new Request\Values($this->get('_GET')),
+                new Request\Values($this->get('_SERVER'))
+            );
+        }
+    }
+                    </code></pre-->
 
                 </section>
 
@@ -250,8 +275,8 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
                 </section>
 
                 <section data-background="img/trail.jpg">
-                    <section class="centered">
-                        <h1>PSR-7 GOALS</h1>
+                    <section>
+                        <h1 class="low-right">PSR-7 GOALS</h1>
                     </section>
 
                     <section>
@@ -264,11 +289,11 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
                     </section>
 
                     <section>
-                        <h2>Practical applications and usability</h2>
+                        <h2 style="margin-top: 100px;">Practical applications and usability</h2>
                     </section>
 
                     <section>
-                        <h2>No limits</h2>
+                        <h2 style="margin-top: 300px;">No limits</h2>
 
                         <aside class="notes">
                             <p>Do no impose arbitrary limits on HTTP messages</p>
@@ -277,7 +302,7 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
                     </section>
 
                     <section>
-                        <h2>Server and client</h2>
+                        <h2 style="margin-top: 400px;">Server and client</h2>
 
                         <aside class="notes">
                             <p>Provide useful abstractions both for server-side applications and HTTP clients</p>
@@ -287,7 +312,7 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
  
       <section data-background="img/danger.jpg">
                     <section>
-                        <h1>PSR-7 NON-GOALS</h1>
+                        <h1 class="low-right">PSR-7 NON-GOALS</h1>
                     </section>
 
                     <section>
@@ -301,7 +326,7 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
                     </section>
 
                     <section>
-                        <h2>Impose details</h2>
+                        <h2 style=" margin-top: 100px;">Impose details</h2>
 
                         <aside class="notes">
                             <p>Do not impose implementation details</p>
@@ -325,9 +350,8 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
                     </aside>
                 </section>
 
-
-               <section data-background="img/diamond.jpg">
-                    <h1>A Value object is forever</h1>
+                <section data-background="img/diamond.jpg">
+                    <h2>A Value object is forever</h2>
 
                     <aside class="notes">
                         <p>Objects whose identity is the aggregate of all the attributes of the object</p>
@@ -335,7 +359,6 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
                         <p>Ensures the integrity of the state of the application</p>
                     </aside>
                 </section>
-
 
                 <!--section data-background="img/aeonium.jpg">
                     <section>
@@ -789,8 +812,18 @@ return [
                     <h1>Thank you very much</h1>
                 </section>
 
-                 <section>
+                <section>
                     <h1>Resources</h1>
+
+                    <div class="credits">
+                        <p><a href="https://mwop.net/blog/2015-01-26-psr-7-by-example.html">PSR-7 By Example</a> by <a href="https://twitter.com/mwop">Matthew Weier O'Phinney</a></p>
+                        <p><a href="https://mwop.net/blog/2015-01-08-on-http-middleware-and-psr-7.html">On HTTP, Middleware, and PSR-7</a> by <a href="https://twitter.com/mwop">Matthew Weier O'Phinney</a></p>
+                        <p><a href="http://www.slimframework.com/">Slim framework</a> documentation</p>
+                        <p><a href="https://akrabat.com/category/slim-framework/">Slim resources</a> by <a href="https://twitter.com/akrabat">
+                        <p><a href="https://github.com/radarphp/Radar.Project/tree/1.x/docs">Radar</a> documentation</p>
+                        <p><a href="http://paul-m-jones.com/">Radar and middleware resources</a> by <a href="https://twitter.com/pmjones">Paul M. Jones</p>
+                        <p><a href="https://zendframework.github.io/zend-expressive/">Zend Expressive</a> documentation</p>
+                    </div>
                 </section>
 
                 <section>
@@ -805,7 +838,6 @@ return [
                     <div class="space40">
                     <h3>All you need is middleware</h3>
                 </section>
-
 
                 <section>
                     <h1>Credits</h1>
@@ -825,7 +857,8 @@ van2 -> https://en.wikipedia.org/wiki/Merry_Pranksters
 students -> https://en.wikipedia.org/wiki/Student-centred_learning
 rave -> https://www.youtube.com/watch?v=3aDthA9uGOY
 reinventing wheel -> https://www.flickr.com/photos/thomasguest/5491482766
-                                                <p>Abstract painting by <a href="https://commons.wikimedia.org/wiki/File%3AUntitled_(Abstraction_No._3).jpg">Earle M. Pilgrim</a></p>
+                            <p>Board by <a href="https://pixabay.com/en/mathematics-math-abstract-algebra-327488/">ericfleming8</a></p>
+                            <p>Abstract painting by <a href="https://commons.wikimedia.org/wiki/File%3AUntitled_(Abstraction_No._3).jpg">Earle M. Pilgrim</a></p>
                             <p>Figs by <a href="https://commons.wikimedia.org/wiki/File%3A%D9%82%D8%B7%D9%8A%D9%86.JPG">Mburnat</a></p>
                             <p>Kungsleden by <a href="https://commons.wikimedia.org/wiki/File%3AKungsleden_trail.JPG">Shyguy24x7</a></p>
                             <p>Danger zone by <a href="https://www.flickr.com/photos/cvander/2604370414">cvander</a></p>

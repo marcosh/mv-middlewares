@@ -124,7 +124,7 @@ section > h1, section > h2 {
 
 .reveal .centered h1, .reveal .centered h2,
 .reveal .centered h3, .reveal .centered h4,
-.reveal .centered h5, .reveal .centered h6, {
+.reveal .centered h5, .reveal .centered h6 {
     top: 32%;
     display: block;
     position: absolute;
@@ -422,6 +422,12 @@ div.credits {
 
 div.credits p {
     margin: 0;
+}
+
+.low-right {
+    position: absolute;
+    bottom: 100px;
+    right: 0;
 }
 
 /*********************************************
