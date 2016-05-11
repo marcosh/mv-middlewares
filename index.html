@@ -186,11 +186,21 @@ sfContext::getInstance()->getLogger()->info('qmchenry was here');
                 <section class="simple">
                     <h1>Microframeworks</h1>
                       <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
-$app->add(new AccessLog($logger, $formatter));
-$app->add(new Geolocate());
-$app->add(new ClientIp());
-$app->add(new BasicAuthentication($users));
+// web/index.php
+require_once __DIR__.'/../vendor/autoload.php';
+
+$app = new Silex\Application();
+
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => __DIR__.'/development.log',
+));
+
+$app->get('/hello/{name}', function ($name) use ($app) {
+    $app['monolog']->addInfo(sprintf("User '%s' registered.", $username));
+    return 'Hello '.$app->escape($name);
+});
+
+$app->run();
                     </code></pre>
 
                 </section>
