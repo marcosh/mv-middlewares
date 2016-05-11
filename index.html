@@ -335,7 +335,8 @@ namespace Aura\Web;
                 </section>
 
 
-                <section data-background="img/components.jpg">
+                <section>
+                    <img src="img/components.jpg">
                     <aside class="notes">
                         <p>Server Request Interface</p>
 
@@ -411,25 +412,19 @@ namespace Aura\Web;
                 </section>
 
                 <section data-background="img/cheese-vegetables.jpg" class="simple">
-                    <pre><code class="hljs big" data-trim contenteditable>
+                    <pre><code class="hljs" data-trim contenteditable>
 interface Pizza
 
 class Margherita implements Pizza
 
 class CheeseDecoration implements Pizza
-
 {
-
     function __construct(Pizza $pizza)
-
 }
 
 class VegetablesDecoration implements Pizza
-
 {
-
     function __construct(Pizza $pizza)
-
 }
                     </code></pre>
 
@@ -440,7 +435,7 @@ class VegetablesDecoration implements Pizza
                 </section>
 
                 <section data-background="img/pizza.jpg" class="simple">
-                    <pre><code class="hljs big" data-trim contenteditable>
+                    <pre><code class="hljs" data-trim contenteditable>
 $myFavouritePizza =
 
     new VegatablesDecoration(
@@ -471,9 +466,9 @@ $myFavouritePizza =
                     <h1>Middleware</h1>
                 </section>
 
-                <section class="simple">
+                <section data-background="img/onion2.jpg">
                     <h1>Middleware</h1>
-                    <pre><code class="hljs big" data-trim contenteditable>
+                    <pre><code class="hljs" data-trim contenteditable>
 function (Request): Response
                     </code></pre>
 
@@ -497,15 +492,11 @@ function (Request): Response
                 </section>
 
                  <section data-background="img/cutting-onion.jpg">
-                    <h1>Ruby Rack</h1>
-                </section>
+                    <h1>Middleware</h1>
 
-                <section>
-                    <pre><code class="hljs big" data-trim contenteditable>
+                    <pre><code class="hljs" data-trim contenteditable>
 function (Request request): Response
-
 {
-
     ...
 
     response = next(request);
@@ -513,7 +504,6 @@ function (Request request): Response
     ...
 
     return response;
-
 }
                     </code></pre>
 
@@ -523,16 +513,10 @@ function (Request request): Response
                     </aside>
                 </section>
 
-
-                 <section>
-                    <h1>Python</h1>
-                </section>
-
-
-                <section>
+                <section data-background="img/onion3.jpg">
                     <h1>Middleware</h1>
 
-                    <pre><code class="hljs big" data-trim contenteditable>
+                    <pre><code class="hljs" data-trim contenteditable>
 function (Request, Response): Response
                     </code></pre>
 
@@ -543,15 +527,9 @@ function (Request, Response): Response
                     </aside>
                 </section>
 
-
-                 <section data-background="img/onion3.jpg">
-                    <h1>Node</h1>
-                </section>
-
-
-                <section>
+                <section data-background="img/onion4.jpg">
                     <h1>Middleware</h1>
-                    <pre><code class="hljs big" data-trim contenteditable>
+                    <pre><code class="hljs" data-trim contenteditable>
 function (
 
     Request request,
@@ -702,7 +680,7 @@ $app->add(new BasicAuthentication($users));
                 <section class="simple">
                     <h3>Radar</h3>
 
-<pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
+<pre><code class="hljs" data-trim contenteditable>
 // web/index.php
 
 $adr->middle($basicAuthentication);
@@ -728,8 +706,8 @@ $adr->middle($accessLog);
 
         
                 <section class="simple">
-                    <h4>Expressive</h4>
-                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
+                    <h3>Expressive</h3>
+                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 26px;">
 // config/autoload/middleware-pipeline.global.php
 return [
     'middleware-pipeline' => [
@@ -768,6 +746,38 @@ return [
                 </section>
 
                 <section class="simple">
+                    <h3>The magical Expressive tour</h3>
+
+                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
+// config/autoload/middleware-pipeline.global.php
+return [
+    'middleware-pipeline' => [
+        'always' => [
+            'middleware' => [
+                Helper\ServerUrlMiddleware::class
+            ], 'priority' => 10000
+        ],
+        'routing' => [
+            'middleware' => [
+                ApplicationFactory::ROUTING_MIDDLEWARE,
+                Helper\UrlHelperMiddleware::class,
+                ApplicationFactory::DISPATCH_MIDDLEWARE
+            ], 'priority' => 1
+        ],
+        'error' => [
+            'middleware' => [], 'error' => true, 'priority' => -10000
+        ]
+    ]
+];
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>always: bootstrapping, pre-conditions, modifications to outgoing responses</p>
+                        <p>routing: route-based authentication, route-based dispatch</p>
+                    </aside>
+                </section>
+
+                <section class="simple">
                     <h3>Expressive/React</h3>
 
                     <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
@@ -789,16 +799,10 @@ return [
                     </code></pre>
                 </section>
 
-                   <section>
-                    <h1>what's the point</h1>
-                    <p>Different frameworks, middleware easily used everywhere</p>
-                </section>
-
                 <section>
                     <h1>Platforms</h1>
                     <p>categorizzazione</p>
                 </section>
-
 
                 <section>
                     <h1>Roundup</h1>
