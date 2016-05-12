@@ -124,7 +124,8 @@ section > h1, section > h2 {
 }
 
 .reveal img {  
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -446,6 +447,7 @@ div.credits {
 
 div.credits p {
     margin: 0;
+    font-size: 0.8em;
 }
 
 .low-left {
