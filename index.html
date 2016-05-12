@@ -275,65 +275,61 @@ namespace Aura\Web;
                 </section>
 
                 <section data-background="img/trail.jpg">
-                    <section>
-                        <h1 class="low-right">PSR-7 GOALS</h1>
-                    </section>
-
-                    <section>
-                        <h2>Interfaces</h2>
-
-                        <aside class="notes">
-                            <p>Provide the interfaces to describe HTTP messages</p>
-                            <p>Model all elements of the HTTP message and URI specifications</p>
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2 style="margin-top: 100px;">Practical applications and usability</h2>
-                    </section>
-
-                    <section>
-                        <h2 style="margin-top: 300px;">No limits</h2>
-
-                        <aside class="notes">
-                            <p>Do no impose arbitrary limits on HTTP messages</p>
-                            <p>Example with content length</p>
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2 style="margin-top: 400px;">Server and client</h2>
-
-                        <aside class="notes">
-                            <p>Provide useful abstractions both for server-side applications and HTTP clients</p>
-                        </aside>
-                    </section>
-                </section>       
- 
-      <section data-background="img/danger.jpg">
-                    <section>
-                        <h1 class="low-right">PSR-7 NON-GOALS</h1>
-                    </section>
-
-                    <section>
-                        <h2>Conformation</h2>
-
-                        <aside class="notes">
-                            <p>Do not expect everybody to change their interfaces</p>
-                            <p>Strictly meant for interoperability</p>
-                            <p>Simfony bridge example</p>
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2 style=" margin-top: 100px;">Impose details</h2>
-
-                        <aside class="notes">
-                            <p>Do not impose implementation details</p>
-                        </aside>
-                    </section>
+                    <h1 class="low-right">PSR-7 GOALS</h1>
                 </section>
 
+                <section data-background="img/trail.jpg">
+                    <h2>Interfaces</h2>
+
+                    <aside class="notes">
+                        <p>Provide the interfaces to describe HTTP messages</p>
+                        <p>Model all elements of the HTTP message and URI specifications</p>
+                    </aside>
+                </section>
+
+                <section data-background="img/trail.jpg">
+                    <h2 style="margin-top: 100px;">Practical applications and usability</h2>
+                </section>
+
+                <section data-background="img/trail.jpg">
+                    <h2 style="margin-top: 300px;">No limits</h2>
+
+                    <aside class="notes">
+                        <p>Do no impose arbitrary limits on HTTP messages</p>
+                        <p>Example with content length</p>
+                        <p>Solution modelling message bodies as streams</p>
+                    </aside>
+                </section>
+
+                <section data-background="img/trail.jpg">
+                    <h2 style="margin-top: 400px;">Server and client</h2>
+
+                    <aside class="notes">
+                        <p>Provide useful abstractions both for server-side applications and HTTP clients</p>
+                    </aside>
+                </section>
+
+                <section data-background="img/danger.jpg">
+                    <h1 class="low-right">PSR-7 NON-GOALS</h1>
+                </section>
+
+                <section data-background="img/danger.jpg">
+                    <h2>Conformation</h2>
+
+                    <aside class="notes">
+                        <p>Do not expect everybody to change their interfaces</p>
+                        <p>Strictly meant for interoperability</p>
+                        <p>Simfony bridge example</p>
+                    </aside>
+                </section>
+
+                <section data-background="img/danger.jpg">
+                    <h2 style=" margin-top: 100px;">Impose details</h2>
+
+                    <aside class="notes">
+                        <p>Do not impose implementation details</p>
+                    </aside>
+                </section>
 
                 <section>
                     <img src="img/components.jpg">
@@ -417,12 +413,12 @@ interface Pizza
 
 class Margherita implements Pizza
 
-class CheeseDecoration implements Pizza
+class CheeseDecoratedPizza implements Pizza
 {
     function __construct(Pizza $pizza)
 }
 
-class VegetablesDecoration implements Pizza
+class VegetablesDecoratedPizza implements Pizza
 {
     function __construct(Pizza $pizza)
 }
@@ -438,9 +434,9 @@ class VegetablesDecoration implements Pizza
                     <pre><code class="hljs" data-trim contenteditable>
 $myFavouritePizza =
 
-    new VegatablesDecoration(
+    new VegatablesDecoratedPizza(
 
-        new CheeseDecoration(
+        new CheeseDecoratedPizza(
 
             new Margherita()
 
@@ -508,6 +504,7 @@ function (Request request): Response
                     </code></pre>
 
                     <aside class="notes">
+                        <p>How do we compose middlewares?</p>
                         <p>Look closely: we depend on the response class</p>
                         <p>Used by Ruby's Rack, Lumen
                     </aside>
@@ -584,11 +581,11 @@ class Middleware
 {
     function __invoke($request, $response, $next)
     {
-        if (!$this->preconditionsExist()) {
+        if (!$this->preconditionsExist($request, $response)) {
             throw new RuntimeException();
         }
 
-        $request = $this->doSomethingOnRequest();
+        $request = $this->doSomethingOnRequest($request);
 
         $response = $next($request, $response);
 
@@ -620,7 +617,7 @@ class BasicAuthentication
             return $next($request, $response);
         }
 
-        return $this->unauthorizedUserResponse();
+        return $this->unauthorizedUserResponse($response);
     }
 }
                     </code></pre>
@@ -642,7 +639,7 @@ class AccessLog
 
         $response = $next($request, $response);
 
-        $message = $this->formatter($request, $response);
+        $message = $this->createMessage($request, $response);
 
         $this->logger->log($message);
 
@@ -668,7 +665,7 @@ class AccessLog
                     <pre><code class="hljs" data-trim contenteditable>
 // src/middleware.php
 
-$app->add(new AccessLog($logger, $formatter));
+$app->add(new AccessLog($logger));
 
 $app->add(new Geolocate());
 
@@ -684,7 +681,7 @@ $app->add(new BasicAuthentication($users));
                 </section>
 
                 <section class="simple">
-                    <h3>Radar & relay</h3>
+                    <h3>Radar & Relay</h3>
 
                     <img src="img/relay.png">
                 </section>
@@ -695,13 +692,13 @@ $app->add(new BasicAuthentication($users));
 <pre><code class="hljs" data-trim contenteditable>
 // web/index.php
 
-$adr->middle($basicAuthentication);
+$adr->middle(new BasicAuthentication($users));
 
 $adr->middle(new ClientIp());
 
 $adr->middle(new Geolocate());
 
-$adr->middle($accessLog);
+$adr->middle(new AccessLog($logger));
 </code></pre>
 
  <aside class="notes">
@@ -741,7 +738,7 @@ return [
             'priority' => 2000
         ],
         'access-log' => [
-            'middleware' => new AccessLog($logger, $formatter),
+            'middleware' => new AccessLog($logger),
             'priority' => 1000
         ]
     ]
@@ -765,7 +762,7 @@ return [
                 <section class="simple">
                     <h3>The magical Expressive tour</h3>
 
-                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
+                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 26px;">
 // config/autoload/middleware-pipeline.global.php
 return [
     'middleware-pipeline' => [
@@ -795,9 +792,15 @@ return [
                 </section>
 
                 <section class="simple">
-                    <h3>Expressive/React</h3>
+                    <h3>ReactPhp</h3>
 
-                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 28px;">
+                    <img src="img/react.png" height="100px;">
+                </section>
+
+                <section class="simple">
+                    <h3>Expressive/ReactPhp</h3>
+
+                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 26px;">
 // config/autoload/middleware-pipeline.global.php
 return [
     'dependencies' => [
@@ -819,6 +822,38 @@ return [
                 <section>
                     <h1>Platforms</h1>
                     <p>categorizzazione</p>
+                </section>
+
+                <section>
+                    <h1>Use cases</h1>
+                </section>
+
+                <section class="simple">
+                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 26px;">
+class DebugBar
+{
+    public function __invoke($request, $response, $next)
+    {
+        if (!self::hasAttribute($request, FormatNegotiator::KEY)) {
+            throw new RuntimeException('Need FormatNegotiator executed before');
+        }
+
+        if ($this->isAsset($request)) {
+            return $this->responsewithAssetBody($request, $response);
+        }
+        $response = $next($request, $response);
+
+        if (Utils\Helpers::isRedirect($response)) {
+            $this->debugBar->stackData();
+        } else if (FormatNegotiator::getFormat($request) === 'html') {
+            $response = $this->createHtmlResponse($response);
+        } else if (Utils\Helpers::isAjax($request)) {
+            $response = $this->createAjaxResponse($response);
+        }
+        return $response;
+    }
+}
+                    </code></pre>
                 </section>
 
                 <section>
