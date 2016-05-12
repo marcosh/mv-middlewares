@@ -657,6 +657,10 @@ class AccessLog
                     <h3>Slim</h3>
 
                     <img src="img/slim.png">
+
+                    <aside class="notes">
+                        <p>Microframework based on PSR-7</p>
+                    </aside>
                 </section>
 
                 <section class="simple">
@@ -675,7 +679,6 @@ $app->add(new BasicAuthentication($users));
                     </code></pre>
 
                     <aside class="notes">
-                        <p>Microframework based on PSR-7</p>
                         <p>The last middleware added is the first to be executed</p>
                     </aside>
                 </section>
@@ -687,7 +690,7 @@ $app->add(new BasicAuthentication($users));
                 </section>
 
                 <section class="simple">
-                    <h3>Radar</h3>
+                    <h3>Radar & Relay</h3>
 
 <pre><code class="hljs" data-trim contenteditable>
 // web/index.php
@@ -717,6 +720,18 @@ $adr->middle(new AccessLog($logger));
                     <h3>Expressive</h3>
 
                     <img src="img/expressive.jpg">
+
+                    <aside class="notes">
+                        <p>Microframework based on PSR-7 middlewares</p>
+                        <p>Provides:
+                            <ul>
+                                <li>abstracted routing</li>
+                                <li>encourages dependency injection</li>
+                                <li>templating</li>
+                                <li>mechanisms for error handling</li>
+                            </ul>
+                        </p>
+                    </aside>
                 </section>
 
                 <section class="simple">
@@ -744,19 +759,6 @@ return [
     ]
 ];
                     </code></pre>
-
- <aside class="notes">
-                        <p>Microframework based on PSR-7 middlewares</p>
-                        <p>Provides:
-                            <ul>
-                                <li>abstracted routing</li>
-                                <li>encourages dependency injection</li>
-                                <li>templating</li>
-                                <li>mechanisms for error handling</li>
-                            </ul>
-                        </p>
-                    </aside>
-
                 </section>
 
                 <section class="simple">
@@ -795,6 +797,13 @@ return [
                     <h3>ReactPhp</h3>
 
                     <img src="img/react.png" height="100px;">
+
+                    <aside class="notes">
+                        <p>Asynchrounus runtime</p>
+                        <p>Inspired by Node.js</p>
+                        <p>Runs an event loop</p>
+                        <p>Does not use SAPI</p>
+                    </aside>
                 </section>
 
                 <section class="simple">
