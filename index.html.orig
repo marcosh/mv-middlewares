@@ -48,49 +48,51 @@
                 </section>
 
 
-                <section class="bkg" data-background="img/marco.jpg">
-                    <h1 class="borded">Marco</h1>
+                <section data-background="img/marco.jpg">
+                    <h1>Marco</h1>
                 </section>
 
-                <section class="bkg" data-background="img/explorer2.jpg">
-                    <h1 class="top-right">Explorer</h1>
+                <section data-background="img/explorer2.jpg">
+                    <h1>Explorer</h1>
                 </section>
 
-                <section class="bkg" data-background="img/board.jpg">
+                <section data-background="img/board.jpg">
                     <h1 class="low-right">Avid learner</h1>
                 </section>
 
-                <section class="bkg" data-background="img/choco.jpg">
+                <section data-background="img/choco.jpg">
                     <h1>Chocolate Lover</h1>
                 </section>
 
-                <section class="bkg" data-background="img/steve2.jpg">
+
+                <section data-background="img/steve2.jpg">
+                    <div class="space45"></div>
                     <h1>Steve</h1>
                 </section>
 
-                <section class="bkg" data-background="img/travel.jpg">
+                <section data-background="img/travel.jpg">
                     <h1>Enjoys Travelling</h1>
                 </section>
 
-                <section class="bkg" data-background="img/mosque.jpg">
+                <section data-background="img/mosque.jpg">
                     <h2>Software Architectures</h2>
                 </section>
 
-                <section class="bkg" data-background="img/hawaii_orioles.jpg">
+                <section data-background="img/hawaii_orioles.jpg">
                     <h1>In a few years...</h1>
                 </section>
 
-                <section>
+                <section class="simple">
                     <div class="space10">
-                    <h4>Software Engineers</h4>
+                    <h4 class="gray">Software Engineers</h4>
                     <img src="img/mvlabs-whitebackground.jpg">
                 </section>
 
-                 <section class="bkg" data-background="img/van2.jpg">
+                 <section data-background="img/van2.jpg">
                     <h1>Start of the Journey...</h1>
                 </section>
 
-                <section class="bkg" data-background="img/hippies.jpg">
+                <section data-background="img/hippies.jpg">
                         <h2>Everybody on its own</h2>
                 </section>
 
@@ -114,7 +116,7 @@ fclose($handle);
                 </section>
 
 
-                <section class="bkg" data-background="img/students.jpg">
+                <section data-background="img/students.jpg">
                         <h1>Libraries</h1>
                 </section>
 
@@ -135,7 +137,7 @@ include 'auth.php';
                 </section>
 
 
-                <section class="bkg" data-background="img/beatles2.jpg">
+                <section data-background="img/beatles2.jpg">
                     <h1>IoC First Wave</h1>
                 </section>
 
@@ -145,30 +147,29 @@ include 'auth.php';
                 </section>
 
                 <section class="simple">
-                    <h2>Same things, different ways...</h2>
-                    <div class="space5">
-                    <h4 class="simple">Zend Framework</h4>
+                    <h1>Same thing, different way...</h1>
+                    <h3>Zend Framework</h3>
                    <pre><code class="hljs" data-trim contenteditable>
 $logger = new Zend_Log();
 $writer = new Zend_Log_Writer_Stream('php://output');
 $logger->addWriter($writer);
-$logger->log('Hello PHPDay People!', Zend_Log::INFO);
+$logger->log('Informational message', Zend_Log::INFO);
                     </code></pre>
-                    <div class="space5">
-                    <h4 class="simple">Symfony</h4>
+
+                    <h3>Symfony</h3>
                     <pre><code class="hljs" data-trim contenteditable>
 // YAML Configuration
 // [...]
-sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
+sfContext::getInstance()->getLogger()->info('qmchenry was here');
                     </code></pre>
 
                 </section>
 
-                <section class="bkg" data-background="img/reinventing-wheel.jpg">
+                <section data-background="img/reinventing-wheel.jpg">
                     <h1>Reinventing the Wheel</h1>
                 </section>
 
-                <section class="bkg" data-background="img/beatles-police.jpg">
+                <section data-background="img/beatles-police.jpg">
                     <h1>With a little help of...</h1>
                 </section>
 
@@ -176,7 +177,7 @@ sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
                     <img src="img/composer-logo.png">
                 </section>
 
-                <section class="bkg" data-background="img/rave.jpg">
+                <section data-background="img/rave.jpg">
                     <h1>IoC New Wave</h1>
                        <aside class="notes">
                         <p>Component-driven approach</p>
@@ -188,7 +189,18 @@ sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
                       <img src="img/logos/microframeworks.png">
                 </section>
 
-                 <section class="bkg" data-background="img/peace.jpg">
+
+
+                <section class="simple">
+                    <h1>StackPHP</h1>
+                      <pre><code class="hljs" data-trim contenteditable>
+// Stack PHP Code
+                    </code></pre>
+
+                </section>
+
+
+                 <section data-background="img/peace.jpg">
                     <div class="space40">
                     <h1>One issue to solve...</h1>
                 </section>
@@ -232,7 +244,7 @@ namespace Aura\Web;
                 new Request\Files($this->get('_FILES')),
                 new Request\Values($this->get('_POST')),
                 new Request\Values($this->get('_GET')),
-                new Request\Values($this->get('_SERVER'))
+                new Request\Values($this->get('_SERVER')) <img src="img/mvlabs-whitebackground.jpg">
             );
         }
     }
@@ -241,40 +253,20 @@ namespace Aura\Web;
                 </section>
 
 
-                <section class="bkg" data-background="img/abstract.jpg">
+                <section data-background="img/abstract.jpg">
                     <div class="space10">
                     <h2 class="black right">Need for</h2>
                     <h2 class="right">a good HTTP abstraction</h2>
 
                     <aside class="notes">
                         <p>Php does not have builtin support for HTTP messages</p>
-                    </aside>
-                </section>
-
-                <section class="simple">
-                <h2>SERVER API</h2>
-                    <ul>
-                        <li>$_SERVER</li>
-                        <li>$_POST</li>
-                        <li>$_GET</li>
-                        <li>header()</li>
-                        <li>echo</li>
-                    </ul>
-                    <aside class="notes">
-                        <p>Server: SAPI, designed to mirror CGI -> mutable, non easy to test</p>
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/client-http-adapters.png">
-                    <h1>CLIENT ADAPTERS</h1>
-                    <aside class="notes">
                         <p>Client: streams, curl, http extension (packages abstracting over them)</p>
+                        <p>Server: SAPI, designed to mirror CGI -> mutable, non easy to test</p>
                         <p>Every framework was abastracting HTTP messages in its own way</p>
                     </aside>
                 </section>
 
-
-                <section class="bkg" data-background="img/figs.jpg">
+                <section data-background="img/figs.jpg">
                     <h1>PSR-7</h1>
 
                     <aside class="notes">
@@ -283,14 +275,12 @@ namespace Aura\Web;
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space10">
-                    <h1>PSR-7 GOALS</h1>
+                <section data-background="img/trail.jpg">
+                    <h1 class="low-right">PSR-7 GOALS</h1>
                 </section>
 
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space15">
-                    <h3>Interfaces</h3>
+                <section data-background="img/trail.jpg">
+                    <h2>Interfaces</h2>
 
                     <aside class="notes">
                         <p>Provide the interfaces to describe HTTP messages</p>
@@ -298,14 +288,12 @@ namespace Aura\Web;
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space20">
-                    <h3>Practical applications and usability</h3>
+                <section data-background="img/trail.jpg">
+                    <h2 style="margin-top: 100px;">Practical applications and usability</h2>
                 </section>
 
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space25">
-                    <h3>No limits</h3>
+                <section data-background="img/trail.jpg">
+                    <h2 style="margin-top: 300px;">No limits</h2>
 
                     <aside class="notes">
                         <p>Do no impose arbitrary limits on HTTP messages</p>
@@ -314,21 +302,20 @@ namespace Aura\Web;
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space30">
-                    <h3>Server and client</h3>
+                <section data-background="img/trail.jpg">
+                    <h2 style="margin-top: 400px;">Server and client</h2>
 
                     <aside class="notes">
                         <p>Provide useful abstractions both for server-side applications and HTTP clients</p>
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/danger.jpg">
-                    <h1 class="top-right">PSR-7 NON-GOALS</h1>
+                <section data-background="img/danger.jpg">
+                    <h1 class="low-right">PSR-7 NON-GOALS</h1>
                 </section>
 
-                <section class="bkg" data-background="img/danger.jpg">
-                    <h3 class="top-right">Conformation</h3>
+                <section data-background="img/danger.jpg">
+                    <h2>Conformation</h2>
 
                     <aside class="notes">
                         <p>Do not expect everybody to change their interfaces</p>
@@ -337,17 +324,16 @@ namespace Aura\Web;
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/danger.jpg">
-                    <h3 class="top-right">Impose details</h3>
+                <section data-background="img/danger.jpg">
+                    <h2 style=" margin-top: 100px;">Impose details</h2>
 
                     <aside class="notes">
                         <p>Do not impose implementation details</p>
                     </aside>
                 </section>
 
-
                 <section>
-                    <img class="bkg" src="img/components.jpg">
+                    <img src="img/components.jpg">
                     <aside class="notes">
                         <p>Server Request Interface</p>
 
@@ -362,7 +348,7 @@ namespace Aura\Web;
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/diamond.jpg">
+                <section data-background="img/diamond.jpg">
                     <h2>A Value object is forever</h2>
 
                     <aside class="notes">
@@ -404,27 +390,16 @@ namespace Aura\Web;
                 </section-->
 
                 <section class="simple">
-                    <img src="img/book_cover.gif">
-                </section>
-
-                <section class="simple">
                     <h1>Pipes and filters</h1>
 
-                    <img src="img/pipes-filters.png">
+                    <img src="img/pipes_and_filters.png">
 
                     <aside class="notes">
                         <p>What can we do now with PSR-7? How do we construct decoupled components based on them?</p>
                     </aside>
                 </section>
 
-                <section class="simple">
-                    <h1>Pizza Example</h1>
-
-                    <img src="img/pipes-filters-pizza.png">
-
-                </section>
-
-                <section class="bkg" data-background="img/margherita.jpg">
+                <section data-background="img/margherita.jpg">
                     <h1>Decorator</h1>
 
                     <aside class="notes">
@@ -484,33 +459,12 @@ $myFavouritePizza =
                 </section-->
 
 
-                 <section class="bkg" data-background="img/onion1.jpg">
-                    <h1 class="bkg">Middleware</h1>
+                 <section data-background="img/onion1.jpg">
+                    <h1>Middleware</h1>
                 </section>
 
-               <section class="bkg" data-background="img/onion-middleware2.jpg">
-                    
-                    <aside class="notes">
-                        <p>Infinitely nestable components that decorate a Request/Response handling</p>
-                    </aside>
-                </section>
-
-
-                <section>
-                    <img src="img/flight-1.png">
-                </section>
-
-                <section>
-                    <img src="img/flight-2.png">
-                </section>
-
-                <section>
-                    <img src="img/flight-3.png">
-                </section>
-
-
-                <section class="bkg" data-background="img/onion2.jpg">
-                    <h1 class="bkg">Middleware</h1>
+                <section data-background="img/onion2.jpg">
+                    <h1>Middleware</h1>
                     <pre><code class="hljs" data-trim contenteditable>
 function (Request): Response
                     </code></pre>
@@ -521,11 +475,21 @@ function (Request): Response
                 </section>
 
 
- 
+                <section data-background="img/onion-middleware.png">
+                    
+                    <h2 style="position: relative; top: -20px;">Request&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response</h2>
 
+                    <aside class="notes">
+                        <p>Infinitely nestable components that decorate a Request/Response handling</p>
+                    </aside>
+                </section>
 
-                 <section class="bkg" data-background="img/cutting-onion.jpg">
-                    <h1 >Middleware</h1>
+                 <section class="simple">
+                    <h1>Airport Metaphor</h1>
+                </section>
+
+                 <section data-background="img/cutting-onion.jpg">
+                    <h1>Middleware</h1>
 
                     <pre><code class="hljs" data-trim contenteditable>
 function (Request request): Response
@@ -543,11 +507,11 @@ function (Request request): Response
                     <aside class="notes">
                         <p>How do we compose middlewares?</p>
                         <p>Look closely: we depend on the response class</p>
-                        <p>Used by Ruby's Rack, Lumen, StackPHP
+                        <p>Used by Ruby's Rack, Lumen
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/onion3.jpg">
+                <section data-background="img/onion3.jpg">
                     <h1>Middleware</h1>
 
                     <pre><code class="hljs" data-trim contenteditable>
@@ -555,13 +519,13 @@ function (Request, Response): Response
                     </code></pre>
 
                     <aside class="notes">
-                        <p>Used By Python's WSGI, 
+                        <p>Used By Python's WSGI, StackPHP
                         <p>Do not depend on the Response implementation</p>
                         <p>A middleware needs to know what comes next</p>
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/onion4.jpg">
+                <section data-background="img/onion4.jpg">
                     <h1>Middleware</h1>
                     <pre><code class="hljs" data-trim contenteditable>
 function (
@@ -584,12 +548,14 @@ function (
                 </section>
 
 
-                 <section class="bkg" data-background="img/fig-standards.png">
-                    <h2 class="top-right">Hot Week</h2>
+                 <section>
+                    <h1>PHP</h1>
+                    <p>Link/screenshot FIG discussion</p>
                 </section>
 
-         <section class="bkg" data-background="img/fans.jpg">
-                    <h2 class="low-left">Middleware in Action</h2>
+         <section>
+                    <h1>Middleware</h1><br />
+                    <h2>in Action</h2>
                 </section>
 
 
@@ -689,7 +655,7 @@ class AccessLog
                 </section>
 
                 <section class="simple">
-                    <img src="img/logos/slim.png">
+                    <img src="img/slim.png">
                 </section>
 
                 <section class="simple">
@@ -714,7 +680,12 @@ $app->add(new BasicAuthentication($users));
                 </section>
 
                 <section class="simple">
-                    <img src="img/logos/relay.png">
+<<<<<<< HEAD
+=======
+                    <h3>Radar & Relay</h3>
+
+>>>>>>> 4b1022c968102f9e70bf5848fe6286c80600fb4c
+                    <img src="img/relay.png">
                 </section>
 
                 <section class="simple">
@@ -822,10 +793,14 @@ return [
                 </section>
 
                 <section class="simple">
+<<<<<<< HEAD
+                    <h3>Expressive/React PHP</h3>
+=======
                     <h3>ReactPhp</h3>
 
-                    <img src="img/logos/react.png" height="100px;">
+                    <img src="img/react.png" height="100px;">
                 </section>
+>>>>>>> 4b1022c968102f9e70bf5848fe6286c80600fb4c
 
                 <section class="simple">
                     <h3>Expressive/ReactPhp</h3>
@@ -850,10 +825,29 @@ return [
                 </section>
 
                 <section>
-                     <img src="img/final.png">
+                    <h1>Platforms</h1>
+                    <p>categorizzazione</p>
                 </section>
 
-                <section class="bkg" data-background="img/beatles.jpg">
+                <section>
+<<<<<<< HEAD
+                    <h1>MW1</h1>
+                    
+                </section>
+
+
+                <section>
+                    <h1>MW2</h1>
+                </section>
+
+
+                <section data-background="#151d28">
+                    <img src="img/logos/phpmiddleworld.png">
+                    <p>http://php-middleworld.com</p>
+                </section>
+
+
+=======
                     <h1>Use cases</h1>
                 </section>
 
@@ -885,39 +879,22 @@ class DebugBar
                     </code></pre>
                 </section>
 
-
-      <section>
-                    <h1>MW1</h1>
-                    
-                </section>
-
-
-                <section>
-                    <h1>MW2</h1>
-                </section>
-
-
-                <section class="simple" data-background="#151d28">
-                    <div class="space10">
-                    <img src="img/logos/phpmiddleworld.png">
-                </section>
-
+>>>>>>> 4b1022c968102f9e70bf5848fe6286c80600fb4c
                 <section>
                     <h1>Roundup</h1>
-                    <ul>
-                        <li>A good HTTP abstraction</li>
-                        <li>Abstractions VS Implementations</li>
-                        <li>Re-Inventing the Wheel is over</li>
-                        <li>Runtime Dangers</li>
-                    </ul>
+                    <p>A good HTTP abstraction</p>
+                    <p>Abstractions VS Implementations</p>
+                    <p>Re-Inventing the Wheel is over</p>
+                    <p>Runtime Dangers</p>
                 </section>
 
-                <section class="bkg" data-background="img/newwave.jpg">
+                <section data-background="img/newwave.jpg">
                     <h1>Thank you very much</h1>
                 </section>
 
                 <section>
                     <h1>Resources</h1>
+
                     <div class="credits">
                         <p><a href="https://mwop.net/blog/2015-01-26-psr-7-by-example.html">PSR-7 By Example</a> by <a href="https://twitter.com/mwop">Matthew Weier O'Phinney</a></p>
                         <p><a href="https://mwop.net/blog/2015-01-08-on-http-middleware-and-psr-7.html">On HTTP, Middleware, and PSR-7</a> by <a href="https://twitter.com/mwop">Matthew Weier O'Phinney</a></p>
@@ -937,7 +914,7 @@ class DebugBar
                     <img src="img/joindin.png">
                 </section>
 
-                <section class="bkg" data-background="img/imagine.jpg">
+                <section data-background="img/imagine.jpg">
                     <div class="space40">
                     <h3>All you need is middleware</h3>
                 </section>
@@ -947,43 +924,50 @@ class DebugBar
 
                     <div class="credits">
                         <div style="float: left; width: 50%">
-                        <p>Plane view by <a href="https://www.youtube.com/watch?v=0sazEDzCHAw">Victor Costan</a></p>
-                        <p>Chocolate by <a href="https://www.flickr.com/photos/8510225@N07/606739059">John Loo</a></p>
-                        <p>Orioles Fan by <a href="https://www.flickr.com/photos/keithallison/19019662724">Keith Allison</a></p>
-                        <p>Mosque by <a href="https://commons.wikimedia.org/wiki/File:Beautiful_Architecture_of_Faisal_Mosque.jpg">Fasihjee</a></p>
-                        <p>Fans by <a href="https://www.flickr.com/photos/108176838@N08/10751429014">Mirage Kale</a></p>
-                        <p>Hippies by <a href="https://commons.wikimedia.org/wiki/File:1970-Isle_of_Wight_Festival-_5.JPG">Roland Godefroy</a></p>
-                        <p>Hippie Van by <a href="https://en.wikipedia.org/wiki/Merry_Pranksters">Joe Mabel</a></p>
-                        <p>Students by <a href="https://commons.wikimedia.org/wiki/File:Shimer_College_class_discussion_1967.jpg">Shimer College</a></p>
-<p>Rave by <a href="https://www.youtube.com/watch?v=3aDthA9uGOY">EDM Playlist</a></p>
-<p>Weird Bicicle by <a href="https://www.flickr.com/photos/thomasguest/5491482766">Thomas Guest</a></p>
-<p>Suitcase found at <a href="http://www.publicdomainpictures.net/view-image.php?image=41590&picture=travel-suitcase-holiday">publicdomainpictures.net</a></p>
-<p>A320 model found at <a href="http://wesharepics.info/imageugkl-united-airlines-png.asp">wesharepics.info</a></p>
-<p>Beatles picture by <a href="https://en.wikipedia.org/wiki/File:The_Bealtes_with_Jimmie_Nicol_916-5099.jpg">Nationaal Archief</a></p>
-<p>Beatles picture by <a href="https://en.wikipedia.org/wiki/File:The_Beatles_in_America.JPG">United Press Intl.</a></p>
- <p>Board by <a href="https://pixabay.com/en/mathematics-math-abstract-algebra-327488/">ericfleming8</a></p>
-<p>Abstract painting by <a href="https://commons.wikimedia.org/wiki/File%3AUntitled_(Abstraction_No._3).jpg">Earle M. Pilgrim</a></p>
+                        https://www.youtube.com/watch?v=0sazEDzCHAw -> plane view
+                        https://en.wikipedia.org/wiki/Organic_chocolate -> choco
+                        https://www.youtube.com/watch?v=O0LHUpTMiIw -> universe
+                        hawaiian -> https://www.flickr.com/photos/keithallison/19019662724
+hippie van -> https://de.wikipedia.org/wiki/VW_T1
+mosque -> https://commons.wikimedia.org/wiki/File:Beautiful_Architecture_of_Faisal_Mosque.jpg
+mess -> https://www.flickr.com/photos/orinrobertjohn/530322514
 
-                        </div>
-                        <div style="float:right; width: 50%">
-                            
+hippies -> https://en.wikipedia.org/wiki/Isle_of_Wight_Festival_1970
+van2 -> https://en.wikipedia.org/wiki/Merry_Pranksters
+students -> https://en.wikipedia.org/wiki/Student-centred_learning
+rave -> https://www.youtube.com/watch?v=3aDthA9uGOY
+reinventing wheel -> https://www.flickr.com/photos/thomasguest/5491482766
+suitcase -> http://www.publicdomainpictures.net/view-image.php?image=41590&picture=travel-suitcase-holiday
+a320 -> http://wesharepics.info/imageugkl-united-airlines-png.asp
+                            <p>Board by <a href="https://pixabay.com/en/mathematics-math-abstract-algebra-327488/">ericfleming8</a></p>
+                            <p>Abstract painting by <a href="https://commons.wikimedia.org/wiki/File%3AUntitled_(Abstraction_No._3).jpg">Earle M. Pilgrim</a></p>
                             <p>Figs by <a href="https://commons.wikimedia.org/wiki/File%3A%D9%82%D8%B7%D9%8A%D9%86.JPG">Mburnat</a></p>
                             <p>Kungsleden by <a href="https://commons.wikimedia.org/wiki/File%3AKungsleden_trail.JPG">Shyguy24x7</a></p>
                             <p>Danger zone by <a href="https://www.flickr.com/photos/cvander/2604370414">cvander</a></p>
                             <p>PSR-7 diagram by <a href="https://twitter.com/ninjagrlstuff">ninjagrl</a></p>
-                            <p>Diamond by <a href="https://pixabay.com/en/diamond-shiny-baby-wealth-wealthy-807979/">EWAR</a>
+                            <p>Diamond by <a href="https://pixabay.com/en/diamond-shiny-baby-wealth-wealthy-807979/">EWAR</a></p>
+                            <!--p>Eternity range by <a href="https://commons.wikimedia.org/w/index.php?curid=16328241">euphro</a></p-->
+                            <!--p>Aeonium by <a href="https://commons.wikimedia.org/wiki/File%3AAeonium_tabuliforme.jpg">Max Ronnersjö</a></p-->
+                            <!--p>Nest by <a href="https://commons.wikimedia.org/wiki/File%3AAmerican_Robin_Nest_with_Eggs.jpg">Laslovarga</a></p-->
+                            <!--p>Decorated ice-cream by <a href="https://commons.wikimedia.org/wiki/File%3AGelato_Cup_Ice-cream_Cake_Cow.jpg">Sky22688</a></p-->
                             <p>Pizza by <a href="https://commons.wikimedia.org/w/index.php?curid=372337">ElfQrin</a></p>
                             <p>Cheese and vegetables by <a href="https://pixabay.com/en/tomatoes-bocconcini-cheese-salad-925698">StockSnap</a></p>
                             <p>Pizza by <a href="https://commons.wikimedia.org/wiki/File%3ASupreme_pizza.jpg">Scott bauer</a></p>
                             <p>Onion by <a href="https://commons.wikimedia.org/w/index.php?curid=19181714">Colin</a></p>
                             <p>Onion by <a href="https://commons.wikimedia.org/wiki/File%3ARed_onion_cross_section_03.jpg">Amada44</a></p>
-
+                        </div>
+                        <div style="float:right; width: 50%">
                             <p>Cutting onion by <a href="https://commons.wikimedia.org/w/index.php?curid=10531047">Lali Masriera</a></p>
                             <p>Onion by <a href="https://www.flickr.com/photos/darwinbell/303892944">darwinbell</a></p>
                             <p>Onion by <a href="https://pixabay.com/en/onion-red-onion-fruit-vegetable-899095">costanzimarco</a></p>
                             <p>Onion by <a href="https://pixabay.com/en/onion-flower-seed-farming-crop-284512/">sarangib</a></p>
                             <p>Locked door by <a href="https://www.pexels.com/photo/door-green-closed-lock-4291/">LEEROY.ca</a></p>
                             <p>Log by <a href="https://en.wikipedia.org/wiki/Logging#/media/File:Logging_in_Finnish_Lapland.jpg">Greenpeace Finland</a></p>
+                            <p>Slim Narcissus by <a href="https://commons.wikimedia.org/w/index.php?curid=9873876">Cillas</a></p>
+                            <p>Expressive seal by <a href="https://www.flickr.com/photos/rachel_s/2081320802">nutmeg66</a></p>
+                            <p>Expressive dog by <a href="http://bambuart.deviantart.com/art/expressive-167156067">BambuArt</a></p>
+                            <p>Expressive cat by <a href="https://www.flickr.com/photos/eks/33267012">Eduardo Simioni</a></p>
+                            <p>Cat by <a href="http://speachlessgiuly.deviantart.com/art/All-you-need-is-love-185131918">SpechlessGiuly</a></p>
                         </div>
                     </div>
 
