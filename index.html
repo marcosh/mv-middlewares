@@ -550,7 +550,6 @@ namespace Aura\Web;
                         <p>Decoupling</p>
                         <p>Architectural Level: different technologies</p>
                     </aside>
-
                 </section>
 
                 <section class="simple">
@@ -560,9 +559,7 @@ namespace Aura\Web;
 
                 <section class="simple">
                     <h1>Pizza Example</h1>
-
                     <img src="img/pipes-filters-pizza.png">
-
                 </section>
 
                 <section class="bkg" data-background="img/margherita.jpg">
@@ -704,9 +701,10 @@ function (Request, Response): Response
                     </code></pre>
 
                     <aside class="notes">
-                        <p>Used By Python's WSGI, 
+                        <p>Used By Python's WSGI, Slim (used to)
                         <p>Do not depend on the Response implementation</p>
-                        <p>A middleware needs to know what comes next</p>
+                        <p>A middleware needs to know how to get what comes next</p>
+                        <p>Convention</p>
                     </aside>
                 </section>
 
@@ -726,9 +724,8 @@ function (
 
                     <aside class="notes">
                         <p>Used and popularized by node's Connect and ExpressJs</p>
-                        <p>All the dependencies are very explicit</p>
+                        <p>Dependencies are Explicit</p>
                         <p>Every middleware is independent from the others</p>
-                        <p>They could be easily chained</p>
                     </aside>
                 </section>
 
