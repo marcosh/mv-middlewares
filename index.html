@@ -54,14 +54,23 @@
 
                 <section class="bkg" data-background="img/explorer2.jpg">
                     <h1 class="top-right">Explorer</h1>
+                    <aside class="notes">
+                        <p>Mathematician, mountain environments</p>
+                    </aside>
                 </section>
 
                 <section class="bkg" data-background="img/board.jpg">
                     <h1 class="low-right">Avid learner</h1>
+                    <aside class="notes">
+                    <p>Functional programming, Codemotion talk on ELM, monads</p>
+                    </aside>
                 </section>
 
                 <section class="bkg" data-background="img/choco.jpg">
                     <h1>Chocolate Lover</h1>
+                    <aside class="notes">
+                    <p>Human side, vice</p>
+                    </aside>
                 </section>
 
                 <section class="bkg" data-background="img/steve2.jpg">
@@ -74,10 +83,16 @@
 
                 <section class="bkg" data-background="img/mosque.jpg">
                     <h2>Software Architectures</h2>
+                    <aside class="notes">
+                    <p>& Baseball</p>
+                    </aside>
                 </section>
 
                 <section class="bkg" data-background="img/hawaii_orioles.jpg">
                     <h1>In a few years...</h1>
+                    <aside class="notes">
+                    <p>Hawaiian Shirts</p>
+                    </aside>
                 </section>
 
                 <section>
@@ -88,6 +103,8 @@
 
                  <section class="bkg" data-background="img/van2.jpg">
                     <h1>Start of the Journey...</h1>
+                    <aside class="notes">
+                    <p>PHP development evolution in 1 minute</p>
                 </section>
 
                 <section class="bkg" data-background="img/hippies.jpg">
@@ -96,7 +113,7 @@
 
 
                  <section class="simple">
-                    <h1>DRY Violation</h1>
+                    <h1>A Total Mess</h1>
                    <pre><code class="hljs" data-trim contenteditable>
 $filename = 'log.txt';
 $handle = fopen($filename, 'a'));
@@ -111,8 +128,12 @@ fwrite($handle, $errorMessage);
 fclose($handle);
 </code></pre>
 
-                </section>
+<aside class="notes">
+<p>DRY violation</p>
+<p>Reinventing everything everytime</p>
+</aside>
 
+                </section>
 
                 <section class="bkg" data-background="img/students.jpg">
                         <h1>Libraries</h1>
@@ -134,14 +155,17 @@ include 'auth.php';
 
                 </section>
 
-
-                <section class="bkg" data-background="img/beatles2.jpg">
-                    <h1>IoC First Wave</h1>
-                </section>
-
                 <section>
                     <h1>MVC Frameworks</h1>
                     <img src="img/logos/frameworks.png">
+                    <aside class="notes">
+<p>Separation of concerns</p>
+<p>Ready to use</p>
+                    </aside>
+                </section>
+
+                <section class="bkg" data-background="img/beatles2.jpg">
+                    <h1>IoC First Wave</h1>
                 </section>
 
                 <section class="simple">
@@ -162,10 +186,21 @@ $logger->log('Hello PHPDay People!', Zend_Log::INFO);
 sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
                     </code></pre>
 
+                <aside class="notes">
+                <p>Good from programmer's perspective</p>
+                <p>short term gains for the community</p>
+                </aside>
+
                 </section>
 
                 <section class="bkg" data-background="img/reinventing-wheel.jpg">
                     <h1>Reinventing the Wheel</h1>
+                    <aside class="notes">
+                    <p>Silos</p>
+                    <p>Closed Communities</p>
+                    <p>Waste</p>
+                    </aside>
+
                 </section>
 
                 <section class="bkg" data-background="img/beatles-police.jpg">
@@ -174,6 +209,12 @@ sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
 
                 <section class="simple">
                     <img src="img/composer-logo.png">
+
+                </section>
+
+                <section class="simple">
+                    <h1>Microframeworks</h1>
+                      <img src="img/logos/microframeworks.png">
                 </section>
 
                 <section class="bkg" data-background="img/rave.jpg">
@@ -181,11 +222,6 @@ sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
                        <aside class="notes">
                         <p>Component-driven approach</p>
                     </aside>
-                </section>
-
-                <section class="simple">
-                    <h1>Microframeworks</h1>
-                      <img src="img/logos/microframeworks.png">
                 </section>
 
                  <section class="bkg" data-background="img/peace.jpg">
@@ -258,6 +294,7 @@ namespace Aura\Web;
                         <li>$_POST</li>
                         <li>$_GET</li>
                         <li>header()</li>
+                        <li>setCookie()</li>
                         <li>echo</li>
                     </ul>
                     <aside class="notes">
@@ -285,12 +322,14 @@ namespace Aura\Web;
 
                 <section class="bkg" data-background="img/trail.jpg">
                     <div class="space10">
-                    <h1>PSR-7 GOALS</h1>
+                        <h1>PSR-7 GOALS</h1>
+                    </div>
                 </section>
 
                 <section class="bkg" data-background="img/trail.jpg">
                     <div class="space15">
-                    <h3>Interfaces</h3>
+                        <h3>Interfaces</h3>
+                    </div>
 
                     <aside class="notes">
                         <p>Provide the interfaces to describe HTTP messages</p>
@@ -300,12 +339,13 @@ namespace Aura\Web;
 
                 <section class="bkg" data-background="img/trail.jpg">
                     <div class="space20">
-                    <h3>Practical applications and usability</h3>
+                        <h3>Practical applications and usability</h3>
                 </section>
 
                 <section class="bkg" data-background="img/trail.jpg">
                     <div class="space25">
-                    <h3>No limits</h3>
+                        <h3>No limits</h3>
+                    </div>
 
                     <aside class="notes">
                         <p>Do no impose arbitrary limits on HTTP messages</p>
@@ -316,7 +356,8 @@ namespace Aura\Web;
 
                 <section class="bkg" data-background="img/trail.jpg">
                     <div class="space30">
-                    <h3>Server and client</h3>
+                        <h3>Server and client</h3>
+                    </div>
 
                     <aside class="notes">
                         <p>Provide useful abstractions both for server-side applications and HTTP clients</p>
@@ -328,7 +369,9 @@ namespace Aura\Web;
                 </section>
 
                 <section class="bkg" data-background="img/danger.jpg">
-                    <h3 class="top-right">Conformation</h3>
+                    <div class="space10">
+                        <h3 class="top-right">Conformation</h3>
+                    </div>
 
                     <aside class="notes">
                         <p>Do not expect everybody to change their interfaces</p>
@@ -338,7 +381,9 @@ namespace Aura\Web;
                 </section>
 
                 <section class="bkg" data-background="img/danger.jpg">
-                    <h3 class="top-right">Impose details</h3>
+                    <div class="space20">
+                        <h3 class="top-right">Impose details</h3>
+                    </div>
 
                     <aside class="notes">
                         <p>Do not impose implementation details</p>
@@ -508,27 +553,7 @@ $myFavouritePizza =
                     <img src="img/flight-3.png">
                 </section>
 
-
-                <section class="bkg" data-background="img/onion2.jpg">
-                    <h1 class="bkg">Middleware</h1>
-                    <pre><code class="hljs" data-trim contenteditable>
-function (Request): Response
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Callable that receives a Request and return a Response</p>
-                    </aside>
-                </section>
-
-
- 
-
-                    <aside class="notes">
-                        <p>Infinitely nestable components that decorate a Request/Response handling</p>
-                    </aside>
-                </section>
-
-                 <section class="bkg" data-background="img/cutting-onion.jpg">
+                <section class="bkg" data-background="img/cutting-onion.jpg">
                     <h1 >Middleware</h1>
 
                     <pre><code class="hljs" data-trim contenteditable>
@@ -548,6 +573,17 @@ function (Request request): Response
                         <p>How do we compose middlewares?</p>
                         <p>Look closely: we depend on the response class</p>
                         <p>Used by Ruby's Rack, Lumen, StackPHP
+                    </aside>
+                </section>
+
+                <section class="bkg" data-background="img/onion2.jpg">
+                    <h1 class="bkg">Middleware</h1>
+                    <pre><code class="hljs" data-trim contenteditable>
+function (Request): Response
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Callable that receives a Request and return a Response</p>
                     </aside>
                 </section>
 
@@ -920,12 +956,12 @@ class DebugBar
 
                 <section>
                     <h1>Roundup</h1>
-                    <div class="space5">
-                    <p>PSR-7: A good HTTP abstraction</p>
-                    <p>Abstractions VS Implementations</p>
-                    <p>Re-Inventing the Wheel is over</p>
-                    <p>Middleware is a Hot Topic</p>
-                    <p>Beware of Runtime Dangers</p>
+                    <div class="space15"></div>
+                    <p class="fragment">PSR-7: A good HTTP abstraction</p>
+                    <p class="fragment">Abstractions VS Implementations</p>
+                    <p class="fragment">Re-Inventing the Wheel is over</p>
+                    <p class="fragment">Middleware is a Hot Topic</p>
+                    <p class="fragment">Beware of Runtime Dangers</p>
                 </section>
 
                 <section class="bkg" data-background="img/newwave.jpg">
