@@ -45,6 +45,17 @@
                 <section class="title" data-background="#7ab317">
                     <h1>Beyond PSR-7</h1>
                     <h2>The magical middleware tour</h2>
+
+                    <aside class="notes">
+                    <p>Where Middleware comes from</p>
+                    <p>What it is?</p>
+                    <p>Why does it make sense to talk about it now?</p>
+                    <p>How do we use it?</p>
+                    <p>Examples</p>
+                    <p>Technology Agnostic</p>
+                    </aside>
+
+
                 </section>
 
 
@@ -62,14 +73,16 @@
                 <section class="bkg" data-background="img/board.jpg">
                     <h1 class="low-right">Avid learner</h1>
                     <aside class="notes">
-                    <p>Functional programming, Codemotion talk on ELM, monads</p>
+                    <p>Functional programming, Codemotion talk on ELM</p>
                     </aside>
                 </section>
 
                 <section class="bkg" data-background="img/choco.jpg">
                     <h1>Chocolate Lover</h1>
                     <aside class="notes">
-                    <p>Human side, vice</p>
+                    <p>Vice</p>
+                    <p>Besides being a Mathematician</p>
+                    <p>Human being</p>
                     </aside>
                 </section>
 
@@ -79,12 +92,18 @@
 
                 <section class="bkg" data-background="img/travel.jpg">
                     <h1>Enjoys Travelling</h1>
+                    <aside class="notes">
+                        <p>Experiencing new stuff</p>
+                        <p>Exploring new environments</p>
+                        <p>Bird's Eye</p>
+                    </aside>
                 </section>
 
                 <section class="bkg" data-background="img/mosque.jpg">
                     <h2>Software Architectures</h2>
                     <aside class="notes">
-                    <p>& Baseball</p>
+                        <p>Software Architectures</p>
+                        <p>Also Sports; Baseball Especially</p>
                     </aside>
                 </section>
 
@@ -98,19 +117,24 @@
                 <section>
                     <div class="space10">
                     <h4>Software Engineers</h4>
-                    <img src="img/mvlabs-whitebackground.jpg">
+                    <img src="img/logos/mva-logo.png">
+                    <aside class="notes">
+                        <p>Italy-based, North-East</p>
+                        <p>Enterprise Internet applications</p>
+                        <p>Car Sharing, Hotel Entertainment, Finance, Startups...</p>
+                    </aside>
                 </section>
 
                  <section class="bkg" data-background="img/van2.jpg">
                     <h1>Start of the Journey...</h1>
                     <aside class="notes">
-                    <p>PHP development evolution in 1 minute</p>
+                    <p>PHP development evolution in a couple of minutes</p>
+                    </aside>
                 </section>
 
                 <section class="bkg" data-background="img/hippies.jpg">
                         <h2>Everybody on its own</h2>
                 </section>
-
 
                  <section class="simple">
                     <h1>A Total Mess</h1>
@@ -129,6 +153,7 @@ fclose($handle);
 </code></pre>
 
 <aside class="notes">
+<p>Poor Abstractions - Abstractions?</p>
 <p>DRY violation</p>
 <p>Reinventing everything everytime</p>
 </aside>
@@ -137,8 +162,13 @@ fclose($handle);
 
                 <section class="bkg" data-background="img/students.jpg">
                         <h1>Libraries</h1>
-                </section>
 
+                    <aside class="notes">
+                        <p>Some sort of reuse</p>
+                        <p>Immature Ecosystem</p>
+                    </aside>
+
+                </section>
 
                  <section class="simple">
                     <h1>Include Hell</h1>
@@ -151,21 +181,37 @@ include 'forms.php';
 include 'calculations.php';
 include 'graphs.php';
 include 'auth.php';
-                    </code></pre>
+</code></pre>
 
-                </section>
+                    <aside class="notes">
+                        <p>Boilerplate code</p>
+                        <p>Page controller</p>
+                        <p>Lot of emphasis on request handling VS domain logic</p>
+                    </aside>
+
+                    </section>
 
                 <section>
                     <h1>MVC Frameworks</h1>
                     <img src="img/logos/frameworks.png">
                     <aside class="notes">
-<p>Separation of concerns</p>
-<p>Ready to use</p>
+                        <p>Separation of concerns</p>
+                        <p>Ready to use</p>
+                        <p>Standards accross companies</p>
                     </aside>
                 </section>
 
                 <section class="bkg" data-background="img/beatles2.jpg">
                     <h1>IoC First Wave</h1>
+
+                    <aside class="notes">
+                        <p>FW calls our code</p>
+                        <p>Bootstrapping done for us</p>
+                        <p>Bulky</p>
+                        <p>Try to accomplish everything</p>
+                        <p>Complex</p>
+                    </aside>
+
                 </section>
 
                 <section class="simple">
@@ -187,8 +233,7 @@ sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
                     </code></pre>
 
                 <aside class="notes">
-                <p>Good from programmer's perspective</p>
-                <p>short term gains for the community</p>
+                    <p>Good from programmer's perspective</p>
                 </aside>
 
                 </section>
@@ -196,37 +241,81 @@ sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
                 <section class="bkg" data-background="img/reinventing-wheel.jpg">
                     <h1>Reinventing the Wheel</h1>
                     <aside class="notes">
-                    <p>Silos</p>
-                    <p>Closed Communities</p>
-                    <p>Waste</p>
+                        <p>Silos</p>
+                        <p>Meaningless Rivalries</p>
+                        <p>Closed Communities</p>
+                        <p>Waste</p>
+                        <p>How to solve this?</p>
                     </aside>
 
                 </section>
 
                 <section class="bkg" data-background="img/beatles-police.jpg">
                     <h1>With a little help of...</h1>
+                    <p>PSR-0</p>
                 </section>
 
                 <section class="simple">
                     <img src="img/composer-logo.png">
+                    <aside class="notes">
+                        <p>Dependency Handling</p>
+                        <p>Autoloading</p>
+                    </aside>
+                </section>
 
+               <section class="simple">
+                    <h2>composer.json</h2>
+                <pre><code class="hljs" data-trim contenteditable>    
+                {
+    "name": "zendframework/skeleton-application",
+    "description": "Skeleton Application for ZF2",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2"
+    ],
+    "homepage": "http://framework.zend.com/",
+    "require": {
+        "php": ">=5.5",
+        "zendframework/zendframework": "~2.5"
+    }
+}
+</code></pre>
+
+                </section>
+
+
+                <section class="bkg" data-background="img/rave.jpg">
+                    <h1>IoC New Wave</h1>
+                       <aside class="notes">
+                        <p>Control back to developers</p>
+                        <p>Component-driven approach</p>
+                    </aside>
                 </section>
 
                 <section class="simple">
                     <h1>Microframeworks</h1>
                       <img src="img/logos/microframeworks.png">
-                </section>
-
-                <section class="bkg" data-background="img/rave.jpg">
-                    <h1>IoC New Wave</h1>
-                       <aside class="notes">
-                        <p>Component-driven approach</p>
+                      <aside class="notes">
+                        <p>Silex</p>
+                        <p>Lumen</p>
+                        <p>Fat Free</p>
+                        <p>StackPHP: Composing HttpKernelInterface middlewares since 2013!</p>
                     </aside>
                 </section>
+
 
                  <section class="bkg" data-background="img/peace.jpg">
                     <div class="space40">
                     <h1>One issue to solve...</h1>
+                    
+                    <aside class="notes">
+                        <p>Times are immature</p>
+                        <p>Frameworks are still SILOS</p>
+                        <p>True interoperability cannot be achieved</p>
+                        <p>Why?</p>
+                    </aside>
+
                 </section>
 
                 <section class="simple">
@@ -274,7 +363,12 @@ namespace Aura\Web;
     }
                     </code></pre-->
 
-                </section>
+            <aside class="notes">
+                <p>HTTP Requests/Responses handled in different ways</p>
+                <p>Interoperability hindered</p>
+            </aside>
+        
+        </section>
 
 
                 <section class="bkg" data-background="img/abstract.jpg">
@@ -450,16 +544,18 @@ namespace Aura\Web;
 
                 <section class="simple">
                     <img src="img/book_cover.gif">
+                    <aside class="notes">
+                        <p>Interfaces important for:</p>
+                        <p>Integration</p>
+                        <p>Decoupling</p>
+                        <p>Architectural Level: different technologies</p>
+                    </aside>
+
                 </section>
 
                 <section class="simple">
                     <h1>Pipes and filters</h1>
-
                     <img src="img/pipes-filters.png">
-
-                    <aside class="notes">
-                        <p>What can we do now with PSR-7? How do we construct decoupled components based on them?</p>
-                    </aside>
                 </section>
 
                 <section class="simple">
@@ -531,12 +627,26 @@ $myFavouritePizza =
 
                  <section class="bkg" data-background="img/onion1.jpg">
                     <h1 class="bkg">Middleware</h1>
+                    <aside class="notes">
+                        <p>Partner's least favourite topping</p>
+                        <p>What is it Middleware besides a buzzword?</p>
+                    </aside>
                 </section>
 
-               <section class="bkg" data-background="img/onion-middleware2.jpg">
-                    
+
+                 <section class="simple">
+                    <img src="img/kernel.png">
                     <aside class="notes">
-                        <p>Infinitely nestable components that decorate a Request/Response handling</p>
+                        <p>Middleware is about taking a request and turning it into a response</p>
+                    </aside>
+                </section>
+
+
+               <section class="bkg" data-background="img/onion-middleware2.jpg">
+                    <aside class="notes">
+                        <p>Infinitely nestable components</p>
+                        <p>Decorate Request/Response handling</p>
+                        <p>Layers traversed in/out</p>
                     </aside>
                 </section>
 
@@ -570,9 +680,7 @@ function (Request request): Response
                     </code></pre>
 
                     <aside class="notes">
-                        <p>How do we compose middlewares?</p>
-                        <p>Look closely: we depend on the response class</p>
-                        <p>Used by Ruby's Rack, Lumen, StackPHP
+                        <p>Middleware Idea...</p>
                     </aside>
                 </section>
 
@@ -583,7 +691,8 @@ function (Request): Response
                     </code></pre>
 
                     <aside class="notes">
-                        <p>Callable that receives a Request and return a Response</p>
+                        <p>Look closely: we depend on the response class</p>
+                        <p>Used by Ruby's Rack, Lumen, StackPHP
                     </aside>
                 </section>
 
@@ -761,6 +870,7 @@ $app->add(new BasicAuthentication($users));
                 <section class="simple">
                     <h3>Radar & Relay</h3>
                     <img src="img/logos/relay.png">
+
                 </section>
 
                 <section class="simple">
@@ -779,11 +889,13 @@ $adr->middle(new AccessLog($logger));
 </code></pre>
 
  <aside class="notes">
-                        <p>Provides:
+                        
                             <ul>
-                                <li>ADR</li>
+                                <li>Action-Domain-Responder framework</li>
+                                <li>Relay: PSR-7 Middleware Dispatcher</li>
+                                <li>FIFO Middleware Stack</li>
                             </ul>
-                        </p>
+                        
                     </aside>
 
 
@@ -902,6 +1014,20 @@ return [
 
                 <section>
                      <img src="img/final.png">
+
+                      <aside class="notes">
+                        
+                            <ul>
+                                <li>Slim/Http Zend Diactoros</li>
+                                <li>Expressive-Stratigility by Extension</li>
+                                <li>Radar-Relay by Composition</li>
+                                <li>Slim provides everything</li>
+                                <li>Middleware runs everywhere!</li>
+                            </ul>
+                        
+                    </aside>
+
+
                 </section>
 
                 <section class="bkg" data-background="img/beatles.jpg">
@@ -956,12 +1082,22 @@ class DebugBar
 
                 <section>
                     <h1>Roundup</h1>
-                    <div class="space15"></div>
+                    <div class="space10"></div>
                     <p class="fragment">PSR-7: A good HTTP abstraction</p>
                     <p class="fragment">Abstractions VS Implementations</p>
-                    <p class="fragment">Re-Inventing the Wheel is over</p>
+                    <p class="fragment">Demolishing the Silos</p>
+                    <p class="fragment">Beware of Runtime Dangers</p> 
                     <p class="fragment">Middleware is a Hot Topic</p>
-                    <p class="fragment">Beware of Runtime Dangers</p>
+
+                      <aside class="notes">
+                        
+                            <ul>
+                                <li>SRP Violation Risk</li>
+                            </ul>
+                        
+                    </aside>
+
+
                 </section>
 
                 <section class="bkg" data-background="img/newwave.jpg">
