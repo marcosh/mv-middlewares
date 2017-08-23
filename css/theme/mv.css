@@ -1,21 +1,18 @@
 @import url(../../fonts/IstokWeb.css);
 
-section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
-  color: #f5f5f5; }
-
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
 body {
   font-family: 'IstokWeb', Helvetica, sans-serif;
-  background-color: #fff; 
+  background-color: #fefefe;
+  color: #333;
 }
 
 .reveal {
   font-family: 'IstokWeb', Helvetica, sans-serif;
   font-size: 48px;
-  font-weight: bold;
-  color: #1C1C1C; 
+  color: #1C1C1C;
 }
 
 .reveal .slides {
@@ -23,15 +20,36 @@ body {
 }
 
 ::selection {
-  color: #fff;
-  background: #bee4fd;
-  text-shadow: none; 
+  color: #222;
+  background: #e2f7bf;
+  text-shadow: none;
+}
+
+section.has-light-background,
+section.has-light-background h1,
+section.has-light-background h2,
+section.has-light-background h3,
+section.has-light-background h4,
+section.has-light-background h5,
+section.has-light-background h6,
+footer.has-light-background .details {
+  color: #333;
+}
+
+section.title,
+section.title h1,
+section.title h2,
+section.title h3,
+section.title h4,
+section.title h5,
+section.title h6 {
+  color: #fefefe;
 }
 
 /*
 .reveal .slides > section, .reveal .slides > section > section {
   line-height: 1.3;
-  font-weight: inherit; 
+  font-weight: inherit;
   width: auto;
 }
 
@@ -65,11 +83,9 @@ section > h1, section > h2 {
  * HEADERS
  *********************************************/
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-  /* color: #7ab317; */
   color: #7ab317;
   background-color: transparent;
-  font-weight: 600;
-  line-height: 1;
+  line-height: 1.15;
   letter-spacing: normal;
   text-transform: none;
   text-shadow: none;
@@ -81,30 +97,30 @@ section > h1, section > h2 {
 }
 
 .reveal h1 {
-  font-size: 1.75em; 
+  font-size: 1.75em;
 }
 
 .reveal h2 {
-  font-size: 1.25em; 
+  font-size: 1.25em;
 }
 
 .reveal h3 {
-  font-size: 1em; 
+  font-size: 1em;
 }
 
 .reveal h4 {
-  font-size: 0.75em; 
+  font-size: 0.75em;
 }
 
-.reveal h1.simple, .reveal h2.simple, 
-.reveal h3.simple, .reveal h4.simple, 
+.reveal h1.simple, .reveal h2.simple,
+.reveal h3.simple, .reveal h4.simple,
 .reveal h5.simple, .reveal h6.simple {
   color: #999;
 }
 
 /* Slides with a background */
-.reveal .bkg h1, .reveal .bkg h2, 
-.reveal .bkg h3, .reveal .bkg h4, 
+.reveal .bkg h1, .reveal .bkg h2,
+.reveal .bkg h3, .reveal .bkg h4,
 .reveal .bkg h5, .reveal .bkg h6 {
   color: #FFFFFF;
   background-color: #7ab317;
@@ -123,7 +139,7 @@ section > h1, section > h2 {
   width: auto;
 }
 
-.reveal img {  
+.reveal img {
   /* position: absolute; */
   position: relative;
   left: 50%;
@@ -164,9 +180,9 @@ section > h1, section > h2 {
   width: 100%;
 }
 
-.reveal .slides > section, 
+.reveal .slides > section,
 .reveal .slides > section > section {
-    /* width: auto;*/ 
+    /* width: auto;*/
     width: 100%;
     height: 100%;
     min-height: 100%
@@ -238,7 +254,7 @@ div.space60 {
 
 .reveal ul {
   margin-top: 5%;
-  list-style-type: disc; 
+  list-style-type: disc;
   line-height: 1.45em;
   color: #444;
 }
@@ -475,7 +491,8 @@ div.credits p {
 .reveal footer {
     position: absolute;
     width: 100%;
-    bottom: -24px;
+    bottom: -28px;
+    display: block;
 }
 
 .reveal footer .details {
@@ -483,17 +500,19 @@ div.credits p {
   left: 0;
   bottom:20px;
   font-weight: 500;
-  font-size: .6em;
+  font-size: .45em;
   z-index: 3;
-  color: #E0E0E0;
-  /* color: #929292; */
+  color: #efefef;
   line-height: 1em;
 }
 
 .reveal footer a {
-  color: #B1C39F;
+  color: #e2f7bf;
 }
 
+.reveal footer a:hover {
+  color: #fff;
+}
 .reveal footer img {
     float: right;
     height: 80px;

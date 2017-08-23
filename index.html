@@ -4,10 +4,10 @@
     <head>
         <meta charset="utf-8">
 
-        <title>THE MAGICAL MIDDLEWARE TOUR</title>
+        <title>Middleware architectures in PHP with Zend Expressive </title>
 
-        <meta name="description" content="A tour in the realm of middleware and PSR-7">
-        <meta name="author" content="Marco Perone">
+        <meta name="description" content="Middleware architectures in PHP with Zend Expressive ">
+        <meta name="author" content="Steve Maraspin">
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -20,6 +20,8 @@
 
         <!-- Code syntax highlighting -->
         <link rel="stylesheet" href="lib/css/github.css">
+
+        <link href="img/logos/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" >
 
         <!-- Printing and PDF exports -->
         <script>
@@ -43,21 +45,45 @@
             <div class="slides">
 
                 <section class="title" data-background="#7ab317">
-                    <h1>Beyond PSR-7</h1>
-                    <h2>The magical middleware tour</h2>
-
-                    <aside class="notes">
-                    <p>Where Middleware comes from</p>
-                    <p>What it is?</p>
-                    <p>Why does it make sense to talk about it now?</p>
-                    <p>How do we use it?</p>
-                    <p>Examples</p>
-                    <p>Technology Agnostic</p>
-                    </aside>
-
-
+                    <h1>Middleware architectures</h1>
+                    <h2>in PHP with Zend Expressive </h2>
                 </section>
 
+                <!-- https://pixabay.com/en/balance-zen-objects-yoga-centered-2211334/  -->
+                <section class="bkg" data-background="img/balance-2211334_1280.jpg">
+                    <h1 class="borded">Middleware</h1>
+                </section>
+
+                <section class="simple">
+                    <h1>SOA Middleware</h1>
+                  <img src="img/middleware-soa.jpg">
+                </section>
+
+                <section class="simple">
+                    <h1 class="strikethrough">Not today's topic</h1>
+                    <img src="img/no-middleware-soa.jpg">
+                    <aside class="notes">
+                        <p>not the SOA Middleware</p>
+                    </aside>
+                </section>
+
+                <section class="simple">
+                    <h1>Node.JS Middleware</h1>
+                   <pre><code class="hljs" data-trim contenteditable>var express = require('express')
+var app = express()
+
+app.get('/', function (req, res) {
+    res.send('Hello World!')
+})
+
+app.listen(3000)
+                    </code></pre>
+                </section>
+
+                <section class="simple">
+                    <h1>That's closer...</h1>
+                  <img src="img/middleware-node.png">
+                </section>
 
                 <section class="bkg" data-background="img/marco.jpg">
                     <h1 class="borded">Marco</h1>
@@ -77,7 +103,8 @@
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/choco.jpg">
+                <!-- https://pixabay.com/en/dark-chocolate-bar-food-2562840/ -->
+                <section class="bkg" data-background="img/dark-2562840_1280.jpg">
                     <h1>Chocolate Lover</h1>
                     <aside class="notes">
                     <p>Vice</p>
@@ -90,7 +117,8 @@
                     <h1>Steve</h1>
                 </section>
 
-                <section class="bkg" data-background="img/travel.jpg">
+                <!-- https://pixabay.com/en/camping-travel-sunrise-adventure-2581242/ -->
+                <section class="bkg" data-background="img/camping-2581242_1280.jpg">
                     <h1>Enjoys Travelling</h1>
                     <aside class="notes">
                         <p>Experiencing new stuff</p>
@@ -99,7 +127,8 @@
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/mosque.jpg">
+                <!-- https://pixabay.com/en/architecture-skyscraper-1727807/ -->
+                <section class="bkg" data-background="img/architecture-1727807_1280.jpg">
                     <h2>Software Architectures</h2>
                     <aside class="notes">
                         <p>Software Architectures</p>
@@ -114,9 +143,9 @@
                     </aside>
                 </section>
 
-                <section>
+                    <section>
                     <div class="space10">
-                    <h4>Software Engineers</h4>
+                    <h4>Software Engineers at</h4>
                     <img src="img/logos/mva-logo.png">
                     <aside class="notes">
                         <p>Italy-based, North-East</p>
@@ -125,381 +154,295 @@
                     </aside>
                 </section>
 
-                 <section class="bkg" data-background="img/van2.jpg">
-                    <h1>Start of the Journey...</h1>
+                <!-- lets' know a bit about our attendance... -->
+                <section class="bkg" data-background="#000">
+                    <h1>How about you?</h1>
                     <aside class="notes">
-                    <p>PHP development evolution in a couple of minutes</p>
+                    <p>How many know a lot about?</p>
+                    <p>Zend Framework 3</p>
+                    <p>Symfony</p>
+                    <p>Value Objects</p>
+                    <p>Dependency Injection</p>
+                    <p>Middleware</p>
+                    <p>PSR-7</p>
+                    <p>Expressive</p>
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/hippies.jpg">
-                        <h2>Everybody on its own</h2>
-                </section>
-
-                 <section class="simple">
-                    <h1>A Total Mess</h1>
-                   <pre><code class="hljs" data-trim contenteditable>
-$filename = 'log.txt';
-$handle = fopen($filename, 'a'));
-fwrite($handle, $errorMessage);
-fclose($handle);
-</code></pre>
-
-                    <pre><code class="hljs" data-trim contenteditable>
-$filename = 'log.txt';
-$handle = fopen($filename, 'a'));
-fwrite($handle, $errorMessage);
-fclose($handle);
-</code></pre>
-
-<aside class="notes">
-<p>Poor Abstractions - Abstractions?</p>
-<p>DRY violation</p>
-<p>Reinventing everything everytime</p>
-</aside>
-
-                </section>
-
-                <section class="bkg" data-background="img/students.jpg">
-                        <h1>Libraries</h1>
-
+                <!-- https://pixabay.com/en/lake-west-sunset-the-sun-sky-2522540/ -->
+                <section class="bkg" data-background="img/lake-2522540_1280.jpg">
+                    <h1>Plans for the day...</h1>
                     <aside class="notes">
-                        <p>Some sort of reuse</p>
-                        <p>Immature Ecosystem</p>
-                    </aside>
-
-                </section>
-
-                 <section class="simple">
-                    <h1>Include Hell</h1>
-                   <pre><code class="hljs" data-trim contenteditable>
-include 'config.php';
-include_once 'dbcon.php';
-include_once 'logger.php';
-include 'utils.php';
-include 'forms.php';
-include 'calculations.php';
-include 'graphs.php';
-include 'auth.php';
-</code></pre>
-
-                    <aside class="notes">
-                        <p>Boilerplate code</p>
-                        <p>Page controller</p>
-                        <p>Lot of emphasis on request handling VS domain logic</p>
-                    </aside>
-
-                    </section>
-
-                <section>
-                    <h1>MVC Frameworks</h1>
-                    <img src="img/logos/frameworks.png">
-                    <aside class="notes">
-                        <p>Separation of concerns</p>
-                        <p>Ready to use</p>
-                        <p>Standards accross companies</p>
+                        <p>Middleware</p>
+                        <p>Modern Frameworks</p>
+                        <p>Related Aspects</p>
                     </aside>
                 </section>
 
-                <section class="bkg" data-background="img/beatles2.jpg">
-                    <h1>IoC First Wave</h1>
+                <!-- https://pixabay.com/en/school-old-plate-learning-1223872/ -->
+                <section class="bkg" data-background="img/school-1223872_1280.jpg">
+                    <p>Middleware</p>
+                    <p>Modern Frameworks</p>
+                    <p>Related Aspects</p>
+                </section>
 
+                  <section class="simple" data-background="#efefef">
+                    <h1>A Nice Side effect...</h1>
+                    <img src="img/zend-expressive-logo.png">
+                </section>
+
+                  <section class="simple">
+                    <h1>Zend Expressive</h1>
+                        <p>...an easy to use, PSR-15, PSR-11, PSR-7 compliant middleware atomic micro-framework that can work well as an entry point to Zend MVC, a smaller fully-featured web app or an API server</p>
+               </section>
+
+                <section class="simple">
+                    <h1>Let's Go!</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 01-expressive-skeleton</code></pre>
+               </section>
+
+              <section class="simple">
+                <h1>http://phpmiddleware.websc</h1>
+               </section>
+
+                <section class="bkg">
+                    <img src="img/outcome.png">
+               </section>
+
+  <section class="simple">
+                    <h1>Default Installation</h1>
+                   <pre><code class="hljs" data-trim contenteditable>cd /var/www/html/summercamp/
+composer create-project zendframework/zend-expressive-skeleton my-project
+                    </code></pre>
+                </section>
+
+                   <section class="bkg">
+                    <img src="img/zend-expressive.png">
+               </section>
+
+                <section class="bkg" data-background="#2a2a2a">
+                    <img src="img/installation.png">
+               </section>
+
+                <section class="bkg">
+                    <h1>Dependency Injection</h1>
+                        <p>Pimple</p>
+               </section>
+
+                <section class="bkg">
+                    <h1>Routing</h1>
+                        <p>Nikita Popov's FastRoute</p>
+               </section>
+
+                <section class="bkg">
+                    <h1>Interoperability</h1>
+                        <p>Keyword of the day!</p>
+               </section>
+
+                 <section class="bkg">
+                    <img src="img/ze-stack.png">
+                </section>
+
+                <!-- https://pixabay.com/en/food-preparation-parts-wood-table-1081813/ -->
+                <section class="bkg" data-background="img/food-preparation-1081813_1280.jpg">
+                    <h1>Component Glue</h1>
                     <aside class="notes">
-                        <p>FW calls our code</p>
-                        <p>Bootstrapping done for us</p>
-                        <p>Bulky</p>
-                        <p>Try to accomplish everything</p>
-                        <p>Complex</p>
+                        <p>Wrapper around existing stuff</p>
+                        <p>PSR-7 Compliant</p>
+                        <p>supports multiple routers</p>
+                        <p>supports multiple service locators</p>
                     </aside>
+                </section>
 
+
+                <section class="simple">
+                    <h1>Filesystem layout</h1>
+                    <pre><code class="hljs">
+                    /var/www/html/summercamp/phpmiddleware
+                    </code></pre>
+                   <pre><code class="hljs">├── bin
+├── config
+├── data
+├── docs
+├── migrations
+├── public
+│     └── index.php
+├── seeds
+├── src
+├── test
+└── vendor
+                    </code></pre>
                 </section>
 
                 <section class="simple">
-                    <h2>Same things, different ways...</h2>
-                    <div class="space5">
-                    <h4 class="simple">Zend Framework</h4>
-                   <pre><code class="hljs" data-trim contenteditable>
-$logger = new Zend_Log();
-$writer = new Zend_Log_Writer_Stream('php://output');
-$logger->addWriter($writer);
-$logger->log('Hello PHPDay People!', Zend_Log::INFO);
+                    <h1>Document Root</h1>
+                    <pre><code class="hljs">
+                    /var/www/html/summercamp/phpmiddleware/public
                     </code></pre>
-                    <div class="space5">
-                    <h4 class="simple">Symfony</h4>
-                    <pre><code class="hljs" data-trim contenteditable>
-// YAML Configuration
-// [...]
-sfContext::getInstance()->getLogger()->info('Hello PHPDay People!');
+                    <pre><code class="hljs">
+                    /etc/apache2/sites-enabled/phpmiddleware.websc.conf
                     </code></pre>
-
-                <aside class="notes">
-                    <p>Good from programmer's perspective</p>
-                </aside>
-
                 </section>
 
-                <section class="bkg" data-background="img/reinventing-wheel.jpg">
-                    <h1>Reinventing the Wheel</h1>
-                    <aside class="notes">
-                        <p>Silos</p>
-                        <p>Meaningless Rivalries</p>
-                        <p>Closed Communities</p>
-                        <p>Waste</p>
-                        <p>How to solve this?</p>
-                    </aside>
-
-                </section>
-
-                <section class="bkg" data-background="img/beatles-police.jpg">
-                    <h1>With a little help of...</h1>
-                </section>
 
                 <section class="simple">
-                    <img src="img/composer-logo.png">
-                    <aside class="notes">
-                        <p>Dependency Handling</p>
-                        <p>Autoloading</p>
-                        <p>PSR-0 -> PSR-4</p>
-                    </aside>
+                    <h1>index.php</h1>
+                    <pre><code class="hljs">
+
+chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
+
+call_user_func(function () {
+    /** @var \Interop\Container\ContainerInterface $container */
+    $container = require 'config/container.php';
+
+    /** @var \Zend\Expressive\Application $app */
+    $app = $container->get(\Zend\Expressive\Application::class);
+
+    require 'config/pipeline.php';
+    require 'config/routes.php';
+
+    $app->run();
+});
+                    </code></pre>
                 </section>
+
+
+ <section class="simple">
+                    <h1>config/container.php</h1>
+                    <pre><code class="hljs">// Load configuration
+$config = require __DIR__ . '/config.php';
+
+$container = new Container();
+$container['config'] = $config;
+
+[...]
+foreach ($config['dependencies']['services'] as $name => $service) {
+    $container[$name] = function ($c) use ($service) {
+        return $service;
+    };
+}
+[...]
+
+return $container;                    </code></pre>
+                </section>
+
+
+
+
+ <section class="simple">
+                    <h1>config/config.php</h1>
+                    <pre><code class="hljs">$cacheConfig = [
+    'config_cache_path' => 'data/config-cache.php',
+];
+$aggregator = new ConfigAggregator([
+
+    new ArrayProvider($cacheConfig),
+    App\ConfigProvider::class,
+    new PhpFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
+    new PhpFileProvider('config/development.config.php'),
+
+], $cacheConfig['config_cache_path']);
+
+return $aggregator->getMergedConfig();
+</code></pre>
+                </section>
+
+
+
+
+
+ <section class="simple">
+                    <h1>config/routes.php</h1>
+                    <pre><code class="hljs">$app->get('/', App\Action\HomePageAction::class, 'home');
+$app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
+                </section>
+
+             <section class="bkg">
+                    <img src="img/api-ping.png">
+               </section>
+
+               <section class="bkg">
+                    <img src="img/404.png">
+               </section>
+
+                  <section class="bkg">
+                    <img src="img/outcome.png">
+               </section>
+
+
+            <section class="simple">
+                    <h1>config/routes.php</h1>
+                    <pre><code class="hljs">$app->get('/', App\Action\HomePageAction::class, 'home');
+$app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
+            </section>
+
+            <section class="simple">
+                <p>src\App\Action\PingAction.php</p>
+                    <pre><code class="hljs">namespace App\Action;
+
+[...]
+
+class PingAction implements ServerMiddlewareInterface
+{
+    public function process(
+        ServerRequestInterface $request,
+        DelegateInterface $delegate
+    ) {
+        return new JsonResponse(['ack' => time()]);
+    }
+}
+
+}
+                    </code></pre>
+               </section>
+
+               <!-- https://pixabay.com/en/mailwoman-civil-servant-letters-1124335/ -->
+             <section class="bkg" data-background="img/mailwoman-1124335_1280.jpg">
+                    <h1>Zend Diactoros</h1>
+               </section>
+
+            <section class="simple">
+                    <h1>PSR-7 ServerRequestInterface</h1>
+                         <pre><code class="hljs" data-trim contenteditable>namespace Psr\Http\Message;
+
+interface ServerRequestInterface extends RequestInterface
+{
+    public function getServerParams();
+    public function getCookieParams();
+    public function withCookieParams(array $cookies);
+    public function getQueryParams();
+    public function withQueryParams(array $query);
+    public function getUploadedFiles();
+    public function withUploadedFiles(array $uploadedFiles);
+    public function getParsedBody();
+    public function withParsedBody($data);
+    public function getAttributes();
+    public function getAttribute($name, $default = null);
+    public function withAttribute($name, $value);
+    public function withoutAttribute($name);
+}</code></pre>
+             </section>
 
                <section class="simple">
-                    <h2>composer.json</h2>
-                <pre><code class="hljs" data-trim contenteditable>    
-                {
-    "name": "zendframework/skeleton-application",
-    "description": "Skeleton Application for ZF2",
-    "license": "BSD-3-Clause",
-    "keywords": [
-        "framework",
-        "zf2"
-    ],
-    "homepage": "http://framework.zend.com/",
-    "require": {
-        "php": ">=5.5",
-        "zendframework/zendframework": "~2.5"
-    }
-}
+                    <h1>PSR-7 ResponseInterface</h1>
+                         <pre><code class="hljs" data-trim contenteditable>namespace Psr\Http\Message;
+interface ResponseInterface extends MessageInterface
+{
+    public function getStatusCode();
+    public function withStatus($code, $reasonPhrase = '');
+    public function getReasonPhrase();
+}</code></pre>
+             </section>
+
+
+  <section class="simple">
+                    <h1>Interacting with these...</h1>
+                         <pre><code class="hljs" data-trim contenteditable>$response->setStatusCode(503);
 </code></pre>
+<pre><code class="hljs" data-trim contenteditable>$response = $response->withStatusCode(503);</code></pre>
+             </section>
 
-                </section>
-
-
-                <section class="bkg" data-background="img/rave.jpg">
-                    <h1>IoC New Wave</h1>
-                       <aside class="notes">
-                        <p>Control back to developers</p>
-                        <p>Component-driven approach</p>
-                    </aside>
-                </section>
-
-                <section class="simple">
-                    <h1>Microframeworks</h1>
-                      <img src="img/logos/microframeworks.png">
-                      <aside class="notes">
-                        <p>Silex</p>
-                        <p>Lumen</p>
-                        <p>Fat Free</p>
-                        <p>StackPHP: Composing HttpKernelInterface middlewares since 2013!</p>
-                    </aside>
-                </section>
-
-
-                 <section class="bkg" data-background="img/peace.jpg">
-                    <div class="space40">
-                    <h1>One issue to solve...</h1>
-                    
-                    <aside class="notes">
-                        <p>Times are immature</p>
-                        <p>Frameworks are still SILOS</p>
-                        <p>True interoperability cannot be achieved</p>
-                        <p>Why?</p>
-                    </aside>
-
-                </section>
-
-                <section class="simple">
-                    <pre><code class="hljs" data-trim contenteditable>
-namespace Symfony\Component\HttpFoundation;
-
-class Request {
-    public static function createFromGlobals(): Request {
-        return self::createRequestFromFactory($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
-    }
-}
-                    </code></pre>
-
-                    <pre><code class="hljs" data-trim contenteditable>
-namespace Zend\Http\PhpEnvironment;
-
-class Request extends \Zend\Http\Request {
-    public function __construct() {
-        $this->setEnv(new Parameters($_ENV));
-        $this->setQuery(new Parameters($_GET));
-        $this->setPost(new Parameters($_POST));
-        $this->setCookies(new Parameters($_COOKIE));
-        $this->setFiles(new Parameters($this->mapPhpFiles()));
-        $this->setServer(new Parameters($_SERVER));
-    }
-}
-                    </code></pre>
-
-                    <!--pre><code class="hljs" data-trim contenteditable>
-namespace Aura\Web;
-
-    class WebFactory
-    {
-        public function newRequestGlobals()
-        {
-            return new Request\Globals(
-                new Request\Values($this->get('_COOKIE'));,
-                new Request\Values($this->get('_ENV')),
-                new Request\Files($this->get('_FILES')),
-                new Request\Values($this->get('_POST')),
-                new Request\Values($this->get('_GET')),
-                new Request\Values($this->get('_SERVER'))
-            );
-        }
-    }
-                    </code></pre-->
-
-            <aside class="notes">
-                <p>HTTP Requests/Responses handled in different ways</p>
-                <p>Interoperability hindered</p>
-            </aside>
-        
-        </section>
-
-
-                <section class="bkg" data-background="img/abstract.jpg">
-                    <div class="space10">
-                    <h2 class="black right">Need for</h2>
-                    <h2 class="right">a good HTTP abstraction</h2>
-
-                    <aside class="notes">
-                        <p>Php does not have builtin support for HTTP messages</p>
-                    </aside>
-                </section>
-
-                <section class="simple">
-                <h2>SERVER API</h2>
-                    <ul>
-                        <li>$_SERVER</li>
-                        <li>$_POST</li>
-                        <li>$_GET</li>
-                        <li>header()</li>
-                        <li>setCookie()</li>
-                        <li>echo</li>
-                    </ul>
-                    <aside class="notes">
-                        <p>Server: SAPI, designed to mirror CGI -> mutable, non easy to test</p>
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/client-http-adapters.png">
-                    <h1>CLIENT ADAPTERS</h1>
-                    <aside class="notes">
-                        <p>Client: streams, curl, http extension (packages abstracting over them)</p>
-                        <p>Every framework was abastracting HTTP messages in its own way</p>
-                    </aside>
-                </section>
-
-
-                <section class="bkg" data-background="img/figs.jpg">
-                    <h1>PSR-7</h1>
-
-                    <aside class="notes">
-                        <p>Set of common interfaces for HTTP messages</p>
-                        <p>Proposal aimed at interoperability between PHP packages</p>
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space10">
-                        <h1>PSR-7 GOALS</h1>
-                    </div>
-                </section>
-
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space15">
-                        <h3>Interfaces</h3>
-                    </div>
-
-                    <aside class="notes">
-                        <p>Provide the interfaces to describe HTTP messages</p>
-                        <p>Model all elements of the HTTP message and URI specifications</p>
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space20">
-                        <h3>Practical applications and usability</h3>
-                </section>
-
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space25">
-                        <h3>No limits</h3>
-                    </div>
-
-                    <aside class="notes">
-                        <p>Do no impose arbitrary limits on HTTP messages</p>
-                        <p>Example with content length</p>
-                        <p>Solution modelling message bodies as streams</p>
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/trail.jpg">
-                    <div class="space30">
-                        <h3>Server and client</h3>
-                    </div>
-
-                    <aside class="notes">
-                        <p>Provide useful abstractions both for server-side applications and HTTP clients</p>
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/danger.jpg">
-                    <h1 class="top-right">PSR-7 NON-GOALS</h1>
-                </section>
-
-                <section class="bkg" data-background="img/danger.jpg">
-                    <div class="space10">
-                        <h3 class="top-right">Conformation</h3>
-                    </div>
-
-                    <aside class="notes">
-                        <p>Do not expect everybody to change their interfaces</p>
-                        <p>Strictly meant for interoperability</p>
-                        <p>Simfony bridge example</p>
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/danger.jpg">
-                    <div class="space20">
-                        <h3 class="top-right">Impose details</h3>
-                    </div>
-
-                    <aside class="notes">
-                        <p>Do not impose implementation details</p>
-                    </aside>
-                </section>
-
-
-                <section>
-                    <img class="bkg" src="img/components.jpg">
-                    <aside class="notes">
-                        <p>Server Request Interface</p>
-
-                        <ul>
-                            <li>access server parameters</li>
-                            <li>access query string arguments</li>
-                            <li>access parsed body</li>
-                            <li>access uploaded files</li>
-                            <li>access cookie values</li>
-                            <li>access attributes derived from the request</li>
-                        </ul>
-                    </aside>
-                </section>
 
                 <section class="bkg" data-background="img/diamond.jpg">
                     <h2>A Value object is forever</h2>
@@ -511,36 +454,345 @@ namespace Aura\Web;
                     </aside>
                 </section>
 
-                <!--section data-background="img/aeonium.jpg">
-                    <section>
-                        <h1>PSR-7 DESIGN</h1>
-                    </section>
+                 <section class="simple">
+                    <h1>Time to do stuff...</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 03-welcome</code></pre>
+             </section>
 
-                    <section>
-                        <h2>Value objects</h2>
+               <section class="bkg">
+                    <img src="img/03.png">
+               </section>
 
-                        <aside class="notes">
-                            <p>Messages are values where the identity is the aggregate of all parts of the message</p>
-                            <p>Ensures the integrity of the message state</p>
-                        </aside>
-                    </section>
+                <section class="bkg">
+                    <img src="img/es-01-def.png">
+               </section>
 
-                    <section>
-                        <h2>Server Request Interface</h2>
+               <section class="bkg">
+                    <img src="img/es-01.png">
+               </section>
 
-                        <aside class="notes">
-                            <ul>
-                                <li>access server parameters</li>
-                                <li>access query string arguments</li>
-                                <li>access parsed body</li>
-                                <li>access uploaded files</li>
-                                <li>access cookie values</li>
-                                <li>access attributes derived from the request</li>
-                            </ul>
-                            </ul>
-                        </aside>
-                    </section>
-                </section-->
+                <section class="simple">
+                    <h1>Exercise 1 (10 mins)</h1>
+                        <p>Create an hello route (/hello)</p>
+                        <p>Display output {"hello":"NAME"}</p>
+                        <p>NAME is either the value of the http GET name parameter, or the string random phper if no name parameter was provided</p>
+                        <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
+                        <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
+                </section>
+
+
+
+  <section class="simple">
+                    <h1>Exercise 1 Solution</h1>
+                         <pre><code class="hljs" data-trim contenteditable>class HelloAction implements MiddlewareInterface
+{
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
+    {
+        $query = $request->getQueryParams();
+
+        $name = $query['name'] ?? 'random phper';
+
+        return new JsonResponse([
+            'hello' => $name
+        ]);
+    }
+}</code></pre>
+             </section>
+
+
+               <section class="simple">
+                    <h1>Check it out with</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 04-hello-name</code></pre>
+             </section>
+
+
+
+
+
+
+
+  <section class="simple">
+                    <h1>Let's move on...</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 06-chocolates-route</code></pre>
+             </section>
+
+               <section class="bkg">
+                    <img src="img/07-choco.png">
+               </section>
+
+                <section class="simple">
+                                <p>config/routes.php</p>
+                                    <pre><code class="hljs">$app->get('/', \App\Action\IndexAction::class, 'index');
+
+$app->get('/hello', \App\Action\HelloAction::class, 'hello');
+
+$app->get('/chocolates', \App\Action\ChocolatesAction::class, 'chocolates');
+                    </code></pre>
+            </section>
+
+
+
+                <section class="simple">
+                                <p>src\App\Action\ChocolatesAction.php</p>
+                                    <pre><code class="hljs">final class ChocolatesAction implements MiddlewareInterface
+{
+    /**
+     * @var ChocolatesServiceInterface
+     */
+    private $chocolates;
+
+    public function __construct(ChocolatesServiceInterface $chocolates)
+    {
+        $this->chocolates = $chocolates;
+    }
+
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
+    {
+        $filters = $request->getQueryParams();
+
+        return new JsonResponse($this->chocolates->getAll($filters));
+    }
+}
+                    </code></pre>
+            </section>
+
+
+
+                 <section class="simple">
+                                    <h1>config/config.php</h1>
+                                    <pre><code class="hljs">$cacheConfig = [
+                    'config_cache_path' => 'data/config-cache.php',
+                ];
+                $aggregator = new ConfigAggregator([
+
+                    new ArrayProvider($cacheConfig),
+                    App\ConfigProvider::class,
+                    new PhpFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
+                    new PhpFileProvider('config/development.config.php'),
+
+                ], $cacheConfig['config_cache_path']);
+
+                return $aggregator->getMergedConfig();
+                </code></pre>
+                </section>
+
+                 <section class="simple">
+                                <p>src\App\ConfigProvider.php</p>
+                                    <pre><code class="hljs">  /**
+     * Returns the container dependencies
+     *
+     * @return array
+     */
+    public function getDependencies()
+    {
+        return [
+            'factories'  => [
+                // ACTIONS
+                ChocolatesAction::class => ChocolatesActionFactory::class,
+
+                // SERVICES
+                ChocolatesServiceInterface::class => ChocolatesServiceFactory::class,
+
+                // REPOSITORIES
+                Chocolates::class => SqlChocolatesFactory::class,
+            ],
+        ];
+    }
+                    </code></pre>
+            </section>
+
+<section class="simple">
+                                <p>src\App\Container\Action\ChocolatesActionFactory.php</p>
+                                    <pre><code class="hljs"> final class ChocolatesActionFactory
+{
+    public function __invoke(ContainerInterface $container): ChocolatesAction
+    {
+        return new ChocolatesAction(
+            $container->get(ChocolatesServiceInterface::class)
+        );
+    }
+}
+
+                    </code></pre>
+            </section>
+
+                <section class="simple">
+                    <h1>Handling Dependency Injection</h1>
+                    <p>Pimple as a DIC, in our example</p>
+                    <p>PSR-11 Containers compliant</p>
+                </section>
+
+            <section class="bkg">
+                    <h1>PSR-11 ContainerInterface</h1>
+                    <pre><code class="hljs" data-trim contenteditable>
+                    interface ContainerInterface
+{
+    public function get($serviceName);
+    public function has($serviceName);
+}
+                </code></pre>
+            </section>
+
+
+                <section class="bkg">
+                    <img src="img/08-choco-detail.png">
+               </section>
+
+                <section class="simple">
+                    <h1>Exercise 2 (25 mins)</h1>
+                        <p>Create a chocolate-details (/chocolate/ID) where ID is a proper ID of a chocolate wrapper in our domain</p>
+                        <p>Interact with src/App/Domain/Service/ChocolatesService.php</p>
+                       <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
+                        <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
+                </section>
+
+
+
+
+  <section class="simple">
+                    <h1>Exercise 2 Solution</h1>
+                         <pre><code class="hljs" data-trim contenteditable>final class ChocolateDetailsAction implements MiddlewareInterface
+{
+[...]
+public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
+    {
+        $chocolateId = ChocolateId::fromString($request->getAttribute('id'));
+
+        $chocolate = $this->chocolatesService->getChocolate($chocolateId);
+
+        return new JsonResponse($chocolate);
+    }
+}</code></pre>
+             </section>
+
+
+               <section class="simple">
+                    <h1>You can check it out with</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 07-chocolate-details-route</code></pre>
+             </section>
+
+
+
+    <!-- verifica che abbia la factory -->
+   <section class="simple">
+                    <h1>Let's move forward...</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 09-users-details-route</code></pre>
+             </section>
+
+
+  <section class="simple">
+                    <h1>Factories for multiple named services</h1>
+                   <pre><code class="hljs" data-trim contenteditable>namespace App\Container\Action;
+
+use App\Domain\Service\ChocolatesServiceInterface;
+use App\Domain\Service\UsersServiceInterface;
+use Interop\Container\ContainerInterface;
+
+final class ChocolatesAndUsersActionFactory
+{
+    public function __invoke(ContainerInterface $container, string $name)
+    {
+        return new $name(
+            $container->get(ChocolatesServiceInterface::class),
+            $container->get(UsersServiceInterface::class)
+        );
+    }
+}
+                    </code></pre>
+                </section>
+
+
+
+
+  <section class="simple">
+                    <h1>FactoryInterface</h1>
+                   <pre><code class="hljs" data-trim contenteditable>
+
+    public function __invoke(
+        ContainerInterface $container,
+        string $name,
+        array $options = null
+    )
+                    </code></pre>
+                </section>
+
+
+
+
+
+               <section class="simple">
+                    <h1>But hey, did you notice?</h1>
+                         <pre><code class="hljs" data-trim contenteditable>final class ChocolateDetailsAction implements MiddlewareInterface
+{
+[...]
+public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
+    {
+        $chocolateId = ChocolateId::fromString($request->getAttribute('id'));
+
+        $chocolate = $this->chocolatesService->getChocolate($chocolateId);
+
+        return new JsonResponse($chocolate);
+    }
+}</code></pre>
+             </section>
+
+                <section class="bkg" data-background="img/cutting-onion.jpg">
+                    <h1 >We used Middleware</h1>
+
+                    <pre><code class="hljs" data-trim contenteditable>
+public function process(
+        ServerRequestInterface $request,
+        DelegateInterface $delegate
+    ): ResponseInterface
+{
+    ...
+
+    response =  $delegate->process($request);
+    $response = $response->withStatusCode(200);
+
+    ...
+
+    return response;
+}
+                    </code></pre>
+
+                </section>
+
+                <section class="simple">
+                    <h1 class="bkg">Middleware</h1>
+                    <img src="img/kernel.png">
+                    <aside class="notes">
+                        <p>Middleware is about taking a request and turning it into a response</p>
+                    </aside>
+                </section>
+
+             <section class="bkg" data-background="img/onion1.jpg">
+                    <h1 class="bkg">Middleware</h1>
+                    <aside class="notes">
+                        <p>Partner's least favourite topping</p>
+                        <p>What is it Middleware besides a buzzword?</p>
+                    </aside>
+                </section>
+
+               <section class="bkg" data-background="img/onion-middleware2.jpg">
+                    <aside class="notes">
+                        <p>Infinitely nestable components</p>
+                        <p>Decorate Request/Response handling</p>
+                        <p>Layers traversed in/out</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <img src="img/flight-1.png">
+                </section>
+
+                <section>
+                    <img src="img/flight-2.png">
+                </section>
+
+                <section>
+                    <img src="img/flight-3.png">
+                </section>
 
                 <section class="simple">
                     <img src="img/book_cover.gif">
@@ -616,228 +868,336 @@ $myFavouritePizza =
                     </aside>
                 </section>
 
-                <!--section data-background="img/nest.jpg">
-                    <h1>Decorator</h1>
-                    <p class="fragment">Attach responsabilities dinamically</p>
-                </section-->
-
-
-                 <section class="bkg" data-background="img/onion1.jpg">
-                    <h1 class="bkg">Middleware</h1>
-                    <aside class="notes">
-                        <p>Partner's least favourite topping</p>
-                        <p>What is it Middleware besides a buzzword?</p>
-                    </aside>
+                <section class="bkg">
+                    <h1>Cross cutting concerns</h1>
                 </section>
 
+             <section class="simple">
+                    <h1>Back to code...</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 10-access-log</code></pre>
+             </section>
+
+   <section class="simple">
+                                <p>config/pipeline.php</p>
+                                    <pre><code class="hljs">$app->pipe(new \Middlewares\ClientIp());
+$app->pipe(\Middlewares\AccessLog::class);
+</code></pre>
+            </section>
+
+
+            <section class="simple">
+                                <p>src/App/ConfigProvider.php</p>
+                                    <pre><code class="hljs">  public function getDependencies()
+    {
+        return [
+            'factories'  => [
+                // ACTIONS
+                ChocolatesAction::class => ChocolatesServiceActionFactory::class,
+                ChocolateDetailsAction::class => ChocolatesServiceActionFactory::class,
+                UsersAction::class => UsersServiceActionFactory::class,
+                UserDetailsAction::class => UsersServiceActionFactory::class,
+
+                // SERVICES
+                ChocolatesServiceInterface::class => ChocolatesServiceFactory::class,
+                UsersServiceInterface::class => UsersServiceFactory::class,
+
+                // REPOSITORIES
+                Chocolates::class => SqlRepositoryFactory::class,
+                Users::class => SqlRepositoryFactory::class,
+            ],
+        ];
+    }</code></pre>
+            </section>
+
+
+ <section class="simple">
+                                <p>src/App/Container/Middleware/AccessLogFactory.php</p>
+                                    <pre><code class="hljs">use Middlewares\AccessLog;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+
+final class AccessLogFactory
+{
+    public function __invoke(ContainerInterface $container)
+    {
+        $logger = new Logger('access');
+        $filePath = $container->get('config')['access_log']['path'];
+        $logger->pushHandler(new StreamHandler($filePath));
+
+        $accessLog = new AccessLog($logger);
+
+        $accessLog->format('%v %h %u %t "%r" %>s %b "%{Referer}i" -> %U "%{User-Agent}i" ClientIp: %a Duration: %{us}T');
+        $accessLog->ipAttribute('client-ip');
+
+        return $accessLog;
+    }
+}</code></pre>
+            </section>
+
+
+                <section class="simple">
+                    <h1>Exercise 3 (25 mins)</h1>
+                        <p>Create a caching middleware</p>
+                        <p>For all http GET requests, make sure that a cached result is returned</p>
+                        <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
+                        <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
+                </section>
+
+
+ <section class="simple">
+                    <h1>Solution to exercise 3</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 11-response-cache</code></pre>
+             <p>Implementing middleware from scratch - not necessarily a good idea!</p>
+             </section>
+
+ <section class="bkg" data-background="img/reinventing-wheel.jpg">
+                    <h1>Reinventing the Wheel</h1>
+                    <aside class="notes">
+                        <p>Silos</p>
+                        <p>Meaningless Rivalries</p>
+                        <p>Closed Communities</p>
+                        <p>Waste</p>
+                        <p>How to solve this?</p>
+                    </aside>
+
+                </section>
+
+
+                <!-- https://pixabay.com/en/dinosaur-amusement-park-dino-park-875614/ -->
+                 <section class="bkg" data-background="img/dinosaur-875614_1280.jpg">
+                </section>
+
+
+
+                <section>
+                    <h1>Already Available Middleware</h1>
+                    <ul>
+                    <li>Storage-Less Sessions</li>
+                    <li>Device Detection</li>
+                    <li>Analytics Support</li>
+                    <li>Robot-Blocking</li>
+                    <li>Request Rate Limiting</li>
+                    <li>And More...</li>
+                    </ul>
+                </section>
+
+
+                <section class="simple" data-background="#151d28">
+                    <div class="space10">
+                    <a href="http://php-middleworld.com"><img src="img/logos/phpmiddleworld.png"></a>
+                </section>
+
+                <section class="bkg" data-background="img/newwave.jpg">
+                    <h1>Easy, isn't it?</h1>
+                </section>
+
+
+            <section class="simple">
+                    <h1>How about other actions?</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 15-delete-chocolate</code></pre>
+             </section>
+
+ <section class="simple">
+                    <h1>config/routes.php</h1>
+                         <pre><code class="hljs" data-trim contenteditable>
+$app->post('/submit', \App\Action\SubmitChocolateAction::class, 'submit');
+
+$app->post(
+    '/approve/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
+    \App\Action\ApproveChocolateAction::class,
+    'approve'
+);
+
+$app->post(
+    '/delete/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
+    \App\Action\DeleteChocolateAction::class,
+    'delete'
+);</code></pre>
+             </section>
+
+<section class="simple">
+<h1>Related Actions</h1>
+                         <pre><code class="hljs" data-trim contenteditable>App\Action\SubmitChocolateAction.php</code></pre>
+                         <pre><code class="hljs" data-trim contenteditable>App\Action\ApproveChocolateAction.php</code></pre>
+                         <pre><code class="hljs" data-trim contenteditable>App\Action\DeleteChocolateAction.php</code></pre>
+             </section>
+
+
+
+            <section class="simple">
+                    <h1>What about authentication?</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 16.1-basic-http-authentication</code></pre>
+             </section>
+
+             <section class="simple">
+                    <h1>config/routes.php</h1>
+                         <pre><code class="hljs" data-trim contenteditable>
+$app->post(
+    '/submit',
+    [
+        \Middlewares\HttpAuthentication::class,
+        \App\Action\SubmitChocolateAction::class,
+    ],
+    'submit'
+);
+
+$app->post(
+    '/approve/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
+    [
+        \Middlewares\HttpAuthentication::class,
+        \App\Action\ApproveChocolateAction::class,
+    ],
+    'approve'
+);
+
+[...]
+
+</code></pre>
+             </section>
+
+             <section class="simple">
+                    <p>src\App\Container\Middleware\BasicHttpAuthenticationFactory.php</p>
+                         <pre><code class="hljs" data-trim contenteditable>final class BasicHttpAuthenticationFactory
+{
+    public function __invoke(ContainerInterface $container): HttpAuthentication
+    {
+        /** @var UsersServiceInterface $users */
+        $users = $container->get(UsersServiceInterface::class);
+
+        $credentials = array_reduce(
+            $users->getAll(),
+            function (array $carry, User $user) {
+                $carry[$user->username()] = $user->password();
+                return $carry;
+            },
+            []
+        );
+
+        return (new BasicAuthentication($credentials))->attribute(HttpAuthentication::class);
+    }
+}</code></pre>
+             </section>
+
+            <section class="simple">
+                    <h1>Let's switch to JWT...</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 17.3-jwt-authentication</code></pre>
+             </section>
+
+            <section class="simple">
+                    <h1>config/routes.php</h1>
+                         <pre><code class="hljs" data-trim contenteditable>$app->post(
+    '/submit',
+    [
+        \Middlewares\HttpAuthentication::class,
+        \App\Action\SubmitChocolateAction::class,
+    ],
+    'submit'
+);
+
+$app->post(
+    '/approve/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
+    [
+        \Middlewares\HttpAuthentication::class,
+        \App\Action\ApproveChocolateAction::class,
+    ],
+    'approve'
+);</code></pre>
+             </section>
+
+            <section class="simple">
+                    <h1>JWT (add slides)</h1>
+                         <pre><code class="hljs" data-trim contenteditable>non mi è chiaro come abilitata auth JWT su questo branch...</code></pre>
+             </section>
+
+
+                <section class="simple">
+                    <h1>Exercise 4 (30 mins)</h1>
+                        <p>Allow for authenticated users only to submit new wrappers</p>
+                        <p>Allow for administrators only to approve/delete wrappers</p>
+                        <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
+                        <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
+                </section>
+
+
+ <section class="simple">
+                    <h1>Solution to exercise 4</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout 18-authorization</code></pre>
+             </section>
+
+              <section class="simple">
+                    <h1>config/routes.php</h1>
+                         <pre><code class="hljs" data-trim contenteditable>$app->post(
+    '/submit',
+    [
+        \Middlewares\HttpAuthentication::class,
+        \App\Action\SubmitChocolateAction::class,
+    ],
+    'submit'
+);
+
+$app->post(
+    '/approve/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
+    [
+        \Middlewares\HttpAuthentication::class,
+        \App\Middleware\Authorization::class,
+        \App\Action\ApproveChocolateAction::class,
+    ],
+    'approve'
+);</code></pre>
+             </section>
+
+             <section class="simple">
+                    <p>src\App\Middleware\Authorisation.php</p>
+                         <pre><code class="hljs" data-trim contenteditable> public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
+    {
+        $username = $request->getAttribute(JwtAuthentication::class)->data->username;
+
+        $user = $this->usersService->getByUsername($username);
+
+        if (! $user->isAdministrator()) {
+            return new EmptyResponse(403);
+        }
+
+        return $delegate->process($request);
+    }</code></pre>
+             </section>
+
+                <section class="simple">
+                    <!-- If time allows -->
+                    <h1 class="bkg">What About Testing</h1>
+                </section>
+
+                    <section class="simple">
+                    <h1>Exercise 5 (bonus)</h1>
+                        <p>let's write a test for the Authorization Middleware of the last exercise</p>
+                        <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
+                        <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
+                </section>
+
+
+ <section class="simple">
+                    <h1>Solution to exercise 5</h1>
+                         <pre><code class="hljs" data-trim contenteditable>git checkout (?)</code></pre>
+             </section>
 
                  <section class="simple">
-                    <img src="img/kernel.png">
-                    <aside class="notes">
-                        <p>Middleware is about taking a request and turning it into a response</p>
-                    </aside>
+                    <h1 class="bkg">Takeaways</h1>
+                </section>
+
+                <section class="simple" data-background="#efefef">
+                    <img src="img/zend-expressive-logo.png">
                 </section>
 
 
-               <section class="bkg" data-background="img/onion-middleware2.jpg">
-                    <aside class="notes">
-                        <p>Infinitely nestable components</p>
-                        <p>Decorate Request/Response handling</p>
-                        <p>Layers traversed in/out</p>
-                    </aside>
-                </section>
-
-
-                <section>
-                    <img src="img/flight-1.png">
-                </section>
-
-                <section>
-                    <img src="img/flight-2.png">
-                </section>
-
-                <section>
-                    <img src="img/flight-3.png">
-                </section>
-
-                <section class="bkg" data-background="img/cutting-onion.jpg">
-                    <h1 >Middleware</h1>
-
-                    <pre><code class="hljs" data-trim contenteditable>
-function (Request request): Response
-{
-    ...
-
-    response = next(request);
-
-    ...
-
-    return response;
-}
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Middleware Idea...</p>
-                    </aside>
-                </section>
-
-                <section>
-                    <img src="img/stack.png">
-                </section>
-
-
-                <section class="bkg" data-background="img/onion2.jpg">
+             <section class="bkg" data-background="img/onion1.jpg">
                     <h1 class="bkg">Middleware</h1>
-                    <pre><code class="hljs" data-trim contenteditable>
-function (Request): Response
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Look closely: we depend on the response class</p>
-                        <p>Used by Ruby's Rack, Lumen, StackPHP
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/onion3.jpg">
-                    <h1>Middleware</h1>
-
-                    <pre><code class="hljs" data-trim contenteditable>
-function (Request, Response): Response
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Used By Python's WSGI, Slim (used to)
-                        <p>Do not depend on the Response implementation</p>
-                        <p>A middleware needs to know how to get what comes next</p>
-                        <p>Convention</p>
-                    </aside>
-                </section>
-
-                <section class="bkg" data-background="img/onion4.jpg">
-                    <h1>Middleware</h1>
-                    <pre><code class="hljs" data-trim contenteditable>
-function (
-
-    Request request,
-
-    Response response,
-
-    callable next
-
-): Response
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Used and popularized by node's Connect and ExpressJs</p>
-                        <p>Dependencies are Explicit</p>
-                        <p>Every middleware is independent from the others</p>
-                    </aside>
                 </section>
 
 
-                 <section class="bkg" data-background="img/fig-standards.png">
-                    <h2 class="top-right">Hot Week</h2>
+                <section class="bkg">
+                    <h1>What about other frameworks?</h1>
                 </section>
 
-         <section class="bkg" data-background="img/fans.jpg">
-                    <h2 class="low-left">Middleware in Action</h2>
-                </section>
-
-
-
-                <!--section>
-                    <h1>Middleware in other languages</h1>
-                </section-->
-
-                <!--section>
-                    <pre><code class="hljs" data-trim contenteditable>
-class Middleware
-{
-    function __invoke($request, $response, $next)
-    {
-        return $next($request, $response);
-    }
-}
-                    </code></pre>
-                </section-->
-
-                <section>
-                    <pre><code class="hljs" data-trim contenteditable>
-class Middleware
-{
-    function __invoke($request, $response, $next)
-    {
-        if (!$this->preconditionsExist($request, $response)) {
-            throw new RuntimeException();
-        }
-
-        $request = $this->doSomethingOnRequest($request);
-
-        $response = $next($request, $response);
-
-        return $this->doSomethingOnResponse($response);
-    }
-}
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Every middleware can decide if passing the control to the next middleware or return directly a response</p>
-                    </aside>
-                </section>
-
-                <section data-background="img/lock.jpg">
-                    <pre><code class="hljs" data-trim contenteditable>
-class BasicAuthentication
-{
-    function __invoke($request, $response, $next)
-    {
-        $authorization = $request->getHeaderLine('Authorization');
-
-        if ($this->checkUserPassword($authorization)) {
-            $request = self::setAttribute(
-                $request,
-                'USERNAME',
-                $authorization['username']
-            );
-
-            return $next($request, $response);
-        }
-
-        return $this->unauthorizedUserResponse($response);
-    }
-}
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Unauthorized response with 401 status and WWW-Authenticate header</p>
-                    </aside>
-                </section>
-
-                <section data-background="img/log.jpg">
-                    <pre><code class="hljs" data-trim contenteditable>
-class AccessLog
-{
-    function __invoke($request, $response, $next)
-    {
-        if (!self::hasAttribute($request, 'CLIENT_IPS')) {
-            throw new RuntimeException();
-        }
-
-        $response = $next($request, $response);
-
-        $message = $this->createMessage($request, $response);
-
-        $this->logger->log($message);
-
-        return $response;
-    }
-}
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Notice how there is a hidden dependency on a particular request attribute</p>
-                    </aside>
-                </section>
 
                 <section class="simple">
                     <h3>Slim</h3>
@@ -891,134 +1251,24 @@ $adr->middle(new AccessLog($logger));
 </code></pre>
 
  <aside class="notes">
-                        
+
                             <ul>
                                 <li>Action-Domain-Responder framework</li>
                                 <li>Relay: PSR-7 Middleware Dispatcher</li>
                                 <li>FIFO Middleware Stack</li>
                             </ul>
-                        
+
                     </aside>
 
 
                 </section>
 
-                <section class="simple">
-                    <h3>Expressive</h3>
-                    <img src="img/logos/zf.png">
-
-                    <aside class="notes">
-                        <p>Microframework based on PSR-7 middlewares</p>
-                        <p>Provides:
-                            <ul>
-                                <li>abstracted routing</li>
-                                <li>encourages dependency injection</li>
-                                <li>templating</li>
-                                <li>mechanisms for error handling</li>
-                            </ul>
-                        </p>
-                    </aside>
-                </section>
-
-                <section class="simple">
-                    <h3>Expressive</h3>
-                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 26px;">
-// config/autoload/middleware-pipeline.global.php
-return [
-    'middleware-pipeline' => [
-        'basic_authentication' => [
-            'middleware' => new BasicAuthentication($users),
-            'priority' => 4000
-        ],
-        'clientip' => [
-            'middleware' => ClientIp::class,
-            'priority' => 3000
-        ],
-        'geolocate' => [
-            'middleware' => Geolocate::class,
-            'priority' => 2000
-        ],
-        'access-log' => [
-            'middleware' => new AccessLog($logger),
-            'priority' => 1000
-        ]
-    ]
-];
-                    </code></pre>
-
-                </section>
-
-                <section class="simple">
-                    <h3>The magical Expressive tour</h3>
-
-                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 26px;">
-// config/autoload/middleware-pipeline.global.php
-return [
-    'middleware-pipeline' => [
-        'always' => [
-            'middleware' => [
-                Helper\ServerUrlMiddleware::class
-            ], 'priority' => 10000
-        ],
-        'routing' => [
-            'middleware' => [
-                ApplicationFactory::ROUTING_MIDDLEWARE,
-                Helper\UrlHelperMiddleware::class,
-                ApplicationFactory::DISPATCH_MIDDLEWARE
-            ], 'priority' => 1
-        ],
-        'error' => [
-            'middleware' => [], 'error' => true, 'priority' => -10000
-        ]
-    ]
-];
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>always: bootstrapping, pre-conditions, modifications to outgoing responses</p>
-                        <p>routing: route-based authentication, route-based dispatch</p>
-                    </aside>
-                </section>
-
-                <section class="simple">
-                    <h3>ReactPhp</h3>
-                    <img src="img/logos/react-php.png">
-
-                    <aside class="notes">
-                        <p>Asynchrounus runtime</p>
-                        <p>Inspired by Node.js</p>
-                        <p>Runs an event loop</p>
-                        <p>Does not use SAPI</p>
-                    </aside>
-                </section>
-
-                <section class="simple">
-                    <h3>Expressive/ReactPhp</h3>
-
-                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 26px;">
-// config/autoload/middleware-pipeline.global.php
-return [
-    'dependencies' => [
-        'factories' => [
-            React2Psr7\StaticFiles::class => React2Psr7\StaticFilesFactory::class,
-        ]
-    ],
-    'middleware_pipeline' => [
-        'static' => [
-            'middleware' => React2Psr7\StaticFiles::class,
-            'priority' => 100000, // Execute earliest!
-        ],
-        ...
-    ]
-];
-                    </code></pre>
-                </section>
 
                 <section>
                      <img src="img/final.png">
 
                       <aside class="notes">
-                        
+
                             <ul>
                                 <li>Slim/Http Zend Diactoros</li>
                                 <li>Expressive-Stratigility by Extension</li>
@@ -1026,87 +1276,42 @@ return [
                                 <li>Slim provides everything</li>
                                 <li>Middleware runs everywhere!</li>
                             </ul>
-                        
+
                     </aside>
-
-
                 </section>
 
-                <section class="bkg" data-background="img/beatles.jpg">
-                    <h1>Use cases</h1>
-                </section>
-
-                <section>
-                    <h3>Debug bar</h3>
-
-                    <img src="img/expressive-debug.png" height="550px">
-                </section>
 
                 <section class="simple">
-                    <pre><code class="hljs" data-trim contenteditable style="font-size: 20px; line-height: 26px;">
-class DebugBar
-{
-    public function __invoke($request, $response, $next)
-    {
-        if (!self::hasAttribute($request, FormatNegotiator::KEY)) {
-            throw new RuntimeException('Need FormatNegotiator executed before');
-        }
-
-        if ($this->isAsset($request)) {
-            return $this->responsewithAssetBody($request, $response);
-        }
-        $response = $next($request, $response);
-
-        if (Utils\Helpers::isRedirect($response)) {
-            $this->debugBar->stackData();
-        } else if (FormatNegotiator::getFormat($request) === 'html') {
-            $response = $this->createHtmlResponse($response);
-        } else if (Utils\Helpers::isAjax($request)) {
-            $response = $this->createAjaxResponse($response);
-        }
-        return $response;
-    }
-}
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h1>More Available Middleware</h1>
-                    <ul>
-                    <li>Storage-Less Sessions</li>
-                    <li>Device Detection</li>
-                    <li>Analytics Support</li>
-                    <li>Robot-Blocking</li>
-                    <li>Request Rate Limiting</li>
-                    <li>And More...</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h1>Roundup</h1>
-                    <div class="space10"></div>
-                    <p class="fragment">PSR-7: A good HTTP abstraction</p>
-                    <p class="fragment">Abstractions VS Implementations</p>
-                    <p class="fragment">Demolishing the Silos</p>
-                    <p class="fragment">Beware of Runtime Dangers</p> 
-                    <p class="fragment">Middleware is a Hot Topic</p>
-
-                      <aside class="notes">
-                        
-                            <ul>
-                                <li>SRP Violation Risk</li>
-                            </ul>
-                        
-                    </aside>
-
-
+                    <h1 class="bkg">Interoperability</h1>
+                    <p>Keyword - we told ya!</p>
                 </section>
 
                 <section class="bkg" data-background="img/newwave.jpg">
                     <h1>Thank you very much</h1>
                 </section>
 
+
                 <section>
+                    <div class="space10">
+                    <h4>Stay tuned for more...</h4>
+                    <img src="img/logos/mva-logo.png">
+                    <aside class="notes">
+                        <p>Italy-based, North-East</p>
+                        <p>Enterprise Internet applications</p>
+                        <p>Car Sharing, Hotel Entertainment, Finance, Startups...</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h1>Speakers love feedback</h1>
+                    <img src="img/joindin.png">
+                    <p>Leave your feedback at <a href="https://joind.in/talk/1ccba">https://joind.in/talk/1ccba</a></p>
+                    <div class="space5">
+                    <p>Marco <a href="https://twitter.com/marcoshuttle">@marcoshuttle</a> <a href="mailto:m.perone@mvlabs.it">m.perone@mvlabs.it</a></p>
+                    <p>Steve <a href="https://twitter.com/maraspin">@maraspin</a> <a href="mailto:s.maraspin@mvlabs.it">s.maraspin@mvlabs.it</a></p>
+                </section>
+
+ <section>
                     <h1>Resources</h1>
 
                     <div class="credits">
@@ -1119,25 +1324,6 @@ class DebugBar
                         <p><a href="https://zendframework.github.io/zend-expressive/">Zend Expressive</a> documentation</p>
                         <p><a href="https://github.com/php-fig/fig-standards/blob/95aece5e68376e9a5d79d2385d755824dfac3ed8/proposed/middleware-meta.md">Proposed Middleware Interface PSR-N</a>
                     </div>
-                </section>
-    
-                <section class="simple" data-background="#151d28">
-                    <div class="space10">
-                    <a href="http://php-middleworld.com"><img src="img/logos/phpmiddleworld.png"></a>
-                </section>
-
-                <section>
-                    <h1>Speakers love feedback</h1>
-                    <img src="img/joindin.png">
-                    <p>Leave your feedback at <a href="https://joind.in/talk/1ccba">https://joind.in/talk/1ccba</a></p>
-                    <div class="space5">
-                    <p>Marco <a href="https://twitter.com/marcoshuttle">@marcoshuttle</a> <a href="mailto:m.perone@mvlabs.it">m.perone@mvlabs.it</a></p>
-                    <p>Steve <a href="https://twitter.com/maraspin">@maraspin</a> <a href="mailto:s.maraspin@mvassociati.it">s.maraspin@mvassociati.it</a></p>
-                </section>
-
-                <section class="bkg" data-background="img/imagine.jpg">
-                    <div class="space40">
-                    <h3>All you need is middleware</h3>
                 </section>
 
                 <section>
@@ -1164,7 +1350,7 @@ class DebugBar
 
                         </div>
                         <div style="float:right; width: 50%">
-                            
+
                             <p>Figs by <a href="https://commons.wikimedia.org/wiki/File%3A%D9%82%D8%B7%D9%8A%D9%86.JPG">Mburnat</a></p>
                             <p>Kungsleden by <a href="https://commons.wikimedia.org/wiki/File%3AKungsleden_trail.JPG">Shyguy24x7</a></p>
                             <p>Danger zone by <a href="https://www.flickr.com/photos/cvander/2604370414">cvander</a></p>
@@ -1196,10 +1382,11 @@ class DebugBar
 
             <footer>
                 <div class="details">
-                PHPDay 2016 - Verona, Italy, May 13<sup>th</sup> 2016 -
+                Web Summer Camp - Rovinj, Croatia, Aug 30<sup>th</sup> 2017 -
                 <a href="https://twitter.com/marcoshuttle">@marcoshuttle</a>
                 <a href="https://twitter.com/maraspin">@maraspin</a>
                  <img src="img/logo.png" height="25">
+                </div>
             </footer>
 
         <script src="lib/js/head.min.js"></script>
