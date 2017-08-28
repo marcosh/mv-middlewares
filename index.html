@@ -222,7 +222,7 @@ git checkout 01-expressive-skeleton
                 </section>
 
                 <section class="bkg">
-                    <img src="img/outcome.png">
+                    <img src="img/home.png">
                 </section>
 
                 <section class="simple">
@@ -336,26 +336,6 @@ call_user_func(<span class="hljs-function"><span class="hljs-keyword">function</
 });</code></pre>
                 </section>
 
-                 <section class="simple">
-                    <p>config/container.php</p>
-                    <pre><code class="hljs">// Load configuration
-$config = require __DIR__ . '/config.php';
-
-$container = new Container();
-$container['config'] = $config;
-
-[...]
-foreach ($config['dependencies']['services'] as $name => $service) {
-    $container[$name] = function ($c) use ($service) {
-        return $service;
-    };
-}
-[...]
-
-return $container;
-                    </code></pre>
-                </section>
-
                 <section class="simple">
                     <p>config/config.php</p>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
@@ -390,11 +370,11 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
                 </section>
 
                 <section class="bkg">
-                    <img src="img/outcome.png">
+                    <img src="img/home.png">
                 </section>
 
                 <section class="bkg">
-                    <img src="img/404.png">
+                    <img src="img/wrong-ping.png">
                 </section>
 
 
@@ -407,7 +387,7 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
                 </section>
 
                 <section class="bkg">
-                    <img src="img/api-ping.png">
+                    <img src="img/ping.png">
                 </section>
 
                 <section class="simple">
@@ -439,7 +419,9 @@ class PingAction implements ServerMiddlewareInterface
 
                 <section class="simple">
                     <h1>PSR-7 ResponseInterface</h1>
-                    <pre><code class="hljs" data-trim contenteditable>namespace Psr\Http\Message;
+                    <pre><code class="hljs php" data-trim>
+namespace Psr\Http\Message;
+
 interface ResponseInterface extends MessageInterface
 {
     public function getStatusCode();
@@ -451,7 +433,7 @@ interface ResponseInterface extends MessageInterface
 
                 <section class="simple">
                     <h1>PSR-7 ServerRequestInterface</h1>
-                         <pre><code class="hljs" data-trim contenteditable>
+                    <pre><code class="hljs php" data-trim>
 namespace Psr\Http\Message;
 
 interface ServerRequestInterface extends RequestInterface
@@ -501,15 +483,15 @@ git checkout 03-welcome
                 </section>
 
                 <section class="bkg">
-                    <img src="img/03.png">
+                    <img src="img/welcome.png">
                 </section>
 
                 <section class="bkg">
-                    <img src="img/es-01-def.png">
+                    <img src="img/hello.png">
                 </section>
 
                 <section class="bkg">
-                    <img src="img/es-01.png">
+                    <img src="img/hello-rovinj.png">
                 </section>
 
                 <section class="simple">
@@ -565,7 +547,7 @@ git checkout 06-chocolates-route
 
 
                 <section class="bkg">
-                    <img src="img/07-choco.png">
+                    <img src="img/chocolates.png">
                 </section>
 
                 <section class="simple">
@@ -685,17 +667,17 @@ interface ContainerInterface
                 </section>
 
                 <section class="bkg">
-                    <img src="img/08-choco-detail.png">
+                    <img src="img/chocolate.png">
                 </section>
 
                 <section class="simple">
                     <h1>Exercise 2 (25 mins)</h1>
                     <p>get to branch 06-chocolates-route</p>
                     <h2>Alternative A - User List</h2>
-                    <p>Create a users (/users) route</p>
-                    <h2>Alternative B - Chocolate Details</h2>
                     <p>Create a chocolate-details (/chocolate/ID) route where ID is a proper ID of a chocolate wrapper in our domain</p>
                     <p>Interact with src/App/Domain/Service/ChocolatesService.php</p>
+                    <h2>Alternative B - Chocolate Details</h2>
+                    <p>Create a users (/users) route</p>
                     <pre><code class="hljs" data-trim>
 docs/readme.html
                     </code></pre>
@@ -724,6 +706,10 @@ docs/readme.html
                     <h1>You can check it out with</h1>
                     <pre><code class="hljs bash" data-trim>
 git checkout 07-chocolate-details-route
+                    </code></pre>
+                    <br>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 08-users
                     </code></pre>
                 </section>
 
@@ -851,6 +837,7 @@ interface MiddlewareInterface
 
                 <section class="simple">
                     <h1>Exercise 3 (25 mins)</h1>
+                    <p>Get to branch 10-access-log</p>
                     <p>Create a caching middleware</p>
                     <p>For all http GET requests, make sure that a cached result is returned, when available</p>
                     <pre><code class="hljs" data-trim>
@@ -1032,16 +1019,28 @@ git checkout 17.3-jwt-authentication
                 </section>
 
                 <section class="simple">
-                    <h1>JWT (add slides)</h1>
-                    <pre><code class="hljs" data-trim contenteditable>non mi è chiaro come abilitata auth JWT su questo branch...</code></pre>
+                    <h1>JWT</h1>
+                    <img src="img/jwt-authentication.png" height="500px">
+                </section>
+
+                <section class="simple">
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs php" data-trim>
+$app->post('/token', \App\Action\TokenAction::class, 'token');
+                    </code></pre>
+                </section>
+
+                <section class="simple">
+                    <img src="img/token.png">
                 </section>
 
                 <section class="simple">
                     <h1>Exercise 4 (30 mins)</h1>
-                    <p>Get to branch 17.1-basic-http-authentication</p>
                     <h2>Alternative A - JWT Authentication</h2>
+                    <p>Get to branch 17.1-jwt-authentication</p>
                     <p>Implement JWT Authentication</p>
                     <h2>Alternative B - Authorization</h2>
+                    <p>Get to branch 16.1-basic-http-authentication</p>
                     <p>Allow for authenticated users only to submit new wrappers</p>
                     <p>Allow for administrators only to approve/delete wrappers</p>
                     <pre><code class="hljs" data-trim>
@@ -1051,6 +1050,10 @@ docs/readme.html
 
                 <section class="simple">
                     <h1>Solution to exercise 4</h1>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 17.3-jwt-authentication
+                    </code></pre>
+                    <br>
                     <pre><code class="hljs bash" data-trim>
 git checkout 18-authorization
                     </code></pre>
@@ -1109,6 +1112,7 @@ git checkout 18-authorization
 
                 <section class="simple">
                     <h1>Exercise 5 (bonus)</h1>
+                    <p>Get to branch 19-phpunit or 20-behat</p>
                     <p>let's write a test for the Authorization Middleware of the last exercise</p>
                     <pre><code class="hljs" data-trim>
 docs/readme.html
