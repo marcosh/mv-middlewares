@@ -9,6 +9,10 @@ body {
   color: #333;
 }
 
+.disabled {
+  color: #999;
+}
+
 .reveal {
   font-family: 'IstokWeb', Helvetica, sans-serif;
   font-size: 48px;

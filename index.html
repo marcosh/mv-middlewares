@@ -155,21 +155,34 @@ app.listen(3000)
                 <!-- https://pixabay.com/en/work-workaholic-writer-programmer-1627703/... -->
                 <!-- https://pixabay.com/en/computer-code-coding-programming-1828603/ -->
                 <section class="bkg" data-background="img/computer-1828603_1280.jpg">
-                    <h1>How about you?</h1>
+                    <h1 class="low-right">How about you?</h1>
                 </section>
 
                 <section class="bkg" data-background="#fff">
-                    <img src="img/symfony.png">
-                    <img src="img/zf.jpg">
+                    <img src="img/symfony.png" width="40%">
+                    <br>
+                    <img src="img/zf.jpg" width="24%">
                 </section>
 
                 <section class="bkg" data-background="#fff">
                     <p>Dependency Injection</p>
                     <p>Value Objects</p>
-                    <p>PSR-7</p>
-                    <p>Zend Expressive</p>
-                    <p>Middleware</p>
                 </section>
+
+                <section class="bkg" data-background="#fff">
+                    <p class="disabled">Dependency Injection</p>
+                    <p class="disabled">Value Objects</p>
+                    <p>PSR-7</p>
+                </section>
+
+                <section class="bkg" data-background="#fff">
+                    <p class="disabled">Dependency Injection</p>
+                    <p class="disabled">Value Objects</p>
+                    <p class="disabled">PSR-7</p>
+                    <p>Middleware</p>
+                    <p>Zend Expressive</p>
+                </section>
+
 
                 <!-- https://pixabay.com/en/lake-west-sunset-the-sun-sky-2522540/ -->
                 <section class="bkg" data-background="img/lake-2522540_1280.jpg">
@@ -251,6 +264,14 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
 
                  <section class="bkg">
                     <img src="img/ze-stack.png">
+                    <br>
+                    Replace with abstract, ours
+                </section>
+
+                <section class="bkg">
+                    <img src="img/ze-stack.png">
+                    <br>
+                    replace with concrete, ours
                 </section>
 
                 <!-- https://pixabay.com/en/food-preparation-parts-wood-table-1081813/ -->
@@ -714,39 +735,6 @@ git checkout 09-users-details-route
                 </section>
 
                 <section class="simple">
-                    <h1>Factories for multiple named services</h1>
-                    <pre><code class="hljs" data-trim contenteditable>namespace App\Container\Action;
-
-use App\Domain\Service\ChocolatesServiceInterface;
-use App\Domain\Service\UsersServiceInterface;
-use Interop\Container\ContainerInterface;
-
-final class ChocolatesAndUsersActionFactory
-{
-    public function __invoke(ContainerInterface $container, string $name)
-    {
-        return new $name(
-            $container->get(ChocolatesServiceInterface::class),
-            $container->get(UsersServiceInterface::class)
-        );
-    }
-}
-                    </code></pre>
-                </section>
-
-                <section class="simple">
-                    <h1>FactoryInterface</h1>
-                    <pre><code class="hljs" data-trim contenteditable>
-
-    public function __invoke(
-        ContainerInterface $container,
-        string $name,
-        array $options = null
-    )
-                    </code></pre>
-                </section>
-
-                <section class="simple">
                     <h1>But hey, did you notice?</h1>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">...</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span>
@@ -811,77 +799,6 @@ interface MiddlewareInterface
 
                 <section>
                     <img src="img/flight-3.png">
-                </section>
-
-                <section class="simple">
-                    <img src="img/book_cover.gif">
-                </section>
-
-                <section class="simple">
-                    <h1>Pipes and filters</h1>
-                    <img src="img/pipes-filters.png">
-                </section>
-
-                <section class="simple">
-                    <h1>Pizza Example</h1>
-                    <img src="img/pipes-filters-pizza.png">
-                </section>
-
-                <section class="bkg" data-background="img/margherita.jpg">
-                    <h1>Decorator</h1>
-                    <aside class="notes">
-                        <p>Pipes and filters is linear, we would like to compose things in a more general way</p>
-                        <p>Alternative to subclassing for extending functionality</p>
-                    </aside>
-                </section>
-
-                <section data-background="img/cheese-vegetables.jpg" class="simple">
-                    <pre><code class="hljs" data-trim contenteditable>
-interface Pizza
-
-class Margherita implements Pizza
-
-class CheeseDecoratedPizza implements Pizza
-{
-    function __construct(Pizza $pizza)
-}
-
-class VegetablesDecoratedPizza implements Pizza
-{
-    function __construct(Pizza $pizza)
-}
-                    </code></pre>
-
-                    <aside class="notes">
-                        <p>Conform to the interface of the decorated object</p>
-                        <p>Its presence is transparent to the client</p>
-                    </aside>
-                </section>
-
-                <section data-background="img/pizza.jpg" class="simple">
-                    <pre><code class="hljs" data-trim contenteditable>
-$myFavouritePizza =
-
-    new VegatablesDecoratedPizza(
-
-        new CheeseDecoratedPizza(
-
-            new Margherita()
-
-        )
-
-    );
-                    </code></pre>
-                    <aside class="notes">
-                        <p>Recursive nesting</p>
-                        <p>Responsabilities added and removed at runtime</p>
-                        <p>Unlimited number of added responsabilities</p>
-                    </aside>
-                </section>
-
-                <!-- https://pixabay.com/en/baggage-hall-heathrow-airport-775540/ -->
-                <section class="bkg" data-background="img/baggage-hall-775540_1280.jpg">
-                    <h1>Cross cutting concerns</h1>
                 </section>
 
                 <section class="simple">
