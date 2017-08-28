@@ -186,7 +186,7 @@ app.listen(3000)
 
                 <section class="simple">
                     <h1>Zend Expressive</h1>
-                    <p>...an easy to use, PSR-15, PSR-11, PSR-7 compliant middleware atomic micro-framework that can work well as an entry point to Zend MVC, a smaller fully-featured web app or an API server</p>
+                    <p>...an easy to use, PSR-15, PSR-11, PSR-7 compliant middleware atomic micro-framework that works particularily well for small fully-featured web apps or API servers</p>
                 </section>
 
                 <section class="simple">
@@ -261,11 +261,8 @@ composer create-project zendframework/zend-expressive-skeleton my-project
                    <pre><code class="hljs">├── bin
 ├── config
 ├── data
-├── docs
-├── migrations
 ├── public
 │     └── index.php
-├── seeds
 ├── src
 ├── test
 └── vendor
@@ -281,7 +278,6 @@ composer create-project zendframework/zend-expressive-skeleton my-project
                     /etc/apache2/sites-available/phpmiddleware.conf
                     </code></pre>
                 </section>
-
 
                 <section class="simple">
                     <h1>public/index.php</h1>
@@ -343,7 +339,43 @@ return $aggregator->getMergedConfig();
                     </code></pre>
                 </section>
 
-                 <section class="simple">
+                <section class="simple">
+                    <h1>public/index.php</h1>
+                    <pre><code class="hljs">
+
+chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
+
+call_user_func(function () {
+    /** @var \Interop\Container\ContainerInterface $container */
+    $container = require 'config/container.php';
+
+    /** @var \Zend\Expressive\Application $app */
+    $app = $container->get(\Zend\Expressive\Application::class);
+
+    require 'config/pipeline.php';
+    require 'config/routes.php';
+
+    $app->run();
+});
+                    </code></pre>
+                </section>
+
+                <section class="simple">
+                    <h1>config/routes.php</h1>
+                    <pre><code class="hljs">$app->get('/', App\Action\HomePageAction::class, 'home');
+$app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
+                </section>
+
+                <section class="bkg">
+                    <img src="img/outcome.png">
+                </section>
+
+                <section class="bkg">
+                    <img src="img/404.png">
+                </section>
+
+                <section class="simple">
                     <h1>config/routes.php</h1>
                     <pre><code class="hljs">$app->get('/', App\Action\HomePageAction::class, 'home');
 $app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
@@ -351,14 +383,6 @@ $app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
 
                 <section class="bkg">
                     <img src="img/api-ping.png">
-                </section>
-
-                <section class="bkg">
-                    <img src="img/404.png">
-                </section>
-
-                <section class="bkg">
-                    <img src="img/outcome.png">
                 </section>
 
                 <section class="simple">
@@ -387,9 +411,16 @@ class PingAction implements ServerMiddlewareInterface
                     </code></pre>
                 </section>
 
-                <!-- https://pixabay.com/en/mailwoman-civil-servant-letters-1124335/ -->
-                <section class="bkg" data-background="img/mailwoman-1124335_1280.jpg">
-                    <h1>Zend Diactoros</h1>
+                <section class="simple">
+                    <h1>PSR-7 ResponseInterface</h1>
+                    <pre><code class="hljs" data-trim contenteditable>namespace Psr\Http\Message;
+interface ResponseInterface extends MessageInterface
+{
+    public function getStatusCode();
+    public function withStatus($code, $reasonPhrase = '');
+    public function getReasonPhrase();
+}
+                    </code></pre>
                 </section>
 
                 <section class="simple">
@@ -413,18 +444,6 @@ interface ServerRequestInterface extends RequestInterface
     public function withoutAttribute($name);
 }
                         </code></pre>
-                </section>
-
-                <section class="simple">
-                    <h1>PSR-7 ResponseInterface</h1>
-                    <pre><code class="hljs" data-trim contenteditable>namespace Psr\Http\Message;
-interface ResponseInterface extends MessageInterface
-{
-    public function getStatusCode();
-    public function withStatus($code, $reasonPhrase = '');
-    public function getReasonPhrase();
-}
-                    </code></pre>
                 </section>
 
                 <section class="simple">
@@ -463,10 +482,10 @@ interface ResponseInterface extends MessageInterface
 
                 <section class="simple">
                     <h1>Exercise 1 (10 mins)</h1>
+                    <p>get to branch 03-welcome</p>
                     <p>Create an hello route (/hello)</p>
                     <p>Display output {"hello":"NAME"}</p>
                     <p>NAME is either the value of the http GET name parameter, or the string random phper if no name parameter was provided</p>
-                    <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
                     <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
                 </section>
 
@@ -501,6 +520,10 @@ interface ResponseInterface extends MessageInterface
                     <pre><code class="hljs" data-trim contenteditable>git checkout 06-chocolates-route</code></pre>
                 </section>
 
+                <section class="bkg" data-background="img/dark-2562840_1280.jpg">
+                    <h1>Our Domain</h1>
+                </section>
+
                 <section class="bkg">
                     <img src="img/07-choco.png">
                 </section>
@@ -509,9 +532,9 @@ interface ResponseInterface extends MessageInterface
                     <p>config/routes.php</p>
                     <pre><code class="hljs">$app->get('/', \App\Action\IndexAction::class, 'index');
 
-    $app->get('/hello', \App\Action\HelloAction::class, 'hello');
+$app->get('/hello', \App\Action\HelloAction::class, 'hello');
 
-    $app->get('/chocolates', \App\Action\ChocolatesAction::class, 'chocolates');
+$app->get('/chocolates', \App\Action\ChocolatesAction::class, 'chocolates');
                     </code></pre>
                 </section>
 
@@ -609,9 +632,12 @@ interface ResponseInterface extends MessageInterface
 
                 <section class="simple">
                     <h1>Exercise 2 (25 mins)</h1>
-                    <p>Create a chocolate-details (/chocolate/ID) where ID is a proper ID of a chocolate wrapper in our domain</p>
+                    <p>get to branch 06-chocolates-route</p>
+                    <h2>Alternative A - User List</h2>
+                    <p>Create a users (/users) route</p>
+                    <h2>Alternative B - Chocolate Details</h2>
+                    <p>Create a chocolate-details (/chocolate/ID) route where ID is a proper ID of a chocolate wrapper in our domain</p>
                     <p>Interact with src/App/Domain/Service/ChocolatesService.php</p>
-                   <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
                     <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
                 </section>
 
@@ -879,9 +905,9 @@ final class AccessLogFactory
 
                 <section class="simple">
                     <h1>Exercise 3 (25 mins)</h1>
+                    <p>Get to branch 10-access-log</p>
                     <p>Create a caching middleware</p>
                     <p>For all http GET requests, make sure that a cached result is returned</p>
-                    <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
                     <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
                 </section>
 
@@ -1049,9 +1075,12 @@ $app->post(
 
                 <section class="simple">
                     <h1>Exercise 4 (30 mins)</h1>
+                    <p>Get to branch 17.1-basic-http-authentication</p>
+                    <h2>Alternative A - JWT Authentication</h2>
+                    <p>Implement JWT Authentication</p>
+                    <h2>Alternative B - Authorization</h2>
                     <p>Allow for authenticated users only to submit new wrappers</p>
                     <p>Allow for administrators only to approve/delete wrappers</p>
-                    <pre><code class="hljs" data-trim contenteditable>bin/clear-config-cache.php</code></pre>
                     <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
                 </section>
 
@@ -1109,7 +1138,6 @@ $app->post(
                 <section class="simple">
                     <h1>Exercise 5 (bonus)</h1>
                     <p>let's write a test for the Authorization Middleware of the last exercise</p>
-                    <pre><code class="hljs">bin/clear-config-cache.php</code></pre>
                     <pre><code class="hljs">docs/readme.html</code></pre>
                 </section>
 
