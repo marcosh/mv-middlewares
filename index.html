@@ -70,7 +70,8 @@
                 <!--  data-trim contenteditable -->
                 <section class="simple">
                     <h1>Node.JS Middleware</h1>
-                    <pre><code class="hljs">var express = require('express')
+                    <pre><code class="hljs javascript" data-trim>
+var express = require('express')
 var app = express()
 
 app.get('/', function (req, res) {
@@ -191,7 +192,9 @@ app.listen(3000)
 
                 <section class="simple">
                     <h1>Let's Go!</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 01-expressive-skeleton</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 01-expressive-skeleton
+                    </code></pre>
                 </section>
 
                 <section class="simple">
@@ -204,8 +207,10 @@ app.listen(3000)
 
                 <section class="simple">
                     <h1>Default Installation</h1>
-                    <pre><code class="hljs" data-trim contenteditable>cd /var/www/html/summercamp/
-composer create-project zendframework/zend-expressive-skeleton my-project
+                    <pre><code class="hljs bash" data-trim>
+cd /var/www/html/summercamp/
+
+composer create-project zendframework/zend-expressive-skeleton phpmiddleware
                     </code></pre>
                 </section>
 
@@ -255,12 +260,14 @@ composer create-project zendframework/zend-expressive-skeleton my-project
 
                 <section class="simple">
                     <h1>Filesystem layout</h1>
-                    <pre><code class="hljs">
-                    /var/www/html/summercamp/phpmiddleware
+                    <pre><code class="hljs bash" data-trim>
+/var/www/html/summercamp/phpmiddleware
                     </code></pre>
-                   <pre><code class="hljs">├── bin
+                    <pre><code class="hljs" data-trim>
+├── bin
 ├── config
 ├── data
+├── docs
 ├── public
 │     └── index.php
 ├── src
@@ -271,38 +278,38 @@ composer create-project zendframework/zend-expressive-skeleton my-project
 
                 <section class="simple">
                     <h1>Document Root</h1>
-                    <pre><code class="hljs">
-                    /var/www/html/summercamp/phpmiddleware/public
+                    <pre><code class="hljs bash" data-trim>
+/var/www/html/summercamp/phpmiddleware/public
                     </code></pre>
-                    <pre><code class="hljs">
-                    /etc/apache2/sites-available/phpmiddleware.conf
+                    <br>
+                    <pre><code class="hljs bash" data-trim>
+/etc/apache2/sites-available/phpmiddleware.conf
                     </code></pre>
                 </section>
 
+
                 <section class="simple">
-                    <h1>public/index.php</h1>
-                    <pre><code class="hljs">
+                    <p>public/index.php</p>
+                    <pre><code class="hljs no-highlight php" data-trim data-noescape>
+chdir(dirname(<span class="hljs-keyword">__DIR__</span>));
+<span class="hljs-keyword">require</span> <span class="hljs-string">'vendor/autoload.php'</span>;
 
-chdir(dirname(__DIR__));
-require 'vendor/autoload.php';
+call_user_func(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">/**<span class="hljs-phpdoc"> @var</span> \Interop\Container\ContainerInterface $container */</span>
+    <span class="hljs-variable">$container</span> = <span class="hljs-keyword">require</span> <span class="hljs-string">'config/container.php'</span>;
 
-call_user_func(function () {
-    /** @var \Interop\Container\ContainerInterface $container */
-    $container = require 'config/container.php';
+    <span class="hljs-comment">/**<span class="hljs-phpdoc"> @var</span> \Zend\Expressive\Application $app */</span>
+    <span class="hljs-variable">$app</span> = <span class="hljs-variable">$container</span><span class="hljs-funtion">-&gt;get</span>(\Zend\Expressive\Application::<span class="hljs-keyword">class</span>);
 
-    /** @var \Zend\Expressive\Application $app */
-    $app = $container->get(\Zend\Expressive\Application::class);
+    <span class="hljs-keyword">require</span> <span class="hljs-string">'config/pipeline.php'</span>;
+    <span class="hljs-keyword">require</span> <span class="hljs-string">'config/routes.php'</span>;
 
-    require 'config/pipeline.php';
-    require 'config/routes.php';
-
-    $app->run();
-});
-                    </code></pre>
+    <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;run</span>();
+});</code></pre>
                 </section>
 
                  <section class="simple">
-                    <h1>config/container.php</h1>
+                    <p>config/container.php</p>
                     <pre><code class="hljs">// Load configuration
 $config = require __DIR__ . '/config.php';
 
@@ -322,49 +329,36 @@ return $container;
                 </section>
 
                 <section class="simple">
-                    <h1>config/config.php</h1>
-                    <pre><code class="hljs">$cacheConfig = [
-    'config_cache_path' => 'data/config-cache.php',
-];
-$aggregator = new ConfigAggregator([
+                    <p>config/config.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$aggregator</span> = <span class="hljs-keyword">new</span> ConfigAggregator([
+    App\ConfigProvider::<span class="hljs-keyword">class</span>,
+    <span class="hljs-keyword">new</span> PhpFileProvider(<span class="hljs-string">'config/autoload/{{,*.}global,{,*.}local}.php'</span>),
+    <span class="hljs-keyword">new</span> PhpFileProvider(<span class="hljs-string">'config/development.config.php'</span>)
+]);
 
-    new ArrayProvider($cacheConfig),
-    App\ConfigProvider::class,
-    new PhpFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
-    new PhpFileProvider('config/development.config.php'),
+return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">-&gt;getMergedConfig</span>();</code></pre>
+                </section>
 
-], $cacheConfig['config_cache_path']);
+                <section class="simple">
+                    <p>config/pipeline.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-funtion">->pipe</span>(ErrorHandler::<span class="hljs-keyword">class</span>);
 
-return $aggregator->getMergedConfig();
+<span class="hljs-variable">$app</span><span class="hljs-funtion">->pipeRoutingMiddleware</span>();
+
+<span class="hljs-variable">$app</span><span class="hljs-funtion">->pipeDispatchMiddleware</span>();
+
+<span class="hljs-variable">$app</span><span class="hljs-funtion">->pipe</span>(NotFoundHandler::<span class="hljs-keyword">class</span>);
                     </code></pre>
                 </section>
 
                 <section class="simple">
-                    <h1>public/index.php</h1>
-                    <pre><code class="hljs">
-
-chdir(dirname(__DIR__));
-require 'vendor/autoload.php';
-
-call_user_func(function () {
-    /** @var \Interop\Container\ContainerInterface $container */
-    $container = require 'config/container.php';
-
-    /** @var \Zend\Expressive\Application $app */
-    $app = $container->get(\Zend\Expressive\Application::class);
-
-    require 'config/pipeline.php';
-    require 'config/routes.php';
-
-    $app->run();
-});
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/'</span>, App\Action\HomePageAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'home'</span>);
+<span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/api/ping'</span>, App\Action\PingAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'api.ping'</span>);
                     </code></pre>
-                </section>
-
-                <section class="simple">
-                    <h1>config/routes.php</h1>
-                    <pre><code class="hljs">$app->get('/', App\Action\HomePageAction::class, 'home');
-$app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
                 </section>
 
                 <section class="bkg">
@@ -375,10 +369,13 @@ $app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
                     <img src="img/404.png">
                 </section>
 
+
                 <section class="simple">
-                    <h1>config/routes.php</h1>
-                    <pre><code class="hljs">$app->get('/', App\Action\HomePageAction::class, 'home');
-$app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/'</span>, App\Action\HomePageAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'home'</span>);
+<span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/api/ping'</span>, App\Action\PingAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'api.ping'</span>);
+                    </code></pre>
                 </section>
 
                 <section class="bkg">
@@ -386,16 +383,17 @@ $app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
                 </section>
 
                 <section class="simple">
-                    <h1>config/routes.php</h1>
-                    <pre><code class="hljs">$app->get('/', App\Action\HomePageAction::class, 'home');
-$app->get('/api/ping', App\Action\PingAction::class, 'api.ping');</code></pre>
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/'</span>, App\Action\HomePageAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'home'</span>);
+<span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/api/ping'</span>, App\Action\PingAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'api.ping'</span>);
+                    </code></pre>
                 </section>
 
                 <section class="simple">
                     <p>src/App/Action/PingAction.php</p>
-                    <pre><code class="hljs">namespace App\Action;
-
-[...]
+                    <pre><code class="hljs php" data-trim>
+namespace App\Action;
 
 class PingAction implements ServerMiddlewareInterface
 {
@@ -425,7 +423,8 @@ interface ResponseInterface extends MessageInterface
 
                 <section class="simple">
                     <h1>PSR-7 ServerRequestInterface</h1>
-                         <pre><code class="hljs" data-trim contenteditable>namespace Psr\Http\Message;
+                         <pre><code class="hljs" data-trim contenteditable>
+namespace Psr\Http\Message;
 
 interface ServerRequestInterface extends RequestInterface
 {
@@ -447,10 +446,13 @@ interface ServerRequestInterface extends RequestInterface
                 </section>
 
                 <section class="simple">
-                    <h1>Interacting with these...</h1>
-                    <pre><code class="hljs" data-trim contenteditable>$response->setStatusCode(503);
+                    <h1>Interacting with PSR-7 messages</h1>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$response</span><span class="hljs-function">->setStatusCode</span>(<span class="hljs-number">418</span>);
                     </code></pre>
-                    <pre><code class="hljs" data-trim contenteditable>$response = $response->withStatusCode(503);</code></pre>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$response</span> = <span class="hljs-variable">$response</span><span class="hljs-function">->withStatusCode</span>(<span class="hljs-number">418</span>);
+                    </code></pre>
                 </section>
 
                 <section class="bkg" data-background="img/diamond.jpg">
@@ -465,7 +467,9 @@ interface ServerRequestInterface extends RequestInterface
 
                  <section class="simple">
                     <h1>Time to do stuff...</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 03-welcome</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 03-welcome
+                    </code></pre>
                 </section>
 
                 <section class="bkg">
@@ -485,25 +489,28 @@ interface ServerRequestInterface extends RequestInterface
                     <p>get to branch 03-welcome</p>
                     <p>Create an hello route (/hello)</p>
                     <p>Display output {"hello":"NAME"}</p>
-                    <p>NAME is either the value of the http GET name parameter, or the string random phper if no name parameter was provided</p>
-                    <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
+                    <p>NAME is either the value of the "name" query string parameter, or the string "random phper" if no name parameter was provided</p>
+                    <pre><code class="hljs" data-trim>
+docs/readme.html
+                    </code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Exercise 1 Solution</h1>
-                    <pre><code class="hljs">class HelloAction implements MiddlewareInterface
-{
-    public function process(
-        ServerRequestInterface $request,
-        DelegateInterface $delegate
-    ): ResponseInterface
-    {
-        $query = $request->getQueryParams();
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloAction</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">(
+        ServerRequestInterface <span class="hljs-variable">$request</span>,
+        DelegateInterface <span class="hljs-variable">$delegate</span>
+    )</span>: ResponseInterface
+    </span>{
+        <span class="hljs-variable">$query</span> = <span class="hljs-variable">$request</span><span class="hljs-function">-&gt;getQueryParams</span>();
 
-        $name = $query['name'] ?? 'random phper';
+        <span class="hljs-variable">$name</span> = <span class="hljs-variable">$query</span>[<span class="hljs-string">'name'</span>] ?? <span class="hljs-string">'random phper'</span>;
 
-        return new JsonResponse([
-            'hello' => $name
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JsonResponse([
+            <span class="hljs-string">'hello'</span> =&gt; <span class="hljs-variable">$name</span>
         ]);
     }
 }
@@ -512,17 +519,22 @@ interface ServerRequestInterface extends RequestInterface
 
                 <section class="simple">
                     <h1>Check it out with</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 04-hello-name</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 04-hello-name
+                    </code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Let's move on...</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 06-chocolates-route</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 06-chocolates-route
+                    </code></pre>
                 </section>
 
-                <section class="bkg" data-background="img/dark-2562840_1280.jpg">
+   				<section class="bkg" data-background="img/dark-2562840_1280.jpg">
                     <h1>Our Domain</h1>
                 </section>
+
 
                 <section class="bkg">
                     <img src="img/07-choco.png">
@@ -530,35 +542,38 @@ interface ServerRequestInterface extends RequestInterface
 
                 <section class="simple">
                     <p>config/routes.php</p>
-                    <pre><code class="hljs">$app->get('/', \App\Action\IndexAction::class, 'index');
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;get</span>(<span class="hljs-string">'/'</span>, \App\Action\IndexAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'index'</span>);
 
-$app->get('/hello', \App\Action\HelloAction::class, 'hello');
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;get</span>(<span class="hljs-string">'/hello'</span>, \App\Action\HelloAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'hello'</span>);
 
-$app->get('/chocolates', \App\Action\ChocolatesAction::class, 'chocolates');
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;get</span>(<span class="hljs-string">'/chocolates'</span>, \App\Action\ChocolatesAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'chocolates'</span>);
                     </code></pre>
                 </section>
 
                 <section class="simple">
                     <p>src/App/Action/ChocolatesAction.php</p>
-                    <pre><code class="hljs">final class ChocolatesAction implements MiddlewareInterface
-    {
-        /**
-         * @var ChocolatesServiceInterface
-         */
-        private $chocolates;
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChocolatesAction</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span></span>
+{
+    <span class="hljs-comment">/**
+     *<span class="hljs-phpdoc"> @var</span> ChocolatesServiceInterface
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-variable">$chocolates</span>;
 
-        public function __construct(ChocolatesServiceInterface $chocolates)
-        {
-            $this->chocolates = $chocolates;
-        }
-
-        public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
-        {
-            $filters = $request->getQueryParams();
-
-            return new JsonResponse($this->chocolates->getAll($filters));
-        }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(ChocolatesServiceInterface <span class="hljs-variable">$chocolates</span>)</span>
+    </span>{
+        <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;chocolates</span> = <span class="hljs-variable">$chocolates</span>;
     }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">(
+        ServerRequestInterface <span class="hljs-variable">$request</span>,
+        DelegateInterface <span class="hljs-variable">$delegate</span>
+    )</span>: ResponseInterface</span>
+    {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JsonResponse(<span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;chocolates</span><span class="hljs-function">-&gt;getAll</span>());
+    }
+}
                     </code></pre>
                 </section>
 
@@ -583,46 +598,61 @@ $app->get('/chocolates', \App\Action\ChocolatesAction::class, 'chocolates');
 
                 <section class="simple">
                     <p>src/App/ConfigProvider.php</p>
-                    <pre><code class="hljs">public function getDependencies()
-    {
-      return [
-        'factories'  => [
-          // ACTIONS
-          ChocolatesAction::class => ChocolatesActionFactory::class,
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDependencies</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'factories'</span>  =&gt; [
+            <span class="hljs-comment">// ACTIONS</span>
+            ChocolatesAction::<span class="hljs-keyword">class</span> =&gt; ChocolatesActionFactory::<span class="hljs-keyword">class</span>,
 
-          // SERVICES
-          ChocolatesServiceInterface::class => ChocolatesServiceFactory::class,
+            <span class="hljs-comment">// SERVICES</span>
+            ChocolatesServiceInterface::<span class="hljs-keyword">class</span> =&gt; ChocolatesServiceFactory::<span class="hljs-keyword">class</span>,
 
-          // REPOSITORIES
-          Chocolates::class => SqlChocolatesFactory::class,
+            <span class="hljs-comment">// REPOSITORIES</span>
+            Chocolates::<span class="hljs-keyword">class</span> =&gt; SqlChocolatesFactory::<span class="hljs-keyword">class</span>,
         ],
-      ];
-    }
-                    </code></pre>
+    ];
+}</code></pre>
                 </section>
 
                 <section class="simple">
                     <p>src/App/Container/Action/ChocolatesActionFactory.php</p>
-                    <pre><code class="hljs">final class ChocolatesActionFactory
-    {
-        public function __invoke(ContainerInterface $container): ChocolatesAction
-        {
-            return new ChocolatesAction(
-                $container->get(ChocolatesServiceInterface::class)
-            );
-        }
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChocolatesActionFactory</span></span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span><span class="hljs-params">(ContainerInterface <span class="hljs-variable">$container</span>)</span>: ChocolatesAction
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ChocolatesAction(
+            <span class="hljs-variable">$container</span><span class="hljs-function">-&gt;get</span>(ChocolatesServiceInterface::<span class="hljs-class"><span class="hljs-keyword">class</span>)
+        );
     }
-                    </code></pre>
+}
+                    </span></code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>PSR-11 ContainerInterface</h1>
-                    <pre><code class="hljs" data-trim contenteditable>
-                        interface ContainerInterface
-    {
-        public function get($serviceName);
-        public function has($serviceName);
-    }
+                    <pre><code class="hljs php" data-trim>
+interface ContainerInterface
+{
+    /**
+     * @param string $id Identifier of the entry to look for.
+     *
+     * @throws NotFoundExceptionInterface No entry was found for the identifier.
+     * @throws ContainerExceptionInterface Error while retrieving the entry.
+     *
+     * @return mixed Entry.
+     */
+    public function get($id);
+
+    /**
+     * @param string $id Identifier of the entry to look for.
+     *
+     * @return bool
+     */
+    public function has($id);
+}
                     </code></pre>
                 </section>
 
@@ -638,34 +668,42 @@ $app->get('/chocolates', \App\Action\ChocolatesAction::class, 'chocolates');
                     <h2>Alternative B - Chocolate Details</h2>
                     <p>Create a chocolate-details (/chocolate/ID) route where ID is a proper ID of a chocolate wrapper in our domain</p>
                     <p>Interact with src/App/Domain/Service/ChocolatesService.php</p>
-                    <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
-                </section>
-
-                <section class="simple">
-                    <h1>Exercise 2 Solution</h1>
-                    <pre><code class="hljs" data-trim contenteditable>final class ChocolateDetailsAction implements MiddlewareInterface
-{
-[...]
-public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
-    {
-        $chocolateId = ChocolateId::fromString($request->getAttribute('id'));
-
-        $chocolate = $this->chocolatesService->getChocolate($chocolateId);
-
-        return new JsonResponse($chocolate);
-    }
-}
+                    <pre><code class="hljs" data-trim>
+docs/readme.html
                     </code></pre>
                 </section>
 
                 <section class="simple">
+                    <h1>Exercise 2 Solution</h1>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChocolateDetailsAction</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">(
+        ServerRequestInterface <span class="hljs-variable">$request</span>,
+        DelegateInterface <span class="hljs-variable">$delegate</span>
+    )</span>: ResponseInterface
+    </span>{
+        <span class="hljs-variable">$chocolateId</span> = ChocolateId::fromString(<span class="hljs-variable">$request</span><span class="hljs-function">-&gt;getAttribute</span>(<span class="hljs-string">'id'</span>));
+
+        <span class="hljs-variable">$chocolate</span> = <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;chocolatesService</span><span class="hljs-function">-&gt;getChocolate</span>(<span class="hljs-variable">$chocolateId</span>);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JsonResponse(<span class="hljs-variable">$chocolate</span>);
+    }
+}</code></pre>
+                </section>
+
+                <section class="simple">
                     <h1>You can check it out with</h1>
-                     <pre><code class="hljs" data-trim contenteditable>git checkout 07-chocolate-details-route</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 07-chocolate-details-route
+                    </code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Let's move forward...</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 09-users-details-route</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 09-users-details-route
+                    </code></pre>
                 </section>
 
                 <section class="simple">
@@ -703,16 +741,15 @@ final class ChocolatesAndUsersActionFactory
 
                 <section class="simple">
                     <h1>But hey, did you notice?</h1>
-                    <pre><code class="hljs" data-trim contenteditable>final class ChocolateDetailsAction implements MiddlewareInterface
-{
-[...]
-public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
-    {
-        $chocolateId = ChocolateId::fromString($request->getAttribute('id'));
-
-        $chocolate = $this->chocolatesService->getChocolate($chocolateId);
-
-        return new JsonResponse($chocolate);
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">...</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">(
+        ServerRequestInterface <span class="hljs-variable">$request</span>,
+        DelegateInterface <span class="hljs-variable">$delegate</span>
+    )</span>: ResponseInterface
+    </span>{
+        ...
     }
 }
                     </code></pre>
@@ -720,20 +757,19 @@ public function process(ServerRequestInterface $request, DelegateInterface $dele
 
                 <section class="bkg" data-background="img/cutting-onion.jpg">
                     <h1 >We used Middleware</h1>
-                    <pre><code class="hljs" data-trim contenteditable>
-public function process(
+                    <pre><code class="hljs php" data-trim>
+interface MiddlewareInterface
+{
+    /**
+     * @param ServerRequestInterface $request
+     * @param DelegateInterface $delegate
+     *
+     * @return ResponseInterface
+     */
+    public function process(
         ServerRequestInterface $request,
         DelegateInterface $delegate
-    ): ResponseInterface
-{
-    ...
-
-    response =  $delegate->process($request);
-    $response = $response->withStatusCode(200);
-
-    ...
-
-    return response;
+    );
 }
                     </code></pre>
                 </section>
@@ -848,72 +884,61 @@ $myFavouritePizza =
 
                 <section class="simple">
                     <p>config/pipeline.php</p>
-                    <pre><code class="hljs">$app->pipe(new \Middlewares\ClientIp());
-$app->pipe(\Middlewares\AccessLog::class);
-                    </code></pre>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;pipe</span>(<span class="hljs-keyword">new</span> \Middlewares\ClientIp());
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;pipe</span>(\Middlewares\AccessLog::<span class="hljs-keyword">class</span>);</code></pre>
                 </section>
 
                 <section class="simple">
-                    <p>src/App/ConfigProvider.php</p>
-                    <pre><code class="hljs">  public function getDependencies()
-    {
-        return [
-            'factories'  => [
-                // ACTIONS
-                ChocolatesAction::class => ChocolatesServiceActionFactory::class,
-                ChocolateDetailsAction::class => ChocolatesServiceActionFactory::class,
-                UsersAction::class => UsersServiceActionFactory::class,
-                UserDetailsAction::class => UsersServiceActionFactory::class,
-
-                // SERVICES
-                ChocolatesServiceInterface::class => ChocolatesServiceFactory::class,
-                UsersServiceInterface::class => UsersServiceFactory::class,
-
-                // REPOSITORIES
-                Chocolates::class => SqlRepositoryFactory::class,
-                Users::class => SqlRepositoryFactory::class,
-            ],
-        ];
-    }
+                    <p>config/autoload/dependencies.global.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-keyword">return</span> [
+    <span class="hljs-string">'dependencies'</span> =&gt; [
+        <span class="hljs-string">'factories'</span>  =&gt; [
+            \Middlewares\AccessLog::<span class="hljs-keyword">class</span> =&gt;
+                \App\Container\Middleware\AccessLogFactory::<span class="hljs-keyword">class</span>,
+        ],
+    ],
+];
                     </code></pre>
                 </section>
 
                 <section class="simple">
                     <p>src/App/Container/Middleware/AccessLogFactory.php</p>
-                    <pre><code class="hljs">use Middlewares\AccessLog;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccessLogFactory</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span><span class="hljs-params">(ContainerInterface <span class="hljs-variable">$container</span>)</span>
+    </span>{
+        <span class="hljs-variable">$logger</span> = <span class="hljs-keyword">new</span> Logger(<span class="hljs-string">'access'</span>);
+        <span class="hljs-variable">$filePath</span> = <span class="hljs-variable">$container</span><span class="hljs-function">-&gt;get</span>(<span class="hljs-string">'config'</span>)[<span class="hljs-string">'access_log'</span>][<span class="hljs-string">'path'</span>];
+        <span class="hljs-variable">$logger</span><span class="hljs-function">-&gt;pushHandler</span>(<span class="hljs-keyword">new</span> StreamHandler(<span class="hljs-variable">$filePath</span>));
 
-final class AccessLogFactory
-{
-    public function __invoke(ContainerInterface $container)
-    {
-        $logger = new Logger('access');
-        $filePath = $container->get('config')['access_log']['path'];
-        $logger->pushHandler(new StreamHandler($filePath));
+        <span class="hljs-variable">$accessLog</span> = <span class="hljs-keyword">new</span> AccessLog(<span class="hljs-variable">$logger</span>);
 
-        $accessLog = new AccessLog($logger);
+        <span class="hljs-variable">$format</span> = <span class="hljs-string">'%v %h %u %t "%r" %&gt;s %b "%{Referer}i" -&gt; %U'</span>;
+        <span class="hljs-variable">$accessLog</span><span class="hljs-function">-&gt;format</span>(<span class="hljs-variable">$format</span>);
+        <span class="hljs-variable">$accessLog</span><span class="hljs-function">-&gt;ipAttribute</span>(<span class="hljs-string">'client-ip'</span>);
 
-        $accessLog->format('%v %h %u %t "%r" %>s %b "%{Referer}i" -> %U "%{User-Agent}i" ClientIp: %a Duration: %{us}T');
-        $accessLog->ipAttribute('client-ip');
-
-        return $accessLog;
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$accessLog</span>;
     }
-}
-                    </code></pre>
+}</code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Exercise 3 (25 mins)</h1>
-                    <p>Get to branch 10-access-log</p>
                     <p>Create a caching middleware</p>
-                    <p>For all http GET requests, make sure that a cached result is returned</p>
-                    <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
+                    <p>For all http GET requests, make sure that a cached result is returned, when available</p>
+                    <pre><code class="hljs" data-trim>
+docs/readme.html
+                    </code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Solution to exercise 3</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 11-response-cache</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 11-response-cache
+                    </code></pre>
                     <p>Implementing middleware from scratch - not necessarily a good idea!</p>
                 </section>
 
@@ -957,59 +982,69 @@ final class AccessLogFactory
 
                 <section class="simple">
                     <h1>How about other actions?</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 15-delete-chocolate</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 15-delete-chocolate
+                    </code></pre>
                 </section>
 
                 <section class="simple">
-                    <h1>config/routes.php</h1>
-                    <pre><code class="hljs" data-trim contenteditable>
-$app->post('/submit', \App\Action\SubmitChocolateAction::class, 'submit');
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(<span class="hljs-string">'/submit'</span>, \App\Action\SubmitChocolateAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'submit'</span>);
 
-$app->post(
-    '/approve/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
-    \App\Action\ApproveChocolateAction::class,
-    'approve'
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
+    <span class="hljs-string">'/approve/{id}'</span>,
+    \App\Action\ApproveChocolateAction::<span class="hljs-keyword">class</span>,
+    <span class="hljs-string">'approve'</span>
 );
 
-$app->post(
-    '/delete/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
-    \App\Action\DeleteChocolateAction::class,
-    'delete'
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
+    <span class="hljs-string">'/delete/{id}'</span>,
+    \App\Action\DeleteChocolateAction::<span class="hljs-keyword">class</span>,
+    <span class="hljs-string">'delete'</span>
 );
                     </code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Related Actions</h1>
-                     <pre><code class="hljs" data-trim contenteditable>App\Action\SubmitChocolateAction.php</code></pre>
-                     <pre><code class="hljs" data-trim contenteditable>App\Action\ApproveChocolateAction.php</code></pre>
-                     <pre><code class="hljs" data-trim contenteditable>App\Action\DeleteChocolateAction.php</code></pre>
+                    <pre><code class="hljs" data-trim>
+App\Action\SubmitChocolateAction.php
+                    </code></pre>
+                    <pre><code class="hljs" data-trim>
+App\Action\ApproveChocolateAction.php
+                    </code></pre>
+                    <pre><code class="hljs" data-trim>
+App\Action\DeleteChocolateAction.php
+                    </code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>What about authentication?</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 16.1-basic-http-authentication</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 16.1-basic-http-authentication
+                    </code></pre>
                 </section>
 
                 <section class="simple">
-                    <h1>config/routes.php</h1>
-                    <pre><code class="hljs" data-trim contenteditable>
-$app->post(
-    '/submit',
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
+    <span class="hljs-string">'/submit'</span>,
     [
-        \Middlewares\HttpAuthentication::class,
-        \App\Action\SubmitChocolateAction::class,
+        \Middlewares\HttpAuthentication::<span class="hljs-keyword">class</span>,
+        \App\Action\SubmitChocolateAction::<span class="hljs-keyword">class</span>,
     ],
-    'submit'
+    <span class="hljs-string">'submit'</span>
 );
 
-$app->post(
-    '/approve/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
+    <span class="hljs-string">'/approve/{id}'</span>,
     [
-        \Middlewares\HttpAuthentication::class,
-        \App\Action\ApproveChocolateAction::class,
+        \Middlewares\HttpAuthentication::<span class="hljs-keyword">class</span>,
+        \App\Action\ApproveChocolateAction::<span class="hljs-keyword">class</span>,
     ],
-    'approve'
+    <span class="hljs-string">'approve'</span>
 );
 
 [...]
@@ -1019,51 +1054,55 @@ $app->post(
 
                 <section class="simple">
                     <p>src/App/Container/Middleware/BasicHttpAuthenticationFactory.php</p>
-                    <pre><code class="hljs" data-trim contenteditable>final class BasicHttpAuthenticationFactory
-{
-    public function __invoke(ContainerInterface $container): HttpAuthentication
-    {
-        /** @var UsersServiceInterface $users */
-        $users = $container->get(UsersServiceInterface::class);
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicHttpAuthenticationFactory</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span><span class="hljs-params">(ContainerInterface <span class="hljs-variable">$container</span>)</span>: HttpAuthentication
+    </span>{
+        <span class="hljs-comment">/**<span class="hljs-phpdoc"> @var</span> UsersServiceInterface $users */</span>
+        <span class="hljs-variable">$users</span> = <span class="hljs-variable">$container</span><span class="hljs-function">-&gt;get</span>(UsersServiceInterface::<span class="hljs-keyword">class</span>);
 
-        $credentials = array_reduce(
-            $users->getAll(),
-            function (array $carry, User $user) {
-                $carry[$user->username()] = $user->password();
-                return $carry;
+        <span class="hljs-variable">$credentials</span> = array_reduce(
+            <span class="hljs-variable">$users</span><span class="hljs-function">-&gt;getAll</span>(),
+            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(array <span class="hljs-variable">$carry</span>, User <span class="hljs-variable">$user</span>)</span></span> {
+                <span class="hljs-variable">$carry</span>[<span class="hljs-variable">$user</span><span class="hljs-function">-&gt;username</span>()] = <span class="hljs-variable">$user</span><span class="hljs-function">-&gt;password</span>();
+                <span class="hljs-keyword">return</span> <span class="hljs-variable">$carry</span>;
             },
             []
         );
 
-        return (new BasicAuthentication($credentials))->attribute(HttpAuthentication::class);
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> BasicAuthentication(<span class="hljs-variable">$credentials</span>))<span class="hljs-function">
+            -&gt;attribute</span>(HttpAuthentication::<span class="hljs-keyword">class</span>);
     }
-}
-                    </code></pre>
+}</code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Let's switch to JWT...</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 17.3-jwt-authentication</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 17.3-jwt-authentication
+                    </code></pre>
                 </section>
 
                 <section class="simple">
-                    <h1>config/routes.php</h1>
-                    <pre><code class="hljs" data-trim contenteditable>$app->post(
-    '/submit',
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
+    <span class="hljs-string">'/submit'</span>,
     [
-        \Middlewares\HttpAuthentication::class,
-        \App\Action\SubmitChocolateAction::class,
+        \Middlewares\HttpAuthentication::<span class="hljs-keyword">class</span>,
+        \App\Action\SubmitChocolateAction::<span class="hljs-keyword">class</span>,
     ],
-    'submit'
+    <span class="hljs-string">'submit'</span>
 );
 
-$app->post(
-    '/approve/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
+    <span class="hljs-string">'/approve/{id}'</span>,
     [
-        \Middlewares\HttpAuthentication::class,
-        \App\Action\ApproveChocolateAction::class,
+        \Middlewares\HttpAuthentication::<span class="hljs-keyword">class</span>,
+        \App\Action\ApproveChocolateAction::<span class="hljs-keyword">class</span>,
     ],
-    'approve'
+    <span class="hljs-string">'approve'</span>
 );
                     </code></pre>
                 </section>
@@ -1081,51 +1120,60 @@ $app->post(
                     <h2>Alternative B - Authorization</h2>
                     <p>Allow for authenticated users only to submit new wrappers</p>
                     <p>Allow for administrators only to approve/delete wrappers</p>
-                    <pre><code class="hljs" data-trim contenteditable>docs/readme.html</code></pre>
+                    <pre><code class="hljs" data-trim>
+docs/readme.html
+                    </code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Solution to exercise 4</h1>
-                    <pre><code class="hljs" data-trim contenteditable>git checkout 18-authorization</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 18-authorization
+                    </code></pre>
                 </section>
 
                 <section class="simple">
-                    <h1>config/routes.php</h1>
-                    <pre><code class="hljs" data-trim contenteditable>$app->post(
-    '/submit',
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
+    <span class="hljs-string">'/submit'</span>,
     [
-        \Middlewares\HttpAuthentication::class,
-        \App\Action\SubmitChocolateAction::class,
+        \Middlewares\HttpAuthentication::<span class="hljs-keyword">class</span>,
+        \App\Action\SubmitChocolateAction::<span class="hljs-keyword">class</span>,
     ],
-    'submit'
+    <span class="hljs-string">'submit'</span>
 );
 
-$app->post(
-    '/approve/{id:[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}}',
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
+    <span class="hljs-string">'/approve/{id}'</span>,
     [
-        \Middlewares\HttpAuthentication::class,
-        \App\Middleware\Authorization::class,
-        \App\Action\ApproveChocolateAction::class,
+        \Middlewares\HttpAuthentication::<span class="hljs-keyword">class</span>,
+        \App\Middleware\Authorization::<span class="hljs-keyword">class</span>,
+        \App\Action\ApproveChocolateAction::<span class="hljs-keyword">class</span>,
     ],
-    'approve'
+    <span class="hljs-string">'approve'</span>
 );
                     </code></pre>
                 </section>
 
                 <section class="simple">
                     <p>src/App/Middleware/Authorisation.php</p>
-                    <pre><code class="hljs" data-trim contenteditable> public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
-    {
-        $username = $request->getAttribute(JwtAuthentication::class)->data->username;
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">(
+    ServerRequestInterface <span class="hljs-variable">$request</span>,
+    DelegateInterface <span class="hljs-variable">$delegate</span>
+)</span>: ResponseInterface</span>
+{
+    <span class="hljs-variable">$username</span> = <span class="hljs-variable">$request</span><span class="hljs-function">-&gt;getAttribute</span>(JwtAuthentication::<span class="hljs-keyword">class</span>)<span class="hljs-variable">-&gt;data</span><span class="hljs-variable">-&gt;username</span>;
 
-        $user = $this->usersService->getByUsername($username);
+    $<span class="hljs-variable">user</span> = <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;usersService</span><span class="hljs-function">-&gt;getByUsername</span>(<span class="hljs-variable">$username</span>);
 
-        if (! $user->isAdministrator()) {
-            return new EmptyResponse(403);
-        }
-
-        return $delegate->process($request);
+    <span class="hljs-keyword">if</span> (! <span class="hljs-variable">$user</span><span class="hljs-function">-&gt;isAdministrator</span>()) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> EmptyResponse(<span class="hljs-number">403</span>);
     }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$delegate</span><span class="hljs-function">-&gt;process</span>(<span class="hljs-variable">$request</span>);
+}
                     </code></pre>
                 </section>
 
@@ -1138,12 +1186,19 @@ $app->post(
                 <section class="simple">
                     <h1>Exercise 5 (bonus)</h1>
                     <p>let's write a test for the Authorization Middleware of the last exercise</p>
-                    <pre><code class="hljs">docs/readme.html</code></pre>
+                    <pre><code class="hljs" data-trim>
+docs/readme.html
+                    </code></pre>
                 </section>
 
                 <section class="simple">
                     <h1>Solution to exercise 5</h1>
-                    <pre><code class="hljs">git checkout (?)</code></pre>
+                    <pre><code class="hljs bash">
+git checkout 19.1-phpunit
+                    </code></pre>
+                    <pre><code class="hljs bash">
+git checkout 20.1-behat
+                    </code></pre>
                 </section>
 
                 <!-- https://pixabay.com/en/cattle-show-customs-appenzellerland-1703263/ -->
@@ -1173,17 +1228,16 @@ $app->post(
 
                 <section class="simple">
                     <h3>Slim</h3>
-                    <pre><code class="hljs" data-trim contenteditable>
-// src/middleware.php
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-comment">// src/middleware.php</span>
 
-$app->add(new AccessLog($logger));
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;add</span>(<span class="hljs-keyword">new</span> AccessLog(<span class="hljs-variable">$logger</span>));
 
-$app->add(new Geolocate());
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;add</span>(<span class="hljs-keyword">new</span> Geolocate());
 
-$app->add(new ClientIp());
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;add</span>(<span class="hljs-keyword">new</span> ClientIp());
 
-$app->add(new BasicAuthentication($users));
-                    </code></pre>
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;add</span>(<span class="hljs-keyword">new</span> BasicAuthentication(<span class="hljs-variable">$users</span>));</code></pre>
 
                     <aside class="notes">
                         <p>Microframework based on PSR-7</p>
@@ -1198,17 +1252,16 @@ $app->add(new BasicAuthentication($users));
 
                 <section class="simple">
                     <h3>Radar & Relay</h3>
-                    <pre><code class="hljs" data-trim contenteditable>
-// web/index.php
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-comment">// web/index.php</span>
 
-$adr->middle(new BasicAuthentication($users));
+<span class="hljs-variable">$adr</span><span class="hljs-function">-&gt;middle</span>(<span class="hljs-keyword">new</span> BasicAuthentication(<span class="hljs-variable">$users</span>));
 
-$adr->middle(new ClientIp());
+<span class="hljs-variable">$adr</span><span class="hljs-function">-&gt;middle</span>(<span class="hljs-keyword">new</span> ClientIp());
 
-$adr->middle(new Geolocate());
+<span class="hljs-variable">$adr</span><span class="hljs-function">-&gt;middle</span>(<span class="hljs-keyword">new</span> Geolocate());
 
-$adr->middle(new AccessLog($logger));
-                    </code></pre>
+<span class="hljs-variable">$adr</span><span class="hljs-function">-&gt;middle</span>(<span class="hljs-keyword">new</span> AccessLog(<span class="hljs-variable">$logger</span>));</code></pre>
                     <aside class="notes">
                         <ul>
                             <li>Action-Domain-Responder framework</li>
