@@ -441,11 +441,52 @@ class PingAction implements ServerMiddlewareInterface
                 </section>
 
                 <section class="simple">
+                    <h1 style="margin-bottom: 0px;">PSR-7 interfaces</h1>
                     <img src="img/psr7.jpg">
                 </section>
 
                 <section class="simple">
+                    <h1 style="margin-bottom: 0px;">PSR-7 interfaces</h1>
                     <img src="img/psr7-relevant.jpg">
+                </section>
+
+                <section class="simple">
+                    <h1>PSR-7 MessageInterface</h1>
+                    <pre><code class="hljs php" data-trim>
+namespace Psr\Http\Message;
+
+interface MessageInterface
+{
+    public function getProtocolVersion();
+    public function withProtocolVersion($version);
+    public function getHeaders();
+    public function hasHeader($name);
+    public function getHeader($name);
+    public function getHeaderLine($name);
+    public function withHeader($name, $value);
+    public function withAddedHeader($name, $value);
+    public function withoutHeader($name);
+    public function getBody();
+    public function withBody(StreamInterface $body);
+}
+                        </code></pre>
+                </section>
+
+                <section class="simple">
+                    <h1>PSR-7 RequestInterface</h1>
+                    <pre><code class="hljs php" data-trim>
+namespace Psr\Http\Message;
+
+interface RequestInterface extends MessageInterface
+{
+    public function getRequestTarget();
+    public function withRequestTarget($requestTarget);
+    public function getMethod();
+    public function withMethod($method);
+    public function getUri();
+    public function withUri(UriInterface $uri, $preserveHost = false);
+}
+                        </code></pre>
                 </section>
 
                 <section class="simple">
