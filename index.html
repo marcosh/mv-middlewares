@@ -83,8 +83,7 @@ app.listen(3000)
                 </section>
 
                 <section class="simple">
-                    <h1>That's closer...</h1>
-                    <img src="img/middleware-node.png">
+                    <img src="img/req-mw-resp.png">
                 </section>
 
                 <section class="bkg" data-background="img/marco.jpg">
@@ -107,7 +106,7 @@ app.listen(3000)
 
                 <!-- https://pixabay.com/en/dark-chocolate-bar-food-2562840/ -->
                 <section class="bkg" data-background="img/dark-2562840_1280.jpg">
-                    <h1>Chocolate Lover</h1>
+                    <h1 class="top-right">Chocolate Lover</h1>
                     <aside class="notes">
                         <p>Vice</p>
                         <p>Besides being a Mathematician</p>
@@ -158,10 +157,12 @@ app.listen(3000)
                     <h1 class="low-right">How about you?</h1>
                 </section>
 
-                <section class="bkg" data-background="#fff">
+                <section class="simple">
+                    <h1>Who uses?</h1>
                     <img src="img/symfony.png" width="40%">
                     <br>
-                    <img src="img/zf.jpg" width="24%">
+                    <br>
+                    <img src="img/zf.jpg" width="25%">
                 </section>
 
                 <section class="bkg" data-background="#fff">
@@ -195,7 +196,7 @@ app.listen(3000)
 
                 <section class="simple" data-background="#efefef">
                     <h1>A Nice Side effect...</h1>
-                    <img src="img/zend-expressive-logo.png">
+                    <img src="img/zend-expressive-logo.png" width="44%">
                 </section>
 
                 <section class="simple">
@@ -242,14 +243,34 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
                     <img src="img/installation.png">
                 </section>
 
-                <!-- https://pixabay.com/en/medicine-vials-bottle-treatment-1309148/ -->
-                <section class="bkg" data-background="img/medicine-1309148_1280.jpg">
-                    <h1>PIMPLE</h1>
+                <section class="bkg" data-background="#2a2a2a">
+                    <img src="img/expressive-install-step-1.png">
+                </section>
+
+                <section class="bkg" data-background="#2a2a2a">
+                    <img src="img/expressive-install-step-2.png">
+                </section>
+
+                <!-- https://pixabay.com/en/swamp-tundra-grass-autumn-bumps-2603374/ -->
+                <section class="bkg" data-background="img/swamp-2603374_1280.jpg">
+                    <h1 class="top-right">PIMPLE</h1>
+                </section>
+
+                <section class="bkg" data-background="#2a2a2a">
+                    <img src="img/expressive-install-step-3.png">
                 </section>
 
                 <!-- https://pixabay.com/en/network-connection-pc-web-address-197300/ -->
                 <section class="bkg" data-background="img/network-197300_1280.jpg">
                     <h1>FastRoute</h1>
+                </section>
+
+                <section class="bkg" data-background="#2a2a2a">
+                    <img src="img/expressive-install-step-4.png">
+                </section>
+
+                <section class="bkg" data-background="#2a2a2a">
+                    <img src="img/expressive-install-step-5.png">
                 </section>
 
                 <!-- https://pixabay.com/en/kitchen-culinary-cooks-helpers-81644/ -->
@@ -263,15 +284,11 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
                 </section>
 
                  <section class="bkg">
-                    <img src="img/ze-stack.png">
-                    <br>
-                    Replace with abstract, ours
+                    <img src="img/ze-stack-if.png">
                 </section>
 
                 <section class="bkg">
-                    <img src="img/ze-stack.png">
-                    <br>
-                    replace with concrete, ours
+                    <img src="img/ze-stack-im.png">
                 </section>
 
                 <!-- https://pixabay.com/en/food-preparation-parts-wood-table-1081813/ -->
@@ -317,7 +334,7 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
 
 
                 <section class="simple">
-                    <p>public/index.php</p>
+                    <h2>public/index.php</h2>
                     <pre><code class="hljs no-highlight php" data-trim data-noescape>
 chdir(dirname(<span class="hljs-keyword">__DIR__</span>));
 <span class="hljs-keyword">require</span> <span class="hljs-string">'vendor/autoload.php'</span>;
@@ -337,7 +354,7 @@ call_user_func(<span class="hljs-function"><span class="hljs-keyword">function</
                 </section>
 
                 <section class="simple">
-                    <p>config/config.php</p>
+                    <h2>config/config.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$aggregator</span> = <span class="hljs-keyword">new</span> ConfigAggregator([
     App\ConfigProvider::<span class="hljs-keyword">class</span>,
@@ -349,7 +366,7 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
                 </section>
 
                 <section class="simple">
-                    <p>config/pipeline.php</p>
+                    <h2>config/pipeline.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-funtion">->pipe</span>(ErrorHandler::<span class="hljs-keyword">class</span>);
 
@@ -362,11 +379,15 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
                 </section>
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/'</span>, App\Action\HomePageAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'home'</span>);
 <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/api/ping'</span>, App\Action\PingAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'api.ping'</span>);
                     </code></pre>
+                </section>
+
+                <section class="simple">
+If time allows, create graphical recap of all included conf files...
                 </section>
 
                 <section class="bkg">
@@ -379,7 +400,7 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
 
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/'</span>, App\Action\HomePageAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'home'</span>);
 <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/api/ping'</span>, App\Action\PingAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'api.ping'</span>);
@@ -391,7 +412,7 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
                 </section>
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/'</span>, App\Action\HomePageAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'home'</span>);
 <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/api/ping'</span>, App\Action\PingAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'api.ping'</span>);
@@ -399,7 +420,7 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
                 </section>
 
                 <section class="simple">
-                    <p>src/App/Action/PingAction.php</p>
+                    <h2>src/App/Action/PingAction.php</h2>
                     <pre><code class="hljs php" data-trim>
 namespace App\Action;
 
@@ -418,17 +439,11 @@ class PingAction implements ServerMiddlewareInterface
                 </section>
 
                 <section class="simple">
-                    <h1>PSR-7 ResponseInterface</h1>
-                    <pre><code class="hljs php" data-trim>
-namespace Psr\Http\Message;
+                    <img src="img/psr7.jpg">
+                </section>
 
-interface ResponseInterface extends MessageInterface
-{
-    public function getStatusCode();
-    public function withStatus($code, $reasonPhrase = '');
-    public function getReasonPhrase();
-}
-                    </code></pre>
+                <section class="simple">
+                    <img src="img/psr7-relevant.jpg">
                 </section>
 
                 <section class="simple">
@@ -453,6 +468,20 @@ interface ServerRequestInterface extends RequestInterface
     public function withoutAttribute($name);
 }
                         </code></pre>
+                </section>
+
+ <section class="simple">
+                    <h1>PSR-7 ResponseInterface</h1>
+                    <pre><code class="hljs php" data-trim>
+namespace Psr\Http\Message;
+
+interface ResponseInterface extends MessageInterface
+{
+    public function getStatusCode();
+    public function withStatus($code, $reasonPhrase = '');
+    public function getReasonPhrase();
+}
+                    </code></pre>
                 </section>
 
                 <section class="simple">
@@ -541,7 +570,8 @@ git checkout 06-chocolates-route
                     </code></pre>
                 </section>
 
-   				<section class="bkg" data-background="img/dark-2562840_1280.jpg">
+                <!-- https://www.flickr.com/photos/shoppeolina/9518183123/in/album-72157677614594381/ -->
+   				<section class="bkg" data-background="img/9518183123_2f4bd63f30_k.jpg">
                     <h1>Our Domain</h1>
                 </section>
 
@@ -551,7 +581,7 @@ git checkout 06-chocolates-route
                 </section>
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;get</span>(<span class="hljs-string">'/'</span>, \App\Action\IndexAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'index'</span>);
 
@@ -562,7 +592,7 @@ git checkout 06-chocolates-route
                 </section>
 
                 <section class="simple">
-                    <p>src/App/Action/ChocolatesAction.php</p>
+                    <h2>src/App/Action/ChocolatesAction.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChocolatesAction</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span></span>
 {
@@ -607,7 +637,7 @@ git checkout 06-chocolates-route
                 </section>
 
                 <section class="simple">
-                    <p>src/App/ConfigProvider.php</p>
+                    <h2>src/App/ConfigProvider.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDependencies</span><span class="hljs-params">()</span>
 </span>{
@@ -627,7 +657,7 @@ git checkout 06-chocolates-route
                 </section>
 
                 <section class="simple">
-                    <p>src/App/Container/Action/ChocolatesActionFactory.php</p>
+                    <h2>src/App/Container/Action/ChocolatesActionFactory.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChocolatesActionFactory</span></span>
 {
@@ -767,24 +797,32 @@ interface MiddlewareInterface
                     <h1 class="bkg">Middleware</h1>
                 </section>
 
-               <section class="bkg" data-background="img/onion-middleware2.jpg">
-                    <aside class="notes">
-                        <p>Infinitely nestable components</p>
-                        <p>Decorate Request/Response handling</p>
-                        <p>Layers traversed in/out</p>
-                    </aside>
+                <section>
+                    <img src="img/mw-onion-1.png">
                 </section>
 
                 <section>
-                    <img src="img/flight-1.png">
+                    <img src="img/mw-onion-2.png">
                 </section>
 
                 <section>
-                    <img src="img/flight-2.png">
+                    <img src="img/mw-onion-3.png">
                 </section>
 
                 <section>
-                    <img src="img/flight-3.png">
+                    <img src="img/mw-onion-4.png">
+                </section>
+
+                <section>
+                    <img src="img/example-1.jpg">
+                </section>
+
+                <section>
+                    <img src="img/example-2.jpg">
+                </section>
+
+                <section>
+                    <img src="img/example-3.jpg">
                 </section>
 
                 <section class="simple">
@@ -793,14 +831,14 @@ interface MiddlewareInterface
                 </section>
 
                 <section class="simple">
-                    <p>config/pipeline.php</p>
+                    <h2>config/pipeline.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;pipe</span>(<span class="hljs-keyword">new</span> \Middlewares\ClientIp());
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;pipe</span>(\Middlewares\AccessLog::<span class="hljs-keyword">class</span>);</code></pre>
                 </section>
 
                 <section class="simple">
-                    <p>config/autoload/dependencies.global.php</p>
+                    <h2>config/autoload/dependencies.global.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">return</span> [
     <span class="hljs-string">'dependencies'</span> =&gt; [
@@ -899,7 +937,7 @@ git checkout 15-delete-chocolate
                 </section>
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(<span class="hljs-string">'/submit'</span>, \App\Action\SubmitChocolateAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'submit'</span>);
 
@@ -910,7 +948,7 @@ git checkout 15-delete-chocolate
 );
 
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
-    <span class="hljs-string">'/delete/{id}'</span>,
+    <span class="hljs-stri ng">'/delete/{id}'</span>,
     \App\Action\DeleteChocolateAction::<span class="hljs-keyword">class</span>,
     <span class="hljs-string">'delete'</span>
 );
@@ -938,7 +976,7 @@ git checkout 16.1-basic-http-authentication
                 </section>
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
     <span class="hljs-string">'/submit'</span>,
@@ -964,7 +1002,7 @@ git checkout 16.1-basic-http-authentication
                 </section>
 
                 <section class="simple">
-                    <p>src/App/Container/Middleware/BasicHttpAuthenticationFactory.php</p>
+                    <h2>src/App/Container/Middleware/BasicHttpAuthenticationFactory.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicHttpAuthenticationFactory</span>
 </span>{
@@ -996,7 +1034,7 @@ git checkout 17.3-jwt-authentication
                 </section>
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
     <span class="hljs-string">'/submit'</span>,
@@ -1024,7 +1062,7 @@ git checkout 17.3-jwt-authentication
                 </section>
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h2>config/routes.php</h2>
                     <pre><code class="hljs php" data-trim>
 $app->post('/token', \App\Action\TokenAction::class, 'token');
                     </code></pre>

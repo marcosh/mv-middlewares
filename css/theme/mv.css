@@ -101,11 +101,12 @@ section > h1, section > h2 {
 }
 
 .reveal h1 {
-  font-size: 1.75em;
+  font-size: 1.25em;
+  margin-bottom: 1.10em;
 }
 
 .reveal h2 {
-  font-size: 1.25em;
+  font-size: 1.10em;
 }
 
 .reveal h3 {
@@ -128,6 +129,7 @@ section > h1, section > h2 {
 .reveal .bkg h5, .reveal .bkg h6 {
   color: #FFFFFF;
   background-color: #7ab317;
+  font-size: 1.50em;
   font-weight: 600;
   line-height: 1;
   letter-spacing: normal;
