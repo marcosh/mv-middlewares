@@ -216,6 +216,12 @@ cd /var/www/html/summercamp/phpmiddleware
 
 git checkout 01-expressive-skeleton
                     </code></pre>
+
+                    <p>Tips & Hints:</p>
+                    <pre><code class="hljs bash" data-trim>
+docs/readme.html
+                    </code></pre>
+
                 </section>
 
                 <section class="simple">
@@ -288,11 +294,11 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
                 </section>
 
                  <section class="bkg">
-                    <img src="img/ze-stack-if.png">
+                    <img src="img/ze-stack-if.png" width="80%">
                 </section>
 
                 <section class="bkg">
-                    <img src="img/ze-stack-im.png">
+                    <img src="img/ze-stack-im.png" width="80%">
                 </section>
 
                 <!-- https://pixabay.com/en/food-preparation-parts-wood-table-1081813/ -->
@@ -309,6 +315,7 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
 
                 <section class="simple">
                     <h1>Filesystem layout</h1>
+                    <p>Let's open PHPStorm at:</p>
                     <pre><code class="hljs bash" data-trim>
 /var/www/html/summercamp/phpmiddleware
                     </code></pre>
@@ -326,13 +333,14 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
                 </section>
 
                 <section class="simple">
-                    <h1>Document Root</h1>
-                    <pre><code class="hljs bash" data-trim>
-/var/www/html/summercamp/phpmiddleware/public
-                    </code></pre>
-                    <br>
+                    <p>Apache's configuration</p>
                     <pre><code class="hljs bash" data-trim>
 /etc/apache2/sites-available/phpmiddleware.conf
+                    </code></pre>
+                    <br>
+                    <p>Document root</p>
+                    <pre><code class="hljs bash" data-trim>
+/var/www/html/summercamp/phpmiddleware/public
                     </code></pre>
                 </section>
 
@@ -388,10 +396,6 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
 <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/'</span>, App\Action\HomePageAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'home'</span>);
 <span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/api/ping'</span>, App\Action\PingAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'api.ping'</span>);
                     </code></pre>
-                </section>
-
-                <section class="simple">
-If time allows, create graphical recap of all included conf files...
                 </section>
 
                 <section class="bkg">
@@ -579,6 +583,17 @@ docs/readme.html
 
                 <section class="simple">
                     <h1>Exercise 1 Solution</h1>
+                    <p>config/routes.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/'</span>, \App\Action\IndexAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'index'</span>);
+
+<span class="hljs-variable">$app</span><span class="hljs-funtion">-&gt;get</span>(<span class="hljs-string">'/hello'</span>, \App\Action\HelloAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'hello'</span>);
+                    </code></pre>
+                </section>
+
+                <section class="simple">
+                    <h1>Exercise 1 Solution</h1>
+                    <p>src/App/Action/HelloAction.php</p>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloAction</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span>
 </span>{
@@ -733,6 +748,10 @@ interface ContainerInterface
                 </section>
 
                 <section class="bkg">
+                    <img src="img/chocolates.png">
+                </section>
+
+                <section class="bkg">
                     <img src="img/chocolate.png">
                 </section>
 
@@ -769,7 +788,7 @@ docs/readme.html
                 </section>
 
                 <section class="simple">
-                    <h1>You can check it out with</h1>
+                    <h1>You can check them out with</h1>
                     <pre><code class="hljs bash" data-trim>
 git checkout 07-chocolate-details-route
                     </code></pre>
@@ -780,16 +799,9 @@ git checkout 08-users
                 </section>
 
                 <section class="simple">
-                    <h1>Let's move forward...</h1>
-                    <pre><code class="hljs bash" data-trim>
-git checkout 09-users-details-route
-                    </code></pre>
-                </section>
-
-                <section class="simple">
                     <h1>But hey, did you notice?</h1>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">...</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">...Action</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MiddlewareInterface</span>
 </span>{
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">(
         ServerRequestInterface <span class="hljs-variable">$request</span>,
@@ -871,8 +883,17 @@ git checkout 10-access-log
                 <section class="simple">
                     <h2>config/pipeline.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$app</span><span class="hljs-funtion">->pipe</span>(ErrorHandler::<span class="hljs-keyword">class</span>);
+
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;pipe</span>(<span class="hljs-keyword">new</span> \Middlewares\ClientIp());
-<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;pipe</span>(\Middlewares\AccessLog::<span class="hljs-keyword">class</span>);</code></pre>
+<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;pipe</span>(\Middlewares\AccessLog::<span class="hljs-keyword">class</span>);
+
+<span class="hljs-variable">$app</span><span class="hljs-funtion">->pipeRoutingMiddleware</span>();
+
+<span class="hljs-variable">$app</span><span class="hljs-funtion">->pipeDispatchMiddleware</span>();
+
+<span class="hljs-variable">$app</span><span class="hljs-funtion">->pipe</span>(NotFoundHandler::<span class="hljs-keyword">class</span>);
+                    </code></pre>
                 </section>
 
                 <section class="simple">
@@ -916,6 +937,7 @@ git checkout 10-access-log
                     <p>Get to branch 10-access-log</p>
                     <p>Create a caching middleware</p>
                     <p>For all http GET requests, make sure that a cached result is returned, when available</p>
+                    <p>Bonus: have cache expire after a certain time period; have cache file path configuration within config files</p>
                     <pre><code class="hljs" data-trim>
 docs/readme.html
                     </code></pre>
@@ -1125,13 +1147,20 @@ docs/readme.html
                 </section>
 
                 <section class="simple">
-                    <h1>Solution to exercise 4</h1>
+                    <h1>Solution to exercise(s) 4</h1>
                     <pre><code class="hljs bash" data-trim>
 git checkout 17.3-jwt-authentication
                     </code></pre>
                     <br>
                     <pre><code class="hljs bash" data-trim>
 git checkout 18-authorization
+                    </code></pre>
+                </section>
+
+                <section class="simple">
+                    <p>config/autoload/dependencies.global.php</p>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+
                     </code></pre>
                 </section>
 
