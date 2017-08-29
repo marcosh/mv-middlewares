@@ -1159,9 +1159,15 @@ git checkout 18-authorization
 
                 <section class="simple">
                     <p>config/autoload/dependencies.global.php</p>
-                    <pre><code class="hljs no-highlight" data-trim data-noescape>
-
-                    </code></pre>
+                    <pre><code class="hljs php hljs " data-trim="">
+<span class="hljs-keyword">return</span> [
+    <span class="hljs-string">'dependencies'</span> =&gt; [
+        <span class="hljs-string">'factories'</span> =&gt; [
+            \Middlewares\HttpAuthentication::<span class="hljs-keyword">class</span> =&gt;
+                \App\Container\Middleware\JwtAuthenticationFactory::<span class="hljs-keyword">class</span>,
+        ]
+    ]
+];</code></pre>
                 </section>
 
                 <section class="simple">
@@ -1361,7 +1367,7 @@ $dispatcher = new Dispatcher([
                     </div>
                 </section>
 
-                <section>
+                <!--section>
                     <h1>Credits</h1>
                     <div class="credits">
                         <div style="float: left; width: 50%">
@@ -1393,7 +1399,7 @@ $dispatcher = new Dispatcher([
                             <!--p>Aeonium by <a href="https://commons.wikimedia.org/wiki/File%3AAeonium_tabuliforme.jpg">Max Ronnersjö</a></p-->
                             <!--p>Nest by <a href="https://commons.wikimedia.org/wiki/File%3AAmerican_Robin_Nest_with_Eggs.jpg">Laslovarga</a></p-->
                             <!--p>Decorated ice-cream by <a href="https://commons.wikimedia.org/wiki/File%3AGelato_Cup_Ice-cream_Cake_Cow.jpg">Sky22688</a></p-->
-                            <p>Pizza by <a href="https://commons.wikimedia.org/w/index.php?curid=372337">ElfQrin</a></p>
+                            <!--p>Pizza by <a href="https://commons.wikimedia.org/w/index.php?curid=372337">ElfQrin</a></p>
                             <p>Cheese and vegetables by <a href="https://pixabay.com/en/tomatoes-bocconcini-cheese-salad-925698">StockSnap</a></p>
                             <p>Pizza by <a href="https://commons.wikimedia.org/wiki/File%3ASupreme_pizza.jpg">Scott bauer</a></p>
                             <p>Onion by <a href="https://commons.wikimedia.org/w/index.php?curid=19181714">Colin</a></p>
@@ -1408,7 +1414,7 @@ $dispatcher = new Dispatcher([
                             <p>Log by <a href="https://en.wikipedia.org/wiki/Logging#/media/File:Logging_in_Finnish_Lapland.jpg">Greenpeace Finland</a></p>
                         </div>
                     </div>
-                </section>
+                </section-->
 
             </div>
 
