@@ -220,6 +220,10 @@ git checkout 01-expressive-skeleton
 
                 <section class="simple">
                     <h1>http://phpmiddleware.websc</h1>
+                    <p>using Postman
+                    <pre><code class="hljs bash" data-trim>
+postman --disable-gpu
+                    </code></pre>
                 </section>
 
                 <section class="bkg">
@@ -433,8 +437,6 @@ class PingAction implements ServerMiddlewareInterface
         return new JsonResponse(['ack' => time()]);
     }
 }
-
-}
                     </code></pre>
                 </section>
 
@@ -617,23 +619,16 @@ git checkout 06-chocolates-route
                     </code></pre>
                 </section>
 
-                 <section class="simple">
-                     <h1>config/config.php</h1>
-                     <pre><code class="hljs">$cacheConfig = [
-        'config_cache_path' => 'data/config-cache.php',
-    ];
+                <section class="simple">
+                    <h2>config/config.php</h2>
+                    <pre><code class="hljs no-highlight" data-trim data-noescape>
+<span class="hljs-variable">$aggregator</span> = <span class="hljs-keyword">new</span> ConfigAggregator([
+    App\ConfigProvider::<span class="hljs-keyword">class</span>,
+    <span class="hljs-keyword">new</span> PhpFileProvider(<span class="hljs-string">'config/autoload/{{,*.}global,{,*.}local}.php'</span>),
+    <span class="hljs-keyword">new</span> PhpFileProvider(<span class="hljs-string">'config/development.config.php'</span>)
+]);
 
-    $aggregator = new ConfigAggregator([
-        new ArrayProvider($cacheConfig),
-        App\ConfigProvider::class,
-        new PhpFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
-        new PhpFileProvider('config/development.config.php'),
-        ], $cacheConfig['config_cache_path']
-    );
-
-    return $aggregator->getMergedConfig();
-
-                    </code></pre>
+return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">-&gt;getMergedConfig</span>();</code></pre>
                 </section>
 
                 <section class="simple">
@@ -827,7 +822,9 @@ interface MiddlewareInterface
 
                 <section class="simple">
                     <h1>Back to code...</h1>
-                    <pre><code class="hljs">git checkout 10-access-log</code></pre>
+                    <pre><code class="hljs bash" data-trim>
+git checkout 10-access-log
+                    </code></pre>
                 </section>
 
                 <section class="simple">
@@ -948,7 +945,7 @@ git checkout 15-delete-chocolate
 );
 
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
-    <span class="hljs-stri ng">'/delete/{id}'</span>,
+    <span class="hljs-string">'/delete/{id}'</span>,
     \App\Action\DeleteChocolateAction::<span class="hljs-keyword">class</span>,
     <span class="hljs-string">'delete'</span>
 );
@@ -1195,11 +1192,7 @@ git checkout 20.1-behat
                 <section class="simple">
                     <h3>Slim</h3>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
-<span class="hljs-comment">// src/middleware.php</span>
-
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;add</span>(<span class="hljs-keyword">new</span> AccessLog(<span class="hljs-variable">$logger</span>));
-
-<span class="hljs-variable">$app</span><span class="hljs-function">-&gt;add</span>(<span class="hljs-keyword">new</span> Geolocate());
 
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;add</span>(<span class="hljs-keyword">new</span> ClientIp());
 
@@ -1212,22 +1205,23 @@ git checkout 20.1-behat
                 </section>
 
                 <section class="simple">
-                    <h3>Radar & Relay</h3>
-                    <img src="img/logos/relay.png">
+                    <h3>Other middleware dispatchers</h3>
+                    <ul>
+                        <li><a href="http://telegraphp.com/">Telegraphp</a></li>
+                        <li><a href="https://github.com/mindplay-dk/middleman">Middleman</a></li>
+                        <li><a href="https://github.com/ellipsephp/dispatcher">Ellipsephp dispatcher</a></li>
+                    </ul>
                 </section>
 
                 <section class="simple">
-                    <h3>Radar & Relay</h3>
-                    <pre><code class="hljs no-highlight" data-trim data-noescape>
-<span class="hljs-comment">// web/index.php</span>
-
-<span class="hljs-variable">$adr</span><span class="hljs-function">-&gt;middle</span>(<span class="hljs-keyword">new</span> BasicAuthentication(<span class="hljs-variable">$users</span>));
-
-<span class="hljs-variable">$adr</span><span class="hljs-function">-&gt;middle</span>(<span class="hljs-keyword">new</span> ClientIp());
-
-<span class="hljs-variable">$adr</span><span class="hljs-function">-&gt;middle</span>(<span class="hljs-keyword">new</span> Geolocate());
-
-<span class="hljs-variable">$adr</span><span class="hljs-function">-&gt;middle</span>(<span class="hljs-keyword">new</span> AccessLog(<span class="hljs-variable">$logger</span>));</code></pre>
+                    <h3>Middleman</h3>
+                    <pre><code class="hljs php" data-trim>
+$dispatcher = new Dispatcher([
+    new BasicAuthentication($users),
+    new ClientIp(),
+    new AccessLog($logger)
+]);
+                    </code></pre>
                     <aside class="notes">
                         <ul>
                             <li>Action-Domain-Responder framework</li>
@@ -1285,12 +1279,15 @@ git checkout 20.1-behat
                     <div class="credits">
                         <p><a href="https://mwop.net/blog/2015-01-26-psr-7-by-example.html">PSR-7 By Example</a> by <a href="https://twitter.com/mwop">Matthew Weier O'Phinney</a></p>
                         <p><a href="https://mwop.net/blog/2015-01-08-on-http-middleware-and-psr-7.html">On HTTP, Middleware, and PSR-7</a> by <a href="https://twitter.com/mwop">Matthew Weier O'Phinney</a></p>
-                        <p><a href="http://www.slimframework.com/">Slim framework</a> documentation</p>
-                        <p><a href="https://akrabat.com/category/slim-framework/">Slim resources</a> by <a href="https://twitter.com/akrabat">
+                        <!--p><a href="http://www.slimframework.com/">Slim framework</a> documentation</p>
+                        <p><a href="https://akrabat.com/category/slim-framework/">Slim resources</a> by <a href="https://twitter.com/akrabat">Rob Allen</a>
                         <p><a href="https://github.com/radarphp/Radar.Project/tree/1.x/docs">Radar</a> documentation</p>
-                        <p><a href="http://paul-m-jones.com/">Radar and middleware resources</a> by <a href="https://twitter.com/pmjones">Paul M. Jones</p>
+                        <p><a href="http://paul-m-jones.com/">Radar and middleware resources</a> by <a href="https://twitter.com/pmjones">Paul M. Jones</p-->
                         <p><a href="https://zendframework.github.io/zend-expressive/">Zend Expressive</a> documentation</p>
-                        <p><a href="https://github.com/php-fig/fig-standards/blob/95aece5e68376e9a5d79d2385d755824dfac3ed8/proposed/middleware-meta.md">Proposed Middleware Interface PSR-N</a>
+                        <p><a href="https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware/middleware.md">Proposed Middleware Interface PSR-15</a>
+                        <p><a href="https://philsturgeon.uk/php/2016/05/31/why-care-about-php-middleware/">Why Care About PHP Middleware?</a> by <a href="https://twitter.com/fillsturgeon">Phil Sturgeon</a>
+                        <p><a href="http://blog.ircmaxell.com/2016/05/all-about-middleware.html">All about middleware</a> by <a href="https://twitter.com/ircmaxell">Anthony Ferrara</a>
+                        <p><a href="https://framework.zend.com/blog">Zend Framework blog</a></p>
                     </div>
                 </section>
 
