@@ -209,14 +209,14 @@ app.listen(3000)
                     </ul>
                 </section>
 
-                <section class="simple">
-                    <h1>Let's Go!</h1>
+                <section class="simple code">
+                    <h2>Let's Go!</h2>
                     <pre><code class="hljs bash" data-trim>
 cd /var/www/html/summercamp/phpmiddleware
 
 git checkout 01-expressive-skeleton
                     </code></pre>
-
+                    <br>
                     <p>Tips & Hints:</p>
                     <pre><code class="hljs bash" data-trim>
 docs/readme.html
@@ -249,15 +249,15 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
                     <img src="img/zend-expressive.png">
                 </section>
 
-                <section class="bkg" data-background="#2a2a2a">
+                <section class="bkg" data-background="#12222f">
                     <img src="img/installation.png">
                 </section>
 
-                <section class="bkg" data-background="#2a2a2a">
+                <section class="bkg" data-background="#300a24">
                     <img src="img/expressive-install-step-1.png">
                 </section>
 
-                <section class="bkg" data-background="#2a2a2a">
+                <section class="bkg" data-background="#300a24">
                     <img src="img/expressive-install-step-2.png">
                 </section>
 
@@ -266,7 +266,7 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
                     <h1 class="top-right">PIMPLE</h1>
                 </section>
 
-                <section class="bkg" data-background="#2a2a2a">
+                <section class="bkg" data-background="#300a24">
                     <img src="img/expressive-install-step-3.png">
                 </section>
 
@@ -275,11 +275,11 @@ composer create-project zendframework/zend-expressive-skeleton phpmiddleware
                     <h1>FastRoute</h1>
                 </section>
 
-                <section class="bkg" data-background="#2a2a2a">
+                <section class="bkg" data-background="#300a24">
                     <img src="img/expressive-install-step-4.png">
                 </section>
 
-                <section class="bkg" data-background="#2a2a2a">
+                <section class="bkg" data-background="#300a24">
                     <img src="img/expressive-install-step-5.png">
                 </section>
 
@@ -570,12 +570,13 @@ git checkout 03-welcome
                     <img src="img/hello-rovinj.png">
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h1>Exercise 1 (10 mins)</h1>
                     <p>get to branch 03-welcome</p>
                     <p>Create an hello route (/hello)</p>
                     <p>Display output {"hello":"NAME"}</p>
                     <p>NAME is either the value of the "name" query string parameter, or the string "random phper" if no name parameter was provided</p>
+                    <br>
                     <pre><code class="hljs" data-trim>
 docs/readme.html
                     </code></pre>
@@ -591,7 +592,7 @@ docs/readme.html
                     </code></pre>
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h1>Exercise 1 Solution</h1>
                     <p>src/App/Action/HelloAction.php</p>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
@@ -707,7 +708,7 @@ return <span class="hljs-variable">$aggregator</span><span class="hljs-funtion">
 }</code></pre>
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h2>src/App/Container/Action/ChocolatesActionFactory.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChocolatesActionFactory</span></span>
@@ -755,7 +756,7 @@ interface ContainerInterface
                     <img src="img/chocolate.png">
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h1>Exercise 2 (25 mins)</h1>
                     <p>get to branch 06-chocolates-route</p>
                     <h2>Alternative A - User List</h2>
@@ -910,8 +911,8 @@ git checkout 10-access-log
                     </code></pre>
                 </section>
 
-                <section class="simple">
-                    <p>src/App/Container/Middleware/AccessLogFactory.php</p>
+                <section class="simple code">
+                    <h2>src/App/Container/Middleware/AccessLogFactory.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccessLogFactory</span>
 </span>{
@@ -932,7 +933,7 @@ git checkout 10-access-log
 }</code></pre>
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h1>Exercise 3 (25 mins)</h1>
                     <p>Get to branch 10-access-log</p>
                     <p>Create a caching middleware</p>
@@ -943,27 +944,20 @@ docs/readme.html
                     </code></pre>
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h1>Solution to exercise 3</h1>
                     <pre><code class="hljs bash" data-trim>
 git checkout 11-response-cache
                     </code></pre>
-                    <p>Implementing middleware from scratch - not necessarily a good idea!</p>
                 </section>
 
                 <section class="bkg" data-background="img/reinventing-wheel.jpg">
                     <h1>Reinventing the Wheel</h1>
-                    <aside class="notes">
-                        <p>Silos</p>
-                        <p>Meaningless Rivalries</p>
-                        <p>Closed Communities</p>
-                        <p>Waste</p>
-                        <p>How to solve this?</p>
-                    </aside>
                 </section>
 
                 <!-- https://pixabay.com/en/dinosaur-amusement-park-dino-park-875614/ -->
-                 <section class="bkg" data-background="img/dinosaur-875614_1280.jpg">
+                <section class="bkg" data-background="img/dinosaur-875614_1280.jpg">
+                    <h1 class="low-left">Not a Smart Idea!</h1>
                 </section>
 
                 <section>
@@ -996,7 +990,7 @@ git checkout 15-delete-chocolate
                     </code></pre>
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(<span class="hljs-string">'/submit'</span>, \App\Action\SubmitChocolateAction::<span class="hljs-keyword">class</span>, <span class="hljs-string">'submit'</span>);
@@ -1035,7 +1029,7 @@ git checkout 16.1-basic-http-authentication
                     </code></pre>
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
@@ -1061,7 +1055,7 @@ git checkout 16.1-basic-http-authentication
                     </code></pre>
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h2>src/App/Container/Middleware/BasicHttpAuthenticationFactory.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicHttpAuthenticationFactory</span>
@@ -1093,7 +1087,7 @@ git checkout 17.3-jwt-authentication
                     </code></pre>
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h2>config/routes.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
@@ -1132,7 +1126,7 @@ $app->post('/token', \App\Action\TokenAction::class, 'token');
                     <img src="img/token.png">
                 </section>
 
-                <section class="simple">
+                <section class="simple code">
                     <h1>Exercise 4 (30 mins)</h1>
                     <h2>Alternative A - JWT Authentication</h2>
                     <p>Get to branch 17.1-jwt-authentication</p>
@@ -1141,9 +1135,6 @@ $app->post('/token', \App\Action\TokenAction::class, 'token');
                     <p>Get to branch 16.1-basic-http-authentication</p>
                     <p>Allow for authenticated users only to submit new wrappers</p>
                     <p>Allow for administrators only to approve/delete wrappers</p>
-                    <pre><code class="hljs" data-trim>
-docs/readme.html
-                    </code></pre>
                 </section>
 
                 <section class="simple">
@@ -1151,15 +1142,14 @@ docs/readme.html
                     <pre><code class="hljs bash" data-trim>
 git checkout 17.3-jwt-authentication
                     </code></pre>
-                    <br>
                     <pre><code class="hljs bash" data-trim>
 git checkout 18-authorization
                     </code></pre>
                 </section>
 
-                <section class="simple">
-                    <p>config/autoload/dependencies.global.php</p>
-                    <pre><code class="hljs php hljs " data-trim="">
+                <section class="simple code">
+                    <h2>config/autoload/dependencies.global.php</h2>
+                    <pre><code class="hljs php" data-trim data-noescape>
 <span class="hljs-keyword">return</span> [
     <span class="hljs-string">'dependencies'</span> =&gt; [
         <span class="hljs-string">'factories'</span> =&gt; [
@@ -1171,7 +1161,7 @@ git checkout 18-authorization
                 </section>
 
                 <section class="simple">
-                    <p>config/routes.php</p>
+                    <h1>config/routes.php</h1>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
     <span class="hljs-string">'/submit'</span>,
@@ -1194,8 +1184,8 @@ git checkout 18-authorization
                     </code></pre>
                 </section>
 
-                <section class="simple">
-                    <p>src/App/Middleware/Authorisation.php</p>
+                <section class="simple Code">
+                    <h2>src/App/Middleware/Authorisation.php</h2>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">(
     ServerRequestInterface <span class="hljs-variable">$request</span>,
