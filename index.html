@@ -759,10 +759,10 @@ interface ContainerInterface
                 <section class="simple code">
                     <h1>Exercise 2 (25 mins)</h1>
                     <p>get to branch 06-chocolates-route</p>
-                    <h2>Alternative A - User List</h2>
+                    <h2 class="spaced">Alternative A - User List</h2>
                     <p>Create a chocolate-details (/chocolate/ID) route where ID is a proper ID of a chocolate wrapper in our domain</p>
                     <p>Interact with src/App/Domain/Service/ChocolatesService.php</p>
-                    <h2>Alternative B - Chocolate Details</h2>
+                    <h2 class="spaced">Alternative B - Chocolate Details</h2>
                     <p>Create a users (/users) route</p>
                     <pre><code class="hljs" data-trim>
 docs/readme.html
@@ -793,7 +793,6 @@ docs/readme.html
                     <pre><code class="hljs bash" data-trim>
 git checkout 07-chocolate-details-route
                     </code></pre>
-                    <br>
                     <pre><code class="hljs bash" data-trim>
 git checkout 08-users
                     </code></pre>
@@ -1030,7 +1029,7 @@ git checkout 16.1-basic-http-authentication
                 </section>
 
                 <section class="simple code">
-                    <h2>config/routes.php</h2>
+                    <h1>config/routes.php</h1>
                     <pre><code class="hljs no-highlight" data-trim data-noescape>
 <span class="hljs-variable">$app</span><span class="hljs-function">-&gt;post</span>(
     <span class="hljs-string">'/submit'</span>,
@@ -1128,10 +1127,10 @@ $app->post('/token', \App\Action\TokenAction::class, 'token');
 
                 <section class="simple code">
                     <h1>Exercise 4 (30 mins)</h1>
-                    <h2>Alternative A - JWT Authentication</h2>
+                    <h2 class="spaced">Alternative A - JWT Authentication</h2>
                     <p>Get to branch 17.1-jwt-authentication</p>
                     <p>Implement JWT Authentication</p>
-                    <h2>Alternative B - Authorization</h2>
+                    <h2 class="spaced">Alternative B - Authorization</h2>
                     <p>Get to branch 16.1-basic-http-authentication</p>
                     <p>Allow for authenticated users only to submit new wrappers</p>
                     <p>Allow for administrators only to approve/delete wrappers</p>

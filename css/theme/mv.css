@@ -97,8 +97,7 @@ section > h1, section > h2 {
   padding: 0px;
   text-align: center;
   width: 100%;
-  /* margin-bottom: 2%; */
-  margin-top: 0.5em;
+  margin-bottom: 0.45em;
 }
 
 .reveal .title h1 {
@@ -112,7 +111,10 @@ section > h1, section > h2 {
 
 .reveal h2 {
   font-size: 1.10em;
-  margin-top: 1.15em;
+}
+
+.reveal h2.spaced {
+  margin-top: 1.10em;
 }
 
 .reveal h3 {
@@ -252,6 +254,10 @@ div.space60 {
 
 .reveal .code h2 {
   font-size: 0.85em;
+}
+
+.reveal .title h2 {
+  margin-top: 0;
 }
 
 .reveal .credits {
@@ -562,6 +568,10 @@ div.credits p {
     font-size: 50%;
     line-height: 80px;
     margin-left: 20px;
+}
+
+.reveal .slides > section, .reveal .slides > section > section {
+    padding-top: 10px;
 }
 
 @media(max-width: 600px){
